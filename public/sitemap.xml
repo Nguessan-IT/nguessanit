@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Page d'accueil -->
+    <url>
+        <loc>https://nguessan-it.lovable.app/</loc>
+        <lastmod>2025-01-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://nguessan-it.lovable.app/" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://nguessan-it.lovable.app/?lang=en" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://nguessan-it.lovable.app/" />
+        <image:image>
+            <image:loc>https://nguessan-it.lovable.app/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png</image:loc>
+            <image:title>Nguessan-IT Logo - Expert informatique Abidjan Côte d'Ivoire solutions professionnelles</image:title>
+            <image:caption>Logo officiel Nguessan-IT société experte en développement web maintenance IT cloud formation Abidjan Côte d'Ivoire Afrique</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Services -->
+    <url>
+        <loc>https://nguessan-it.lovable.app/services</loc>
+        <lastmod>2025-01-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://nguessan-it.lovable.app/services" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://nguessan-it.lovable.app/services?lang=en" />
+    </url>
+    
+    <!-- À propos -->
+    <url>
+        <loc>https://nguessan-it.lovable.app/about</loc>
+        <lastmod>2025-01-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://nguessan-it.lovable.app/about" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://nguessan-it.lovable.app/about?lang=en" />
+    </url>
+    
+    <!-- Contact -->
+    <url>
+        <loc>https://nguessan-it.lovable.app/contact</loc>
+        <lastmod>2025-01-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://nguessan-it.lovable.app/contact" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://nguessan-it.lovable.app/contact?lang=en" />
+    </url>
+    
+    <!-- Devis -->
+    <url>
+        <loc>https://nguessan-it.lovable.app/devis</loc>
+        <lastmod>2025-01-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://nguessan-it.lovable.app/devis" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://nguessan-it.lovable.app/devis?lang=en" />
+    </url>
+    
+    <!-- Politique de confidentialité -->
+    <url>
+        <loc>https://nguessan-it.lovable.app/politique-confidentialite</loc>
+        <lastmod>2025-01-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- Conditions d'utilisation -->
+    <url>
+        <loc>https://nguessan-it.lovable.app/conditions</loc>
+        <lastmod>2025-01-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+</urlset>

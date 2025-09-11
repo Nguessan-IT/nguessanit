@@ -1,0 +1,34 @@
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://nguessan-it.lovable.app/sitemap.xml
+
+# SEO - Pages importantes
+Allow: /services
+Allow: /about  
+Allow: /contact
+Allow: /devis
+
+# Désindexer les paramètres de tracking
+Disallow: /*?*utm_*
+Disallow: /*?*fbclid*
+Disallow: /*?*gclid*
+
+# Optimisation géographique Côte d'Ivoire
+# Ciblage : Abidjan, Afrique de l'Ouest
