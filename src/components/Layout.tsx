@@ -1,118 +1,187 @@
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSelector from "./LanguageSelector";
-import Footer from "./Footer";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { User, Session } from '@supabase/supabase-js';
+import {
+  LayoutDashboard,
+  Users,
+  Settings,
+  FileText,
+  Calendar,
+  LogOut,
+  Menu
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
-  const { t } = useLanguage();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
+    );
+
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    // Redirect logic
+    if (!loading) {
+      if (!session && !location.pathname.includes('/auth')) {
+        navigate('/auth');
+      } else if (session && location.pathname === '/') {
+        navigate('/dashboard');
+      }
+    }
+  }, [session, loading, location.pathname, navigate]);
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      
+      toast({
+        title: "Déconnexion",
+        description: "Vous avez été déconnecté avec succès"
+      });
+      navigate('/auth');
+    } catch (error) {
+      console.error('Error signing out:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de se déconnecter",
+        variant: "destructive"
+      });
+    }
+  };
+
+  // Show loading or auth page without sidebar
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return <>{children}</>;
+  }
 
   const navigation = [
-    { name: t('nav.home'), href: "/" },
-    { name: t('nav.services'), href: "/services" },
-    { name: t('nav.about'), href: "/about" },
-    { name: t('nav.contact'), href: "/contact" },
+    { name: 'Tableau de Bord', href: '/dashboard', icon: LayoutDashboard },
+    { name: 'Clients', href: '/clients', icon: Users },
+    { name: 'Services', href: '/services', icon: Settings },
+    { name: 'CRM', href: '/crm', icon: Calendar },
+    { name: 'Facturation', href: '/invoicing', icon: FileText },
   ];
 
-  const isActive = (href: string) => location.pathname === href;
-
   return (
-    <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 backdrop-blur-lg bg-primary/10 border-b border-primary/20 shadow-lg shadow-primary/10 relative overflow-hidden">
-        {/* Background Effects - Same as Footer */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3">
-              <img 
-                src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png" 
-                alt="Nguessan-IT - Expert informatique Abidjan Côte d'Ivoire - Logo officiel société développement web maintenance IT solutions cloud formation professionnelle" 
-                title="Nguessan-IT - Solutions informatiques professionnelles en Côte d'Ivoire"
-                className="w-10 h-10 object-contain"
-                loading="eager"
-                width="40"
-                height="40"
-              />
-              <span className="font-bold text-xl gradient-text hidden sm:block">
-                Nguessan-IT
-              </span>
-            </Link>
+    <div className="min-h-screen bg-background">
+      {/* Mobile menu button */}
+      <div className="lg:hidden fixed top-4 left-4 z-50">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          <Menu className="h-4 w-4" />
+        </Button>
+      </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-4">
-              {navigation.map((item) => (
-                <Link
+      {/* Sidebar */}
+      <div className={cn(
+        "fixed inset-y-0 left-0 z-40 w-64 bg-card border-r transform transition-transform duration-200 ease-in-out lg:translate-x-0",
+        sidebarOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-center h-16 border-b">
+            <h1 className="text-xl font-bold text-primary">ERP Nguessan-IT</h1>
+          </div>
+          
+          <nav className="flex-1 px-4 py-6 space-y-2">
+            {navigation.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.href;
+              
+              return (
+                <button
                   key={item.name}
-                  to={item.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    isActive(item.href)
-                      ? "bg-primary text-primary-foreground shadow-glow"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  }`}
+                  onClick={() => {
+                    navigate(item.href);
+                    setSidebarOpen(false);
+                  }}
+                  className={cn(
+                    "w-full flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors",
+                    isActive
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                  )}
                 >
+                  <Icon className="mr-3 h-5 w-5" />
                   {item.name}
-                </Link>
-              ))}
-              <LanguageSelector />
-              <Button variant="outline" className="hero-glow" asChild>
-                <Link to="/devis">{t('nav.quote')}</Link>
-              </Button>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center gap-2">
-              <LanguageSelector />
+                </button>
+              );
+            })}
+          </nav>
+          
+          <div className="p-4 border-t">
+            <div className="flex items-center justify-between">
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-foreground truncate">
+                  {user?.email}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Utilisateur connecté
+                </p>
+              </div>
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                onClick={handleSignOut}
+                className="ml-2"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                <LogOut className="h-4 w-4" />
               </Button>
             </div>
           </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden border-t border-border">
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-3 py-2 rounded-lg text-base font-medium transition-all duration-300 ${
-                      isActive(item.href)
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <Button variant="outline" className="w-full mt-4" asChild>
-                  <Link to="/devis">{t('nav.quote')}</Link>
-                </Button>
-              </div>
-            </div>
-          )}
         </div>
-      </nav>
+      </div>
 
-      {/* Main Content */}
-      <main className="flex-1">{children}</main>
+      {/* Overlay for mobile */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
-      {/* Footer */}
-      <Footer />
+      {/* Main content */}
+      <div className="lg:ml-64">
+        <main className="min-h-screen">
+          {children}
+        </main>
+      </div>
     </div>
   );
 };
