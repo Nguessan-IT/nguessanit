@@ -8,9 +8,6 @@ import { CurrencyProvider } from "./contexts/CurrencyContext";
 import Layout from "./components/Layout";
 import TechBackground from "./components/TechBackground";
 import Home from "./pages/Home";
-import Auth from "./pages/Auth";
-import Dashboard from "./pages/Dashboard";
-import Clients from "./pages/Clients";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -33,9 +30,6 @@ const App = () => (
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/clients" element={<Clients />} />
               <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
