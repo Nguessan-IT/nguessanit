@@ -41,6 +41,10 @@ const translations = {
     'services.training.title': 'Formation & Conseil',
     'services.training.description': 'Formation informatique et conseil en transformation digitale',
     'services.training.price': 'À partir de 300€/jour',
+    'services.branding.title': 'Identité Visuelle & Branding Digital',
+    'services.branding.description': 'Créez une identité visuelle forte et cohérente pour votre marque digitale',
+    'services.interactive.title': 'Documents Interactifs',
+    'services.interactive.description': 'Transformez vos documents statiques en expériences interactives engageantes',
     'services.learnMore': 'En savoir plus',
     
     // Features
@@ -59,6 +63,14 @@ const translations = {
     'features.audit': 'Audit IT',
     'features.strategy': 'Stratégie',
     'features.accompaniment': 'Accompagnement',
+    'features.logo': 'Logo & charte graphique',
+    'features.identity': 'Identité complète',
+    'features.digital': 'Déclinaisons digitales',
+    'features.brandguide': 'Guide de style',
+    'features.interactivePdf': 'PDF interactifs',
+    'features.catalog': 'Catalogues digitaux',
+    'features.presentation': 'Présentations animées',
+    'features.dynamicReport': 'Rapports dynamiques',
     
     // Stats
     'stats.experience': 'Années expérience',
@@ -267,6 +279,10 @@ const translations = {
     'services.training.title': 'Training & Consulting',
     'services.training.description': 'IT training and digital transformation consulting',
     'services.training.price': 'From €300/day',
+    'services.branding.title': 'Visual Identity & Digital Branding',
+    'services.branding.description': 'Create a strong and consistent visual identity for your digital brand',
+    'services.interactive.title': 'Interactive Documents',
+    'services.interactive.description': 'Transform your static documents into engaging interactive experiences',
     'services.learnMore': 'Learn more',
     
     // Features
@@ -285,6 +301,14 @@ const translations = {
     'features.audit': 'IT Audit',
     'features.strategy': 'Strategy',
     'features.accompaniment': 'Support',
+    'features.logo': 'Logo & brand guidelines',
+    'features.identity': 'Complete identity',
+    'features.digital': 'Digital variations',
+    'features.brandguide': 'Style guide',
+    'features.interactivePdf': 'Interactive PDFs',
+    'features.catalog': 'Digital catalogs',
+    'features.presentation': 'Animated presentations',
+    'features.dynamicReport': 'Dynamic reports',
     
     // Stats
     'stats.experience': 'Years experience',
@@ -493,6 +517,10 @@ const translations = {
     'services.training.title': 'Formación y Consultoría',
     'services.training.description': 'Formación informática y consultoría en transformación digital',
     'services.training.price': 'Desde €300/día',
+    'services.branding.title': 'Identidad Visual y Branding Digital',
+    'services.branding.description': 'Cree una identidad visual fuerte y coherente para su marca digital',
+    'services.interactive.title': 'Documentos Interactivos',
+    'services.interactive.description': 'Transforme sus documentos estáticos en experiencias interactivas atractivas',
     'services.learnMore': 'Saber más',
     
     // Features
@@ -511,6 +539,14 @@ const translations = {
     'features.audit': 'Auditoría IT',
     'features.strategy': 'Estrategia',
     'features.accompaniment': 'Acompañamiento',
+    'features.logo': 'Logo y manual de marca',
+    'features.identity': 'Identidad completa',
+    'features.digital': 'Variaciones digitales',
+    'features.brandguide': 'Guía de estilo',
+    'features.interactivePdf': 'PDFs interactivos',
+    'features.catalog': 'Catálogos digitales',
+    'features.presentation': 'Presentaciones animadas',
+    'features.dynamicReport': 'Informes dinámicos',
     
     // Stats
     'stats.experience': 'Años de experiencia',
@@ -719,6 +755,10 @@ const translations = {
     'services.training.title': 'Treinamento e Consultoria',
     'services.training.description': 'Treinamento em TI e consultoria em transformação digital',
     'services.training.price': 'A partir de €300/dia',
+    'services.branding.title': 'Identidade Visual e Branding Digital',
+    'services.branding.description': 'Crie uma identidade visual forte e coerente para sua marca digital',
+    'services.interactive.title': 'Documentos Interativos',
+    'services.interactive.description': 'Transforme seus documentos estáticos em experiências interativas envolventes',
     'services.learnMore': 'Saiba mais',
     
     // Features
@@ -737,6 +777,14 @@ const translations = {
     'features.audit': 'Auditoria de TI',
     'features.strategy': 'Estratégia',
     'features.accompaniment': 'Acompanhamento',
+    'features.logo': 'Logo e manual de marca',
+    'features.identity': 'Identidade completa',
+    'features.digital': 'Variações digitais',
+    'features.brandguide': 'Guia de estilo',
+    'features.interactivePdf': 'PDFs interativos',
+    'features.catalog': 'Catálogos digitais',
+    'features.presentation': 'Apresentações animadas',
+    'features.dynamicReport': 'Relatórios dinâmicos',
     
     // Stats
     'stats.experience': 'Anos de experiência',
@@ -945,6 +993,10 @@ const translations = {
     'services.training.title': 'Formazione e Consulenza',
     'services.training.description': 'Formazione IT e consulenza nella trasformazione digitale',
     'services.training.price': 'A partire da €300/giorno',
+    'services.branding.title': 'Identità Visiva e Branding Digitale',
+    'services.branding.description': 'Crea un\'identità visiva forte e coerente per il tuo marchio digitale',
+    'services.interactive.title': 'Documenti Interattivi',
+    'services.interactive.description': 'Trasforma i tuoi documenti statici in esperienze interattive coinvolgenti',
     'services.learnMore': 'Scopri di più',
     
     // Features
@@ -963,6 +1015,14 @@ const translations = {
     'features.audit': 'Audit IT',
     'features.strategy': 'Strategia',
     'features.accompaniment': 'Accompagnamento',
+    'features.logo': 'Logo e brand guidelines',
+    'features.identity': 'Identità completa',
+    'features.digital': 'Varianti digitali',
+    'features.brandguide': 'Guida di stile',
+    'features.interactivePdf': 'PDF interattivi',
+    'features.catalog': 'Cataloghi digitali',
+    'features.presentation': 'Presentazioni animate',
+    'features.dynamicReport': 'Report dinamici',
     
     // Stats
     'stats.experience': 'Anni di esperienza',

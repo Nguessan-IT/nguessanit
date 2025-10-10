@@ -32,17 +32,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3 group">
               <img 
                 src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png" 
                 alt="Nguessan-IT - Expert informatique Abidjan Côte d'Ivoire - Logo officiel société développement web maintenance IT solutions cloud formation professionnelle" 
                 title="Nguessan-IT - Solutions informatiques professionnelles en Côte d'Ivoire"
-                className="w-10 h-10 object-contain"
+                className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                 loading="eager"
                 width="40"
                 height="40"
               />
-              <span className="font-bold text-xl gradient-text hidden sm:block">
+              <span className="font-bold text-xl gradient-text hidden sm:block transition-all duration-300 group-hover:tracking-wide">
                 Nguessan-IT
               </span>
             </Link>

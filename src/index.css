@@ -196,6 +196,25 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-glow);
     position: relative;
     overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hero-glow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  .hero-glow:hover::after {
+    width: 300px;
+    height: 300px;
   }
 
   .hero-glow::before {
@@ -216,6 +235,10 @@ All colors MUST be HSL.
     opacity: 0.3;
     animation: glow-rotate 2s linear infinite;
   }
+  
+  .hero-glow:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
 
   .card-elegant {
     box-shadow: var(--shadow-card);
@@ -224,6 +247,7 @@ All colors MUST be HSL.
     border: 1px solid hsl(var(--primary) / 0.1);
     position: relative;
     overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .card-elegant::before {
@@ -234,11 +258,26 @@ All colors MUST be HSL.
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.1), transparent);
-    transition: var(--transition-smooth);
+    transition: left 0.6s ease;
   }
 
   .card-elegant:hover::before {
     left: 100%;
+  }
+  
+  .card-elegant:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px hsl(var(--primary) / 0.15);
+  }
+  
+  /* === Button Hover Effects === */
+  button:not(.hero-glow) {
+    transition: all 0.2s ease;
+  }
+  
+  button:not(.hero-glow):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.2);
   }
 
   .animate-float {

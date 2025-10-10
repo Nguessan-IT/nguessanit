@@ -44,17 +44,17 @@ const Home = () => {
     },
     {
       icon: Palette,
-      title: "Identité Visuelle & Branding Digital",
-      description: "Créez une identité visuelle forte et cohérente pour votre marque digitale",
+      title: t('services.branding.title'),
+      description: t('services.branding.description'),
       serviceKey: "branding",
-      features: ["Logo & charte graphique", "Identité complète", "Déclinaisons digitales", "Guide de style"]
+      features: [t('features.logo'), t('features.identity'), t('features.digital'), t('features.brandguide')]
     },
     {
       icon: FileText,
-      title: "Documents Interactifs",
-      description: "Transformez vos documents statiques en expériences interactives engageantes",
+      title: t('services.interactive.title'),
+      description: t('services.interactive.description'),
       serviceKey: "interactive",
-      features: ["PDF interactifs", "Catalogues digitaux", "Présentations animées", "Rapports dynamiques"]
+      features: [t('features.interactivePdf'), t('features.catalog'), t('features.presentation'), t('features.dynamicReport')]
     }
   ];
 
