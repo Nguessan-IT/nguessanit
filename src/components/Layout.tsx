@@ -13,8 +13,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const navigation = [
     { name: t('nav.home'), href: "/" },
-    { name: t('nav.services'), href: "/services" },
     { name: t('nav.about'), href: "/about" },
+    { name: t('nav.services'), href: "/services" },
     { name: t('nav.contact'), href: "/contact" },
   ];
 
