@@ -220,7 +220,7 @@ const Services = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 text-center overflow-hidden">
+      <section className="relative py-12 sm:py-16 lg:py-32 text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero opacity-70"></div>
         <div className="code-rain"></div>
         <div className="floating-elements">
@@ -228,11 +228,11 @@ const Services = () => {
           <div className="floating-orb"></div>
           <div className="floating-orb"></div>
         </div>
-        <div className="relative max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-6xl font-bold mb-6">
+        <div className="relative max-w-4xl mx-auto px-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6">
             <span className="gradient-text">Nos Services</span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-6">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-6 px-2">
             Des solutions informatiques complètes adaptées à vos besoins professionnels. 
             Découvrez comment nous pouvons transformer votre infrastructure IT.
           </p>
@@ -243,9 +243,9 @@ const Services = () => {
       </section>
 
       {/* Main Services */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <section className="py-8 sm:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <ServiceCard key={index} service={service} index={index} />
             ))}
@@ -254,26 +254,26 @@ const Services = () => {
       </section>
 
       {/* Additional Services */}
-      <section className="py-16 bg-card/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+      <section className="py-8 sm:py-12 lg:py-16 bg-card/30">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
               <span className="gradient-text">Services Complémentaires</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground px-4">
               Des prestations spécialisées pour répondre à tous vos besoins
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
             {additionalServices.map((service, index) => (
               <Card key={index} className="card-elegant border-border hover-glow transition-all duration-500 text-center group">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg">
-                    <service.icon className="h-6 w-6 text-primary-foreground drop-shadow-sm" />
+                <CardContent className="p-3 sm:p-4 lg:p-6">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 lg:mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg">
+                    <service.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground drop-shadow-sm" />
                   </div>
-                  <h3 className="font-semibold mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm">{service.description}</p>
+                  <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">{service.title}</h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm">{service.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -282,18 +282,18 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+      <section className="py-8 sm:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
               <span className="gradient-text">Notre Processus</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground px-4">
               Une approche structurée pour garantir le succès de vos projets
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {[
               { step: "01", title: "Analyse", description: "Étude de vos besoins et contraintes" },
               { step: "02", title: "Conception", description: "Élaboration de la solution optimale" },
@@ -301,11 +301,11 @@ const Services = () => {
               { step: "04", title: "Support", description: "Accompagnement et maintenance continue" }
             ].map((item, index) => (
               <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 text-primary-foreground font-bold text-xl group-hover:scale-110 group-hover:shadow-glow transition-all duration-500">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-primary-foreground font-bold text-base sm:text-lg lg:text-xl group-hover:scale-110 group-hover:shadow-glow transition-all duration-500">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
+                <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-1 sm:mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-xs sm:text-sm px-2">{item.description}</p>
               </div>
             ))}
           </div>
@@ -313,22 +313,22 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+      <section className="py-8 sm:py-12 lg:py-16">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
             Prêt à transformer votre <span className="gradient-text">infrastructure IT</span> ?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8">
             Contactez-nous dès aujourd'hui pour discuter de votre projet et obtenir un devis personnalisé
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="hero-glow" asChild>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Button size="lg" className="hero-glow w-full sm:w-auto" asChild>
               <Link to="/devis">
                 Demander un devis gratuit
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
               <Link to="/about">En savoir plus sur nous</Link>
             </Button>
           </div>
