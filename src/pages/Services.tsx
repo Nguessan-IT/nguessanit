@@ -17,8 +17,11 @@ import { Link } from "react-router-dom";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CurrencyIndicator } from "@/components/CurrencyIndicator";
 import SEO from "@/components/SEO";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Services = () => {
+  const { t } = useLanguage();
+  
   const services = [
     {
       icon: Code,
@@ -121,23 +124,23 @@ const Services = () => {
   const additionalServices = [
     {
       icon: Monitor,
-      title: "Audit Sécurité",
-      description: "Évaluation complète de votre infrastructure"
+      title: t('services.additional.audit'),
+      description: t('services.additional.audit.desc')
     },
     {
       icon: Database,
-      title: "Gestion BDD",
-      description: "Administration et optimisation bases de données"
+      title: t('services.additional.database'),
+      description: t('services.additional.database.desc')
     },
     {
       icon: Cloud,
-      title: "DevOps",
-      description: "Automatisation et intégration continue"
+      title: t('services.additional.devops'),
+      description: t('services.additional.devops.desc')
     },
     {
       icon: BookOpen,
-      title: "Documentation",
-      description: "Création documentation technique complète"
+      title: t('services.additional.documentation'),
+      description: t('services.additional.documentation.desc')
     }
   ];
 
@@ -230,11 +233,10 @@ const Services = () => {
         </div>
         <div className="relative max-w-4xl mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6">
-            <span className="gradient-text">Nos Services</span>
+            <span className="gradient-text">{t('services.pageTitle')}</span>
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-4 sm:mb-6 px-2">
-            Des solutions informatiques complètes adaptées à vos besoins professionnels. 
-            Découvrez comment nous pouvons transformer votre infrastructure IT.
+            {t('services.pageDescription')}
           </p>
           <div className="flex justify-center">
             <CurrencyIndicator />
@@ -258,10 +260,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-2 sm:px-4">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
-              <span className="gradient-text">Services Complémentaires</span>
+              <span className="gradient-text">{t('services.complementary.title')}</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-muted-foreground px-4">
-              Des prestations spécialisées pour répondre à tous vos besoins
+              {t('services.complementary.subtitle')}
             </p>
           </div>
 
@@ -286,19 +288,19 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-2 sm:px-4">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
-              <span className="gradient-text">Notre Processus</span>
+              <span className="gradient-text">{t('services.process.title')}</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-muted-foreground px-4">
-              Une approche structurée pour garantir le succès de vos projets
+              {t('services.process.subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {[
-              { step: "01", title: "Analyse", description: "Étude de vos besoins et contraintes" },
-              { step: "02", title: "Conception", description: "Élaboration de la solution optimale" },
-              { step: "03", title: "Développement", description: "Mise en œuvre avec méthodologie agile" },
-              { step: "04", title: "Support", description: "Accompagnement et maintenance continue" }
+              { step: "01", title: t('services.process.step1'), description: t('services.process.step1.desc') },
+              { step: "02", title: t('services.process.step2'), description: t('services.process.step2.desc') },
+              { step: "03", title: t('services.process.step3'), description: t('services.process.step3.desc') },
+              { step: "04", title: t('services.process.step4'), description: t('services.process.step4.desc') }
             ].map((item, index) => (
               <div key={index} className="text-center group">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-primary-foreground font-bold text-base sm:text-lg lg:text-xl group-hover:scale-110 group-hover:shadow-glow transition-all duration-500">
@@ -316,20 +318,20 @@ const Services = () => {
       <section className="py-8 sm:py-12 lg:py-16">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
-            Prêt à transformer votre <span className="gradient-text">infrastructure IT</span> ?
+            {t('services.cta.title')} <span className="gradient-text">{t('services.cta.highlight')}</span> ?
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8">
-            Contactez-nous dès aujourd'hui pour discuter de votre projet et obtenir un devis personnalisé
+            {t('services.cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button size="lg" className="hero-glow w-full sm:w-auto" asChild>
               <Link to="/devis">
-                Demander un devis gratuit
+                {t('services.cta.getQuote')}
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
-              <Link to="/about">En savoir plus sur nous</Link>
+              <Link to="/about">{t('services.cta.learnMore')}</Link>
             </Button>
           </div>
         </div>

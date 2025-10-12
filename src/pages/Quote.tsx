@@ -22,9 +22,11 @@ import {
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import SEO from "@/components/SEO";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Quote = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -41,8 +43,8 @@ const Quote = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "🎉 Demande de devis envoyée !",
-      description: "Nous vous enverrons un devis détaillé sous 24-48h. Merci pour votre confiance !",
+      title: t('quote.toast.success'),
+      description: t('quote.toast.description'),
     });
     setFormData({
       fullName: "",
@@ -75,19 +77,19 @@ const Quote = () => {
   };
 
   const services = [
-    { id: "web", label: "Développement Web", icon: Code, desc: "Sites web, e-commerce, applications" },
-    { id: "maintenance", label: "Maintenance IT", icon: Server, desc: "Support technique, dépannage" },
-    { id: "cloud", label: "Solutions Cloud", icon: Shield, desc: "Migration, hébergement, sécurité" },
-    { id: "formation", label: "Formation & Conseil", icon: Headphones, desc: "Accompagnement, audit" }
+    { id: "web", label: t('services.web.title'), icon: Code, desc: t('services.web.description') },
+    { id: "maintenance", label: t('services.maintenance.title'), icon: Server, desc: t('services.maintenance.description') },
+    { id: "cloud", label: t('services.cloud.title'), icon: Shield, desc: t('services.cloud.description') },
+    { id: "formation", label: t('services.training.title'), icon: Headphones, desc: t('services.training.description') }
   ];
 
   const features = [
-    "Devis gratuit et sans engagement",
-    "Réponse sous 24-48h garantie",
-    "Accompagnement personnalisé",
-    "Solutions sur mesure",
-    "Support technique inclus",
-    "Maintenance préventive"
+    t('quote.feature1'),
+    t('quote.feature2'),
+    t('quote.feature3'),
+    t('quote.feature4'),
+    t('quote.feature5'),
+    t('quote.feature6')
   ];
 
   const testimonials = [
@@ -174,19 +176,19 @@ const Quote = () => {
         <div className="relative max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Sparkles className="h-6 w-6 text-primary animate-pulse" />
-            <span className="text-primary font-semibold">Devis Gratuit</span>
+            <span className="text-primary font-semibold">{t('quote.free')}</span>
             <Sparkles className="h-6 w-6 text-primary animate-pulse" />
           </div>
           
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="gradient-text">Transformez vos idées</span>
+            <span className="gradient-text">{t('quote.title')}</span>
             <br />
-            <span className="text-foreground">en solutions digitales</span>
+            <span className="text-foreground">{t('quote.subtitle')}</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Obtenez un devis personnalisé pour votre projet informatique. 
-            <strong className="text-foreground"> Réponse garantie sous 24-48h</strong> avec des solutions adaptées à votre budget.
+            {t('quote.description')} 
+            <strong className="text-foreground"> {t('quote.response')}</strong> {t('quote.withSolutions')}
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -210,10 +212,10 @@ const Quote = () => {
                 <CardHeader className="text-center">
                   <CardTitle className="text-3xl flex items-center justify-center gap-3">
                     <Calculator className="h-8 w-8 text-primary" />
-                    <span className="gradient-text">Demande de Devis</span>
+                    <span className="gradient-text">{t('quote.form.title')}</span>
                   </CardTitle>
                   <p className="text-muted-foreground text-lg">
-                    Partagez-nous votre vision, nous créerons la solution parfaite
+                    {t('quote.form.subtitle')}
                   </p>
                 </CardHeader>
                 
@@ -223,7 +225,7 @@ const Quote = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <Label htmlFor="fullName" className="text-base font-semibold flex items-center gap-2">
-                          Nom complet *
+                          {t('quote.form.fullName')} {t('contact.form.required')}
                         </Label>
                         <Input
                           id="fullName"
@@ -232,12 +234,12 @@ const Quote = () => {
                           onChange={handleChange}
                           required
                           className="mt-2 h-12"
-                          placeholder="Votre nom et prénom"
+                          placeholder={t('quote.form.placeholder.name')}
                         />
                       </div>
                       <div>
                         <Label htmlFor="email" className="text-base font-semibold">
-                          Email professionnel *
+                          {t('quote.form.email')} {t('contact.form.required')}
                         </Label>
                         <Input
                           id="email"
@@ -247,7 +249,7 @@ const Quote = () => {
                           onChange={handleChange}
                           required
                           className="mt-2 h-12"
-                          placeholder="contact@votre-entreprise.com"
+                          placeholder={t('quote.form.placeholder.email')}
                         />
                       </div>
                     </div>
@@ -255,7 +257,7 @@ const Quote = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <Label htmlFor="phone" className="text-base font-semibold">
-                          Téléphone *
+                          {t('quote.form.phone')} {t('contact.form.required')}
                         </Label>
                         <Input
                           id="phone"
@@ -264,12 +266,12 @@ const Quote = () => {
                           onChange={handleChange}
                           required
                           className="mt-2 h-12"
-                          placeholder="0700000000"
+                          placeholder={t('quote.form.placeholder.phone')}
                         />
                       </div>
                       <div>
                         <Label htmlFor="company" className="text-base font-semibold">
-                          Entreprise / Organisation *
+                          {t('quote.form.company')} {t('contact.form.required')}
                         </Label>
                         <Input
                           id="company"
@@ -278,7 +280,7 @@ const Quote = () => {
                           onChange={handleChange}
                           required
                           className="mt-2 h-12"
-                          placeholder="Nom de votre structure"
+                          placeholder={t('quote.form.placeholder.company')}
                         />
                       </div>
                     </div>
@@ -287,15 +289,15 @@ const Quote = () => {
                     <div className="space-y-6 p-6 bg-card/50 rounded-lg border border-border">
                       <h3 className="text-xl font-semibold flex items-center gap-2">
                         <Zap className="h-5 w-5 text-primary" />
-                        Détails du Projet
+                        {t('quote.form.projectDetails')}
                       </h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                          <Label className="text-base font-semibold">Type de projet *</Label>
+                          <Label className="text-base font-semibold">{t('quote.form.projectType')} {t('contact.form.required')}</Label>
                           <Select value={formData.projectType} onValueChange={(value) => setFormData({...formData, projectType: value})}>
                             <SelectTrigger className="mt-2 h-12">
-                              <SelectValue placeholder="Sélectionnez le type" />
+                              <SelectValue placeholder={t('quote.form.placeholder.projectType')} />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="website">Site Web Vitrine</SelectItem>
@@ -319,10 +321,10 @@ const Quote = () => {
                         </div>
                         
                         <div>
-                          <Label className="text-base font-semibold">Budget approximatif</Label>
+                          <Label className="text-base font-semibold">{t('quote.form.budget')}</Label>
                           <Select value={formData.budget} onValueChange={(value) => setFormData({...formData, budget: value})}>
                             <SelectTrigger className="mt-2 h-12">
-                              <SelectValue placeholder="Votre budget" />
+                              <SelectValue placeholder={t('quote.form.placeholder.budget')} />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="500-1500">500€ - 1 500€</SelectItem>
@@ -337,10 +339,10 @@ const Quote = () => {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                          <Label className="text-base font-semibold">Délai souhaité</Label>
+                          <Label className="text-base font-semibold">{t('quote.form.timeline')}</Label>
                           <Select value={formData.timeline} onValueChange={(value) => setFormData({...formData, timeline: value})}>
                             <SelectTrigger className="mt-2 h-12">
-                              <SelectValue placeholder="Échéance projet" />
+                              <SelectValue placeholder={t('quote.form.placeholder.timeline')} />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="urgent">Urgent (1-2 semaines)</SelectItem>
@@ -352,10 +354,10 @@ const Quote = () => {
                         </div>
                         
                         <div>
-                          <Label className="text-base font-semibold">Niveau d'urgence</Label>
+                          <Label className="text-base font-semibold">{t('quote.form.urgency')}</Label>
                           <Select value={formData.urgency} onValueChange={(value) => setFormData({...formData, urgency: value})}>
                             <SelectTrigger className="mt-2 h-12">
-                              <SelectValue placeholder="Priorité" />
+                              <SelectValue placeholder={t('quote.form.placeholder.urgency')} />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="low">Standard</SelectItem>
@@ -369,7 +371,7 @@ const Quote = () => {
 
                     {/* Services Selection */}
                     <div className="space-y-4">
-                      <Label className="text-lg font-semibold">Services souhaités (sélection multiple)</Label>
+                      <Label className="text-lg font-semibold">{t('quote.form.services')}</Label>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {services.map((service) => (
                           <div key={service.id} className="flex items-start space-x-3 p-4 border border-border rounded-lg hover:bg-muted transition-colors">
@@ -396,7 +398,7 @@ const Quote = () => {
                     {/* Project Description */}
                     <div>
                       <Label htmlFor="description" className="text-base font-semibold">
-                        Description détaillée du projet *
+                        {t('quote.form.description')} {t('contact.form.required')}
                       </Label>
                       <Textarea
                         id="description"
@@ -406,13 +408,13 @@ const Quote = () => {
                         required
                         rows={6}
                         className="mt-2"
-                        placeholder="Décrivez votre projet en détail : objectifs, fonctionnalités souhaitées, contraintes techniques, public cible, etc. Plus vous serez précis, plus notre devis sera adapté à vos besoins."
+                        placeholder={t('quote.form.placeholder.description')}
                       />
                     </div>
 
                     <Button type="submit" size="lg" className="w-full hero-glow text-lg py-6">
                       <Send className="mr-3 h-6 w-6" />
-                      Envoyer ma demande de devis
+                      {t('quote.form.submit')}
                       <ArrowRight className="ml-3 h-6 w-6" />
                     </Button>
                   </form>

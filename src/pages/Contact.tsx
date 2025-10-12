@@ -18,9 +18,11 @@ import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import WhatsAppContact from "@/components/WhatsAppContact";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -34,8 +36,8 @@ const Contact = () => {
     e.preventDefault();
     // Simulate form submission
     toast({
-      title: "Message envoyé !",
-      description: "Nous vous recontacterons dans les plus brefs délais.",
+      title: t('contact.toast.success'),
+      description: t('contact.toast.description'),
     });
     setFormData({
       fullName: "",
@@ -57,47 +59,47 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      title: t('contact.form.email'),
       value: "fiacrenguessan@outlook.com",
-      description: "Réponse sous 24h",
+      description: t('contact.email.desc'),
       action: "mailto:fiacrenguessan@outlook.com"
     },
     {
       icon: Phone,
-      title: "Téléphone",
+      title: t('contact.form.phone'),
       value: "0777655416",
-      description: "Réponse immédiate",
+      description: t('contact.phone.desc'),
       action: "tel:+2250777655416"
     },
     {
       icon: Phone,
-      title: "Téléphone",
+      title: t('contact.form.phone'),
       value: "0500401041",
-      description: "Ligne alternative",
+      description: t('contact.phone.alt1'),
       action: "tel:+2250500401041"
     },
     {
       icon: Phone,
-      title: "Téléphone",
+      title: t('contact.form.phone'),
       value: "0788624986",
-      description: "Support technique",
+      description: t('contact.phone.alt2'),
       action: "tel:+2250788624986"
     }
   ];
 
   const responseTime = [
-    { method: "Email", time: "sous 24h", icon: Mail },
-    { method: "Téléphone", time: "immédiat", icon: Phone },
-    { method: "Devis", time: "2-3 jours ouvrés", icon: MessageSquare }
+    { method: t('contact.form.email'), time: t('contact.response.email'), icon: Mail },
+    { method: t('contact.form.phone'), time: t('contact.response.phone'), icon: Phone },
+    { method: t('nav.quote'), time: t('contact.response.quote'), icon: MessageSquare }
   ];
 
   const services = [
-    "Développement Web",
-    "Maintenance Informatique",
-    "Solutions Cloud",
-    "Formation & Conseil",
-    "Audit Sécurité",
-    "Support Technique"
+    t('services.web.title'),
+    t('services.maintenance.title'),
+    t('services.cloud.title'),
+    t('services.training.title'),
+    t('services.additional.audit'),
+    t('contact.phone.alt2')
   ];
 
   return (
@@ -159,11 +161,10 @@ const Contact = () => {
         </div>
         <div className="relative max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-6xl font-bold mb-6">
-            <span className="gradient-text">Parlons de votre projet</span>
+            <span className="gradient-text">{t('contact.title')}</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Besoin d'une solution informatique ? Utilisez le formulaire ci-dessous ou contactez-nous directement. 
-            Nous créerons ensemble la solution parfaite pour votre entreprise.
+            {t('contact.subtitle')}
           </p>
         </div>
       </section>
@@ -178,10 +179,10 @@ const Contact = () => {
                 <CardHeader className="text-center">
                   <CardTitle className="text-3xl flex items-center justify-center gap-3">
                     <MessageSquare className="h-8 w-8 text-primary" />
-                    <span className="gradient-text">Contactez-nous</span>
+                    <span className="gradient-text">{t('contact.form.title')}</span>
                   </CardTitle>
                   <p className="text-muted-foreground text-lg">
-                    Partagez-nous vos besoins, nous créerons ensemble la solution parfaite
+                    {t('contact.form.subtitle')}
                   </p>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -189,7 +190,7 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <Label htmlFor="fullName" className="text-base font-semibold">
-                          Nom complet *
+                          {t('contact.form.fullName')} {t('contact.form.required')}
                         </Label>
                         <Input
                           id="fullName"
@@ -198,12 +199,12 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           className="mt-2 h-12"
-                          placeholder="Votre nom complet"
+                          placeholder={t('contact.form.placeholder.name')}
                         />
                       </div>
                       <div>
                         <Label htmlFor="email" className="text-base font-semibold">
-                          Email *
+                          {t('contact.form.email')} {t('contact.form.required')}
                         </Label>
                         <Input
                           id="email"
@@ -213,7 +214,7 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           className="mt-2 h-12"
-                          placeholder="votre@email.com"
+                          placeholder={t('contact.form.placeholder.email')}
                         />
                       </div>
                     </div>
@@ -221,7 +222,7 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <Label htmlFor="phone" className="text-base font-semibold">
-                          Téléphone
+                          {t('contact.form.phone')}
                         </Label>
                         <Input
                           id="phone"
@@ -229,12 +230,12 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           className="mt-2 h-12"
-                          placeholder="0700000000"
+                          placeholder={t('contact.form.placeholder.phone')}
                         />
                       </div>
                       <div>
                         <Label htmlFor="company" className="text-base font-semibold">
-                          Entreprise
+                          {t('contact.form.company')}
                         </Label>
                         <Input
                           id="company"
@@ -242,14 +243,14 @@ const Contact = () => {
                           value={formData.company}
                           onChange={handleChange}
                           className="mt-2 h-12"
-                          placeholder="Nom de votre entreprise"
+                          placeholder={t('contact.form.placeholder.company')}
                         />
                       </div>
                     </div>
 
                     <div>
                       <Label htmlFor="subject" className="text-base font-semibold">
-                        Objet *
+                        {t('contact.form.subject')} {t('contact.form.required')}
                       </Label>
                       <Input
                         id="subject"
@@ -258,13 +259,13 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         className="mt-2 h-12"
-                        placeholder="Sujet de votre demande"
+                        placeholder={t('contact.form.placeholder.subject')}
                       />
                     </div>
 
                     <div>
                       <Label htmlFor="message" className="text-base font-semibold">
-                        Message *
+                        {t('contact.form.message')} {t('contact.form.required')}
                       </Label>
                       <Textarea
                         id="message"
@@ -274,19 +275,19 @@ const Contact = () => {
                         required
                         rows={6}
                         className="mt-2"
-                        placeholder="Décrivez votre projet ou vos besoins en détail..."
+                        placeholder={t('contact.form.placeholder.message')}
                       />
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4">
                       <Button type="submit" size="lg" className="flex-1 hero-glow text-lg py-6">
                         <Send className="mr-3 h-6 w-6" />
-                        Envoyer le message
+                        {t('contact.form.submit')}
                       </Button>
                       <Button variant="outline" size="lg" className="flex-1 py-6" asChild>
                         <Link to="/devis">
                           <Calculator className="mr-2 h-5 w-5" />
-                          Demander un devis
+                          {t('contact.form.getQuote')}
                         </Link>
                       </Button>
                     </div>
@@ -305,7 +306,7 @@ const Contact = () => {
               {/* Direct Contact */}
               <Card className="card-elegant border-border">
                 <CardHeader>
-                  <CardTitle className="text-xl">Autres moyens de contact</CardTitle>
+                  <CardTitle className="text-xl">{t('contact.otherMethods')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {contactInfo.map((info, index) => (
@@ -332,7 +333,7 @@ const Contact = () => {
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
                     <Clock className="h-5 w-5" />
-                    Temps de réponse
+                    {t('contact.responseTime')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -353,7 +354,7 @@ const Contact = () => {
               {/* Services */}
               <Card className="card-elegant border-border">
                 <CardHeader>
-                  <CardTitle className="text-xl">Nos Services</CardTitle>
+                  <CardTitle className="text-xl">{t('contact.ourServices')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
@@ -376,30 +377,30 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="gradient-text">Questions Fréquentes</span>
+              <span className="gradient-text">{t('contact.faq.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Trouvez rapidement les réponses à vos questions
+              {t('contact.faq.subtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                question: "Quel est le délai pour un devis ?",
-                answer: "Nous fournissons un devis détaillé sous 2-3 jours ouvrés après analyse de vos besoins."
+                question: t('contact.faq.q1'),
+                answer: t('contact.faq.a1')
               },
               {
-                question: "Proposez-vous de la maintenance ?",
-                answer: "Oui, nous offrons des contrats de maintenance 24/7 avec intervention rapide."
+                question: t('contact.faq.q2'),
+                answer: t('contact.faq.a2')
               },
               {
-                question: "Travaillez-vous à distance ?",
-                answer: "Nous proposons du support à distance et des interventions sur site selon vos besoins."
+                question: t('contact.faq.q3'),
+                answer: t('contact.faq.a3')
               },
               {
-                question: "Quelles sont vos zones d'intervention ?",
-                answer: "Nous intervenons principalement en Côte d'Ivoire et proposons du support à distance partout."
+                question: t('contact.faq.q4'),
+                answer: t('contact.faq.a4')
               }
             ].map((faq, index) => (
               <Card key={index} className="card-elegant border-border">
