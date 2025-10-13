@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, ArrowRight, LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCurrency } from "@/contexts/CurrencyContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ServiceCardProps {
   service: {
@@ -20,15 +21,16 @@ interface ServiceCardProps {
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
   const { formatPrice, isLoading } = useCurrency();
+  const { t } = useLanguage();
 
   const getPriceDisplay = () => {
     const priceInfo = formatPrice(service.serviceKey);
     
-    if (priceInfo === "Devis sur mesure") {
+    if (priceInfo === "Devis sur mesure" || priceInfo === "Custom quote" || priceInfo === "Presupuesto personalizado" || priceInfo === "Orçamento personalizado" || priceInfo === "Preventivo personalizzato") {
       return priceInfo;
     }
     
-    return `À partir de ${priceInfo}`;
+    return `${t('services.priceFrom')} ${priceInfo}`;
   };
 
   return (
@@ -41,7 +43,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
           <div>
             <CardTitle className="text-2xl">{service.title}</CardTitle>
             <p className="text-primary font-semibold text-lg">
-              {isLoading ? "Chargement..." : getPriceDisplay()}
+              {isLoading ? t('common.loading') : getPriceDisplay()}
             </p>
           </div>
         </div>
@@ -51,7 +53,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
       <CardContent>
         <div className="space-y-6">
           <div>
-            <h4 className="font-semibold mb-3">Fonctionnalités incluses :</h4>
+            <h4 className="font-semibold mb-3">{t('services.featuresIncluded')}</h4>
             <ul className="space-y-2">
               {service.features.map((feature, idx) => (
                 <li key={idx} className="flex items-center gap-2">
@@ -63,7 +65,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-3">Technologies :</h4>
+            <h4 className="font-semibold mb-3">{t('services.technologies')}</h4>
             <div className="flex flex-wrap gap-2">
               {service.technologies.map((tech, idx) => (
                 <Badge key={idx} variant="secondary">{tech}</Badge>
@@ -73,7 +75,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
           
           <Button className="w-full" asChild>
             <Link to="/devis">
-              Demander un devis
+              {t('services.getQuote')}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
