@@ -25,96 +25,96 @@ const Services = () => {
   const services = [
     {
       icon: Code,
-      title: "Développement Web",
+      title: t('services.main.webDev.title'),
       serviceKey: "webDev",
-      description: "Créez votre présence en ligne avec nos solutions web modernes et performantes",
+      description: t('services.main.webDev.description'),
       features: [
-        "Sites web responsive et modernes",
-        "Applications web sur mesure",
-        "Solutions e-commerce complètes",
-        "Intégration CMS (WordPress, Drupal)",
-        "Technologies React, Vue.js, Angular",
-        "Optimisation SEO incluse"
+        t('services.main.webDev.feature1'),
+        t('services.main.webDev.feature2'),
+        t('services.main.webDev.feature3'),
+        t('services.main.webDev.feature4'),
+        t('services.main.webDev.feature5'),
+        t('services.main.webDev.feature6')
       ],
       technologies: ["React", "Vue.js", "WordPress", "Shopify", "Node.js"],
       color: "from-blue-500 to-purple-600"
     },
     {
       icon: Server,
-      title: "Maintenance Informatique",
+      title: t('services.main.maintenance.title'),
       serviceKey: "maintenance",
-      description: "Gardez vos systèmes opérationnels avec notre service de maintenance proactive",
+      description: t('services.main.maintenance.description'),
       features: [
-        "Support technique 24/7",
-        "Maintenance préventive programmée",
-        "Dépannage urgent sur site",
-        "Monitoring système en temps réel",
-        "Mise à jour sécuritaire",
-        "Optimisation des performances"
+        t('services.main.maintenance.feature1'),
+        t('services.main.maintenance.feature2'),
+        t('services.main.maintenance.feature3'),
+        t('services.main.maintenance.feature4'),
+        t('services.main.maintenance.feature5'),
+        t('services.main.maintenance.feature6')
       ],
       technologies: ["Windows", "Linux", "MacOS", "VMware", "Docker"],
       color: "from-green-500 to-teal-600"
     },
     {
       icon: Shield,
-      title: "Solutions Cloud",
+      title: t('services.main.cloud.title'),
       serviceKey: "cloud",
-      description: "Migrez vers le cloud en toute sécurité et optimisez votre infrastructure",
+      description: t('services.main.cloud.description'),
       features: [
-        "Migration vers AWS, Azure, GCP",
-        "Architecture cloud native",
-        "Sauvegardes automatisées",
-        "Sécurité et conformité",
-        "Monitoring et alertes",
-        "Optimisation des coûts"
+        t('services.main.cloud.feature1'),
+        t('services.main.cloud.feature2'),
+        t('services.main.cloud.feature3'),
+        t('services.main.cloud.feature4'),
+        t('services.main.cloud.feature5'),
+        t('services.main.cloud.feature6')
       ],
       technologies: ["AWS", "Azure", "Google Cloud", "Kubernetes", "Terraform"],
       color: "from-orange-500 to-red-600"
     },
     {
       icon: Headphones,
-      title: "Formation & Conseil",
+      title: t('services.main.training.title'),
       serviceKey: "training",
-      description: "Accompagnement personnalisé pour votre transformation digitale",
+      description: t('services.main.training.description'),
       features: [
-        "Formation équipes techniques",
-        "Audit infrastructure IT",
-        "Stratégie de transformation",
-        "Accompagnement projet",
-        "Consulting sécurité",
-        "Optimisation processus"
+        t('services.main.training.feature1'),
+        t('services.main.training.feature2'),
+        t('services.main.training.feature3'),
+        t('services.main.training.feature4'),
+        t('services.main.training.feature5'),
+        t('services.main.training.feature6')
       ],
       technologies: ["DevOps", "Agile", "ITIL", "ISO 27001", "GDPR"],
       color: "from-purple-500 to-pink-600"
     },
     {
       icon: Palette,
-      title: "Identité Visuelle & Branding Digital",
+      title: t('services.main.branding.title'),
       serviceKey: "branding",
-      description: "Créez une identité visuelle forte et cohérente pour votre marque digitale",
+      description: t('services.main.branding.description'),
       features: [
-        "Création de logo et charte graphique",
-        "Identité visuelle complète",
-        "Déclinaisons digitales (web, mobile)",
-        "Guide de style et brand book",
-        "Supports de communication",
-        "Stratégie de marque digitale"
+        t('services.main.branding.feature1'),
+        t('services.main.branding.feature2'),
+        t('services.main.branding.feature3'),
+        t('services.main.branding.feature4'),
+        t('services.main.branding.feature5'),
+        t('services.main.branding.feature6')
       ],
       technologies: ["Adobe Creative Suite", "Figma", "Sketch", "Canva Pro", "Brand Guidelines"],
       color: "from-pink-500 to-rose-600"
     },
     {
       icon: FileText,
-      title: "Documents Interactifs",
+      title: t('services.main.interactive.title'),
       serviceKey: "interactive",
-      description: "Transformez vos documents statiques en expériences interactives engageantes",
+      description: t('services.main.interactive.description'),
       features: [
-        "PDF interactifs et formulaires",
-        "Catalogues digitaux animés",
-        "Présentations interactives",
-        "Rapports dynamiques avec données",
-        "Documentation technique interactive",
-        "E-books et guides interactifs"
+        t('services.main.interactive.feature1'),
+        t('services.main.interactive.feature2'),
+        t('services.main.interactive.feature3'),
+        t('services.main.interactive.feature4'),
+        t('services.main.interactive.feature5'),
+        t('services.main.interactive.feature6')
       ],
       technologies: ["Adobe InDesign", "Flipbook", "H5P", "JavaScript", "CSS Animations"],
       color: "from-indigo-500 to-cyan-600"
