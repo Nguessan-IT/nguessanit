@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useLanguage } from './LanguageContext';
 
 interface CurrencyContextType {
   currency: string;
@@ -57,6 +58,7 @@ const detectUserRegion = async (): Promise<{ currency: string; region: string }>
 };
 
 export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { t } = useLanguage();
   const [currency, setCurrency] = useState('EUR');
   const [region, setRegion] = useState('Europe');
   const [isLoading, setIsLoading] = useState(true);
@@ -87,7 +89,7 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       return `${price}${symbol}`;
     }
     
-    return "Devis sur mesure";
+    return t('services.customQuote');
   };
 
   const value: CurrencyContextType = {

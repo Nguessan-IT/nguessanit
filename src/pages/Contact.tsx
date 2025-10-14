@@ -159,11 +159,11 @@ const Contact = () => {
           <div className="floating-orb"></div>
           <div className="floating-orb"></div>
         </div>
-        <div className="relative max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-6xl font-bold mb-6">
+        <div className="relative max-w-4xl mx-auto animate-fade-in">
+          <h1 className="text-4xl sm:text-6xl font-bold mb-6 animate-scale-in">
             <span className="gradient-text">{t('contact.title')}</span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-xl text-muted-foreground mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
             {t('contact.subtitle')}
           </p>
         </div>
@@ -174,11 +174,11 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <Card className="card-elegant border-border">
+            <div className="lg:col-span-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <Card className="card-elegant border-border hover:shadow-2xl transition-all duration-500">
                 <CardHeader className="text-center">
                   <CardTitle className="text-3xl flex items-center justify-center gap-3">
-                    <MessageSquare className="h-8 w-8 text-primary" />
+                    <MessageSquare className="h-8 w-8 text-primary animate-pulse" />
                     <span className="gradient-text">{t('contact.form.title')}</span>
                   </CardTitle>
                   <p className="text-muted-foreground text-lg">
@@ -302,9 +302,9 @@ const Contact = () => {
             </div>
 
             {/* Contact Info Sidebar */}
-            <div className="space-y-6">
+            <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               {/* Direct Contact */}
-              <Card className="card-elegant border-border">
+              <Card className="card-elegant border-border hover:shadow-xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-xl">{t('contact.otherMethods')}</CardTitle>
                 </CardHeader>
@@ -329,10 +329,10 @@ const Contact = () => {
               </Card>
 
               {/* Response Time */}
-              <Card className="card-elegant border-border">
+              <Card className="card-elegant border-border hover:shadow-xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-xl flex items-center gap-2">
-                    <Clock className="h-5 w-5" />
+                    <Clock className="h-5 w-5 text-primary" />
                     {t('contact.responseTime')}
                   </CardTitle>
                 </CardHeader>
@@ -352,7 +352,7 @@ const Contact = () => {
               </Card>
 
               {/* Services */}
-              <Card className="card-elegant border-border">
+              <Card className="card-elegant border-border hover:shadow-xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-xl">{t('contact.ourServices')}</CardTitle>
                 </CardHeader>
@@ -375,7 +375,7 @@ const Contact = () => {
       {/* FAQ Section */}
       <section className="py-16 bg-card/30">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               <span className="gradient-text">{t('contact.faq.title')}</span>
             </h2>
@@ -403,9 +403,13 @@ const Contact = () => {
                 answer: t('contact.faq.a4')
               }
             ].map((faq, index) => (
-              <Card key={index} className="card-elegant border-border">
+              <Card 
+                key={index} 
+                className="card-elegant border-border hover:shadow-xl hover:scale-105 transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${0.1 * index}s` }}
+              >
                 <CardContent className="p-6">
-                  <h3 className="font-semibold mb-2">{faq.question}</h3>
+                  <h3 className="font-semibold mb-2 text-primary">{faq.question}</h3>
                   <p className="text-muted-foreground">{faq.answer}</p>
                 </CardContent>
               </Card>

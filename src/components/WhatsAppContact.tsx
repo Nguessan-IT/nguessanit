@@ -7,9 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { MessageCircle, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhatsAppContact = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -74,8 +76,8 @@ ${formData.message}
     });
 
     toast({
-      title: "Redirection vers WhatsApp",
-      description: "Votre message pré-rempli a été préparé. Envoyez-le pour nous contacter !",
+      title: t('whatsapp.toast.title'),
+      description: t('whatsapp.toast.description'),
     });
   };
 
@@ -88,7 +90,7 @@ ${formData.message}
           className="w-full bg-green-600 hover:bg-green-700 text-white gap-2 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
         >
           <MessageCircle className="h-6 w-6" />
-          Contacter par WhatsApp
+          {t('whatsapp.button')}
         </Button>
       </DialogTrigger>
       
@@ -96,22 +98,22 @@ ${formData.message}
         <DialogHeader>
           <DialogTitle className="text-2xl flex items-center gap-3">
             <MessageCircle className="h-8 w-8 text-green-600" />
-            <span className="gradient-text">Contact WhatsApp</span>
+            <span className="gradient-text">{t('whatsapp.title')}</span>
           </DialogTitle>
           <p className="text-muted-foreground">
-            Remplissez ce formulaire pour générer un message WhatsApp pré-formaté
+            {t('whatsapp.subtitle')}
           </p>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6 mt-6">
           {/* Informations personnelles */}
           <div className="space-y-4 p-4 bg-card/50 rounded-lg border border-border">
-            <h3 className="font-semibold text-lg">Informations personnelles</h3>
+            <h3 className="font-semibold text-lg">{t('whatsapp.personalInfo')}</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="whatsapp-fullName" className="text-base font-semibold">
-                  Nom complet *
+                  {t('whatsapp.fullName')} *
                 </Label>
                 <Input
                   id="whatsapp-fullName"
@@ -120,12 +122,12 @@ ${formData.message}
                   onChange={handleChange}
                   required
                   className="mt-2 h-12"
-                  placeholder="Votre nom et prénom"
+                  placeholder={t('whatsapp.fullName.placeholder')}
                 />
               </div>
               <div>
                 <Label htmlFor="whatsapp-email" className="text-base font-semibold">
-                  Email *
+                  {t('whatsapp.email')} *
                 </Label>
                 <Input
                   id="whatsapp-email"
@@ -135,7 +137,7 @@ ${formData.message}
                   onChange={handleChange}
                   required
                   className="mt-2 h-12"
-                  placeholder="votre@email.com"
+                  placeholder={t('whatsapp.email.placeholder')}
                 />
               </div>
             </div>
@@ -143,7 +145,7 @@ ${formData.message}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="whatsapp-phone" className="text-base font-semibold">
-                  Téléphone *
+                  {t('whatsapp.phone')} *
                 </Label>
                 <Input
                   id="whatsapp-phone"
@@ -152,12 +154,12 @@ ${formData.message}
                   onChange={handleChange}
                   required
                   className="mt-2 h-12"
-                  placeholder="0700000000"
+                  placeholder={t('whatsapp.phone.placeholder')}
                 />
               </div>
               <div>
                 <Label htmlFor="whatsapp-company" className="text-base font-semibold">
-                  Entreprise
+                  {t('whatsapp.company')}
                 </Label>
                 <Input
                   id="whatsapp-company"
@@ -165,7 +167,7 @@ ${formData.message}
                   value={formData.company}
                   onChange={handleChange}
                   className="mt-2 h-12"
-                  placeholder="Nom de votre entreprise"
+                  placeholder={t('whatsapp.company.placeholder')}
                 />
               </div>
             </div>
@@ -173,39 +175,39 @@ ${formData.message}
 
           {/* Détails du projet */}
           <div className="space-y-4 p-4 bg-card/50 rounded-lg border border-border">
-            <h3 className="font-semibold text-lg">Détails du projet (optionnel)</h3>
+            <h3 className="font-semibold text-lg">{t('whatsapp.projectDetails')}</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <Label className="text-base font-semibold">Type de projet</Label>
+                <Label className="text-base font-semibold">{t('whatsapp.projectType')}</Label>
                 <Select value={formData.projectType} onValueChange={(value) => setFormData({...formData, projectType: value})}>
                   <SelectTrigger className="mt-2 h-12">
-                    <SelectValue placeholder="Sélectionnez le type" />
+                    <SelectValue placeholder={t('whatsapp.projectType.placeholder')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="website">Site Web Vitrine</SelectItem>
-                    <SelectItem value="ecommerce">Boutique E-commerce</SelectItem>
-                    <SelectItem value="webapp">Application Web</SelectItem>
-                    <SelectItem value="maintenance">Maintenance IT</SelectItem>
-                    <SelectItem value="cloud">Solution Cloud</SelectItem>
-                    <SelectItem value="formation">Formation</SelectItem>
-                    <SelectItem value="autre">Autre</SelectItem>
+                    <SelectItem value="website">{t('whatsapp.projectType.website')}</SelectItem>
+                    <SelectItem value="ecommerce">{t('whatsapp.projectType.ecommerce')}</SelectItem>
+                    <SelectItem value="webapp">{t('whatsapp.projectType.webapp')}</SelectItem>
+                    <SelectItem value="maintenance">{t('whatsapp.projectType.maintenance')}</SelectItem>
+                    <SelectItem value="cloud">{t('whatsapp.projectType.cloud')}</SelectItem>
+                    <SelectItem value="formation">{t('whatsapp.projectType.training')}</SelectItem>
+                    <SelectItem value="autre">{t('whatsapp.projectType.other')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               
               <div>
-                <Label className="text-base font-semibold">Budget approximatif</Label>
+                <Label className="text-base font-semibold">{t('whatsapp.budget')}</Label>
                 <Select value={formData.budget} onValueChange={(value) => setFormData({...formData, budget: value})}>
                   <SelectTrigger className="mt-2 h-12">
-                    <SelectValue placeholder="Votre budget" />
+                    <SelectValue placeholder={t('whatsapp.budget.placeholder')} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="500-1500">500€ - 1 500€</SelectItem>
                     <SelectItem value="1500-5000">1 500€ - 5 000€</SelectItem>
                     <SelectItem value="5000-15000">5 000€ - 15 000€</SelectItem>
-                    <SelectItem value="15000+">Plus de 15 000€</SelectItem>
-                    <SelectItem value="discuss">À discuter</SelectItem>
+                    <SelectItem value="15000+">15 000€+</SelectItem>
+                    <SelectItem value="discuss">{t('whatsapp.budget.discuss')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -215,7 +217,7 @@ ${formData.message}
           {/* Message */}
           <div>
             <Label htmlFor="whatsapp-message" className="text-base font-semibold">
-              Votre message *
+              {t('whatsapp.message')} *
             </Label>
             <Textarea
               id="whatsapp-message"
@@ -225,7 +227,7 @@ ${formData.message}
               required
               rows={4}
               className="mt-2"
-              placeholder="Décrivez votre besoin ou votre projet..."
+              placeholder={t('whatsapp.message.placeholder')}
             />
           </div>
 
@@ -236,7 +238,7 @@ ${formData.message}
               onClick={() => setIsOpen(false)}
               className="flex-1"
             >
-              Annuler
+              {t('whatsapp.cancel')}
             </Button>
             <Button 
               type="submit" 
@@ -244,7 +246,7 @@ ${formData.message}
               className="flex-1 bg-green-600 hover:bg-green-700 text-white gap-2"
             >
               <Send className="h-4 w-4" />
-              Envoyer via WhatsApp
+              {t('whatsapp.submit')}
             </Button>
           </div>
         </form>
