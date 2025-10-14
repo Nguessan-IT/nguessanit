@@ -98,8 +98,8 @@ const Contact = () => {
     t('services.maintenance.title'),
     t('services.cloud.title'),
     t('services.training.title'),
-    t('services.additional.audit'),
-    t('contact.phone.alt2')
+    t('services.branding.title'),
+    t('services.additional.audit')
   ];
 
   return (
