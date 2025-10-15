@@ -459,6 +459,61 @@ const translations = {
     'terms.contact.contactUs': 'Nous contacter',
     'terms.contact.getQuote': 'Demander un devis',
     'terms.contact.privacy': 'Politique de confidentialité',
+
+    // About page
+    'about.seo.title': "À Propos - Expertise Informatique depuis 8 ans",
+    'about.seo.description': "Découvrez Nguessan-IT, votre expert informatique à Abidjan. +8 ans d'expérience, 10+ clients satisfaits, solutions sur mesure. Développement web, maintenance IT, cloud, formation professionnelle en Côte d'Ivoire.",
+    'about.hero.title': "À propos de nous",
+    'about.hero.subtitle': "Nguessan-IT accompagne les entreprises dans leur transformation digitale. Découvrez notre expertise et notre engagement envers l'excellence.",
+    'about.mission.title': "Notre Mission",
+    'about.mission.description1': "Nous proposons des solutions informatiques sur mesure pour optimiser la productivité et la sécurité de votre entreprise. Notre expertise couvre le développement web, la maintenance informatique, les solutions cloud et la formation.",
+    'about.mission.description2': "Avec une approche personnalisée et un support technique réactif, nous nous engageons à être votre partenaire de confiance dans tous vos projets informatiques.",
+    'about.mission.cta': "Travaillons ensemble",
+    'about.stats.experience': "Années expérience",
+    'about.stats.clients': "Clients satisfaits",
+    'about.stats.projects': "Projets réalisés",
+    'about.stats.support': "Support technique",
+    'about.expertiseSection.title': "Nos Domaines d'Expertise",
+    'about.expertiseSection.subtitle': "Des compétences techniques éprouvées dans tous les domaines de l'informatique",
+    'about.expertise.webDev': "Développement Web",
+    'about.expertise.sysAdmin': "Administration Système",
+    'about.expertise.security': "Sécurité Informatique",
+    'about.expertise.cloud': "Solutions Cloud",
+    'about.expertise.support': "Support Technique",
+    'about.expertise.training': "Formation IT",
+    'about.team.development.role': "Développement",
+    'about.team.development.description': "Équipe de développeurs experts en technologies modernes",
+    'about.team.infrastructure.role': "Infrastructure",
+    'about.team.infrastructure.description': "Spécialistes en administration système et réseau",
+    'about.team.cloud.role': "Cloud",
+    'about.team.cloud.description': "Experts certifiés AWS, Azure et Google Cloud",
+    'about.team.training.role': "Formation",
+    'about.team.training.description': "Formateurs expérimentés en informatique",
+    'about.valuesSection.title': "Nos Valeurs",
+    'about.valuesSection.subtitle': "Les principes qui guident notre approche et nos relations clients",
+    'about.values.excellence.title': "Excellence",
+    'about.values.excellence.description': "Nous visons l'excellence dans chaque projet, en délivrant des solutions de qualité supérieure qui dépassent vos attentes.",
+    'about.values.collaboration.title': "Collaboration",
+    'about.values.collaboration.description': "Nous travaillons en étroite collaboration avec nos clients pour comprendre leurs besoins et co-créer les meilleures solutions.",
+    'about.values.security.title': "Sécurité",
+    'about.values.security.description': "La sécurité est au cœur de nos préoccupations. Nous mettons en place les meilleures pratiques pour protéger vos données.",
+    'about.values.innovation.title': "Innovation",
+    'about.values.innovation.description': "Nous restons à la pointe des technologies pour vous proposer des solutions innovantes et performantes.",
+    'about.approachSection.title': "Notre Approche",
+    'about.approachSection.subtitle': "Une méthodologie éprouvée pour garantir le succès de vos projets",
+    'about.approach.step1.title': "Écoute & Analyse",
+    'about.approach.step1.description': "Nous analysons en profondeur vos besoins et contraintes pour proposer la solution la plus adaptée.",
+    'about.approach.step2.title': "Conception",
+    'about.approach.step2.description': "Élaboration d'une solution technique détaillée avec architecture et planning précis.",
+    'about.approach.step3.title': "Réalisation",
+    'about.approach.step3.description': "Développement et mise en œuvre avec suivi régulier et communication transparente.",
+    'about.approach.step4.title': "Accompagnement",
+    'about.approach.step4.description': "Formation, support continu et évolutions pour garantir votre succès à long terme.",
+    'about.cta.title': "Découvrez comment nous pouvons",
+    'about.cta.titleHighlight': "vous accompagner",
+    'about.cta.description': "Forte de notre expérience et de notre expertise, notre équipe est prête à relever tous vos défis informatiques. Contactez-nous pour échanger sur vos projets.",
+    'about.cta.primaryButton': "Parlez-nous de votre projet",
+    'about.cta.secondaryButton': "Découvrir nos services",
   },
   
   en: {
@@ -866,6 +921,111 @@ const translations = {
     'terms.contact.contactUs': 'Contact us',
     'terms.contact.getQuote': 'Request a quote',
     'terms.contact.privacy': 'Privacy policy',
+
+    // About page
+    about: {
+      seo: {
+        title: "About - IT Expertise for 8+ Years",
+        description: "Discover Nguessan-IT, your IT expert in Abidjan. 8+ years of experience, 10+ satisfied clients, custom solutions. Web development, IT maintenance, cloud, professional training in Ivory Coast."
+      },
+      hero: {
+        title: "About Us",
+        subtitle: "Nguessan-IT supports businesses in their digital transformation. Discover our expertise and our commitment to excellence."
+      },
+      mission: {
+        title: "Our Mission",
+        description1: "We offer custom IT solutions to optimize your company's productivity and security. Our expertise covers web development, IT maintenance, cloud solutions, and training.",
+        description2: "With a personalized approach and responsive technical support, we are committed to being your trusted partner in all your IT projects.",
+        cta: "Let's Work Together"
+      },
+      stats: {
+        experience: "Years experience",
+        clients: "Satisfied clients",
+        projects: "Projects completed",
+        support: "Technical support"
+      },
+      expertiseSection: {
+        title: "Our Areas of Expertise",
+        subtitle: "Proven technical skills in all areas of IT"
+      },
+      expertise: {
+        webDev: "Web Development",
+        sysAdmin: "System Administration",
+        security: "IT Security",
+        cloud: "Cloud Solutions",
+        support: "Technical Support",
+        training: "IT Training"
+      },
+      team: {
+        development: {
+          role: "Development",
+          description: "Team of expert developers in modern technologies"
+        },
+        infrastructure: {
+          role: "Infrastructure",
+          description: "Specialists in system and network administration"
+        },
+        cloud: {
+          role: "Cloud",
+          description: "Certified AWS, Azure and Google Cloud experts"
+        },
+        training: {
+          role: "Training",
+          description: "Experienced IT trainers"
+        }
+      },
+      valuesSection: {
+        title: "Our Values",
+        subtitle: "The principles that guide our approach and client relationships"
+      },
+      values: {
+        excellence: {
+          title: "Excellence",
+          description: "We aim for excellence in every project, delivering superior quality solutions that exceed your expectations."
+        },
+        collaboration: {
+          title: "Collaboration",
+          description: "We work closely with our clients to understand their needs and co-create the best solutions."
+        },
+        security: {
+          title: "Security",
+          description: "Security is at the heart of our concerns. We implement best practices to protect your data."
+        },
+        innovation: {
+          title: "Innovation",
+          description: "We stay at the forefront of technology to offer you innovative and high-performance solutions."
+        }
+      },
+      approachSection: {
+        title: "Our Approach",
+        subtitle: "A proven methodology to ensure the success of your projects"
+      },
+      approach: {
+        step1: {
+          title: "Listening & Analysis",
+          description: "We thoroughly analyze your needs and constraints to propose the most suitable solution."
+        },
+        step2: {
+          title: "Design",
+          description: "Development of a detailed technical solution with precise architecture and planning."
+        },
+        step3: {
+          title: "Implementation",
+          description: "Development and deployment with regular monitoring and transparent communication."
+        },
+        step4: {
+          title: "Support",
+          description: "Training, continuous support, and evolution to ensure your long-term success."
+        }
+      },
+      cta: {
+        title: "Discover how we can",
+        titleHighlight: "support you",
+        description: "With our experience and expertise, our team is ready to take on all your IT challenges. Contact us to discuss your projects.",
+        primaryButton: "Tell us about your project",
+        secondaryButton: "Discover our services"
+      }
+    },
   },
   
   es: {
@@ -1275,6 +1435,111 @@ const translations = {
     'terms.contact.contactUs': 'Contactarnos',
     'terms.contact.getQuote': 'Solicitar presupuesto',
     'terms.contact.privacy': 'Política de privacidad',
+
+    // About page
+    about: {
+      seo: {
+        title: "Acerca de - Experiencia en TI durante más de 8 años",
+        description: "Descubra Nguessan-IT, su experto en TI en Abidjan. Más de 8 años de experiencia, más de 10 clientes satisfechos, soluciones personalizadas. Desarrollo web, mantenimiento de TI, nube, formación profesional en Costa de Marfil."
+      },
+      hero: {
+        title: "Acerca de Nosotros",
+        subtitle: "Nguessan-IT acompaña a las empresas en su transformación digital. Descubra nuestra experiencia y nuestro compromiso con la excelencia."
+      },
+      mission: {
+        title: "Nuestra Misión",
+        description1: "Ofrecemos soluciones de TI personalizadas para optimizar la productividad y seguridad de su empresa. Nuestra experiencia abarca desarrollo web, mantenimiento informático, soluciones en la nube y formación.",
+        description2: "Con un enfoque personalizado y soporte técnico receptivo, nos comprometemos a ser su socio de confianza en todos sus proyectos de TI.",
+        cta: "Trabajemos Juntos"
+      },
+      stats: {
+        experience: "Años de experiencia",
+        clients: "Clientes satisfechos",
+        projects: "Proyectos completados",
+        support: "Soporte técnico"
+      },
+      expertiseSection: {
+        title: "Nuestras Áreas de Experiencia",
+        subtitle: "Habilidades técnicas probadas en todas las áreas de TI"
+      },
+      expertise: {
+        webDev: "Desarrollo Web",
+        sysAdmin: "Administración de Sistemas",
+        security: "Seguridad Informática",
+        cloud: "Soluciones en la Nube",
+        support: "Soporte Técnico",
+        training: "Formación en TI"
+      },
+      team: {
+        development: {
+          role: "Desarrollo",
+          description: "Equipo de desarrolladores expertos en tecnologías modernas"
+        },
+        infrastructure: {
+          role: "Infraestructura",
+          description: "Especialistas en administración de sistemas y redes"
+        },
+        cloud: {
+          role: "Nube",
+          description: "Expertos certificados en AWS, Azure y Google Cloud"
+        },
+        training: {
+          role: "Formación",
+          description: "Formadores experimentados en informática"
+        }
+      },
+      valuesSection: {
+        title: "Nuestros Valores",
+        subtitle: "Los principios que guían nuestro enfoque y relaciones con los clientes"
+      },
+      values: {
+        excellence: {
+          title: "Excelencia",
+          description: "Buscamos la excelencia en cada proyecto, brindando soluciones de calidad superior que superan sus expectativas."
+        },
+        collaboration: {
+          title: "Colaboración",
+          description: "Trabajamos en estrecha colaboración con nuestros clientes para comprender sus necesidades y co-crear las mejores soluciones."
+        },
+        security: {
+          title: "Seguridad",
+          description: "La seguridad está en el centro de nuestras preocupaciones. Implementamos las mejores prácticas para proteger sus datos."
+        },
+        innovation: {
+          title: "Innovación",
+          description: "Nos mantenemos a la vanguardia de la tecnología para ofrecerle soluciones innovadoras y de alto rendimiento."
+        }
+      },
+      approachSection: {
+        title: "Nuestro Enfoque",
+        subtitle: "Una metodología probada para garantizar el éxito de sus proyectos"
+      },
+      approach: {
+        step1: {
+          title: "Escucha y Análisis",
+          description: "Analizamos a fondo sus necesidades y restricciones para proponer la solución más adecuada."
+        },
+        step2: {
+          title: "Diseño",
+          description: "Elaboración de una solución técnica detallada con arquitectura y planificación precisa."
+        },
+        step3: {
+          title: "Realización",
+          description: "Desarrollo e implementación con seguimiento regular y comunicación transparente."
+        },
+        step4: {
+          title: "Acompañamiento",
+          description: "Formación, soporte continuo y evoluciones para garantizar su éxito a largo plazo."
+        }
+      },
+      cta: {
+        title: "Descubra cómo podemos",
+        titleHighlight: "apoyarle",
+        description: "Con nuestra experiencia y conocimientos, nuestro equipo está listo para asumir todos sus desafíos de TI. Contáctenos para discutir sus proyectos.",
+        primaryButton: "Cuéntenos sobre su proyecto",
+        secondaryButton: "Descubra nuestros servicios"
+      }
+    },
   },
   
   pt: {
@@ -1671,6 +1936,111 @@ const translations = {
     'terms.contact.contactUs': 'Contactar-nos',
     'terms.contact.getQuote': 'Solicitar orçamento',
     'terms.contact.privacy': 'Política de privacidade',
+
+    // About page
+    about: {
+      seo: {
+        title: "Sobre - Expertise em TI há mais de 8 anos",
+        description: "Descubra a Nguessan-IT, o seu especialista em TI em Abidjan. Mais de 8 anos de experiência, mais de 10 clientes satisfeitos, soluções personalizadas. Desenvolvimento web, manutenção de TI, cloud, formação profissional na Costa do Marfim."
+      },
+      hero: {
+        title: "Sobre Nós",
+        subtitle: "A Nguessan-IT acompanha as empresas na sua transformação digital. Descubra a nossa expertise e o nosso compromisso com a excelência."
+      },
+      mission: {
+        title: "Nossa Missão",
+        description1: "Oferecemos soluções de TI personalizadas para otimizar a produtividade e segurança da sua empresa. A nossa expertise abrange desenvolvimento web, manutenção informática, soluções cloud e formação.",
+        description2: "Com uma abordagem personalizada e suporte técnico responsivo, comprometemo-nos a ser o seu parceiro de confiança em todos os seus projetos de TI.",
+        cta: "Vamos Trabalhar Juntos"
+      },
+      stats: {
+        experience: "Anos de experiência",
+        clients: "Clientes satisfeitos",
+        projects: "Projetos realizados",
+        support: "Suporte técnico"
+      },
+      expertiseSection: {
+        title: "Nossas Áreas de Expertise",
+        subtitle: "Competências técnicas comprovadas em todas as áreas da informática"
+      },
+      expertise: {
+        webDev: "Desenvolvimento Web",
+        sysAdmin: "Administração de Sistemas",
+        security: "Segurança Informática",
+        cloud: "Soluções Cloud",
+        support: "Suporte Técnico",
+        training: "Formação em TI"
+      },
+      team: {
+        development: {
+          role: "Desenvolvimento",
+          description: "Equipa de programadores especialistas em tecnologias modernas"
+        },
+        infrastructure: {
+          role: "Infraestrutura",
+          description: "Especialistas em administração de sistemas e redes"
+        },
+        cloud: {
+          role: "Cloud",
+          description: "Especialistas certificados em AWS, Azure e Google Cloud"
+        },
+        training: {
+          role: "Formação",
+          description: "Formadores experientes em informática"
+        }
+      },
+      valuesSection: {
+        title: "Nossos Valores",
+        subtitle: "Os princípios que orientam a nossa abordagem e relações com clientes"
+      },
+      values: {
+        excellence: {
+          title: "Excelência",
+          description: "Procuramos a excelência em cada projeto, entregando soluções de qualidade superior que superam as suas expectativas."
+        },
+        collaboration: {
+          title: "Colaboração",
+          description: "Trabalhamos em estreita colaboração com os nossos clientes para compreender as suas necessidades e co-criar as melhores soluções."
+        },
+        security: {
+          title: "Segurança",
+          description: "A segurança está no centro das nossas preocupações. Implementamos as melhores práticas para proteger os seus dados."
+        },
+        innovation: {
+          title: "Inovação",
+          description: "Mantemo-nos na vanguarda da tecnologia para lhe oferecer soluções inovadoras e de alto desempenho."
+        }
+      },
+      approachSection: {
+        title: "Nossa Abordagem",
+        subtitle: "Uma metodologia comprovada para garantir o sucesso dos seus projetos"
+      },
+      approach: {
+        step1: {
+          title: "Escuta e Análise",
+          description: "Analisamos em profundidade as suas necessidades e restrições para propor a solução mais adequada."
+        },
+        step2: {
+          title: "Conceção",
+          description: "Elaboração de uma solução técnica detalhada com arquitetura e planeamento preciso."
+        },
+        step3: {
+          title: "Realização",
+          description: "Desenvolvimento e implementação com acompanhamento regular e comunicação transparente."
+        },
+        step4: {
+          title: "Acompanhamento",
+          description: "Formação, suporte contínuo e evoluções para garantir o seu sucesso a longo prazo."
+        }
+      },
+      cta: {
+        title: "Descubra como podemos",
+        titleHighlight: "apoiá-lo",
+        description: "Com a nossa experiência e expertise, a nossa equipa está pronta para enfrentar todos os seus desafios de TI. Contacte-nos para discutir os seus projetos.",
+        primaryButton: "Fale-nos sobre o seu projeto",
+        secondaryButton: "Descubra os nossos serviços"
+      }
+    },
   },
   
   it: {
@@ -2067,6 +2437,75 @@ const translations = {
     'terms.contact.contactUs': 'Contattarci',
     'terms.contact.getQuote': 'Richiedere preventivo',
     'terms.contact.privacy': 'Politica sulla privacy',
+
+    // About page
+    about: {
+      seo: {
+        title: "Chi Siamo - Esperienza IT da oltre 8 anni",
+        description: "Scopri Nguessan-IT, il tuo esperto IT ad Abidjan. Oltre 8 anni di esperienza, più di 10 clienti soddisfatti, soluzioni su misura. Sviluppo web, manutenzione IT, cloud, formazione professionale in Costa d'Avorio."
+      },
+      hero: {
+        title: "Chi Siamo",
+        subtitle: "Nguessan-IT accompagna le aziende nella loro trasformazione digitale. Scopri la nostra competenza e il nostro impegno per l'eccellenza."
+      },
+      mission: {
+        title: "La Nostra Missione",
+        description1: "Offriamo soluzioni IT su misura per ottimizzare la produttività e la sicurezza della vostra azienda. La nostra competenza copre lo sviluppo web, la manutenzione informatica, le soluzioni cloud e la formazione.",
+        description2: "Con un approccio personalizzato e un supporto tecnico reattivo, ci impegniamo ad essere il vostro partner di fiducia in tutti i vostri progetti IT.",
+        cta: "Lavoriamo Insieme"
+      },
+      stats: {
+        experience: "Anni di esperienza",
+        clients: "Clienti soddisfatti",
+        projects: "Progetti completati",
+        support: "Supporto tecnico"
+      },
+      expertiseSection: {
+        title: "Le Nostre Aree di Competenza",
+        subtitle: "Competenze tecniche comprovate in tutte le aree dell'informatica"
+      },
+      expertise: {
+        webDev: "Sviluppo Web",
+        sysAdmin: "Amministrazione di Sistema",
+        security: "Sicurezza Informatica",
+        cloud: "Soluzioni Cloud",
+        support: "Supporto Tecnico",
+        training: "Formazione IT"
+      },
+      team: {
+        development: { role: "Sviluppo", description: "Team di sviluppatori esperti in tecnologie moderne" },
+        infrastructure: { role: "Infrastruttura", description: "Specialisti in amministrazione di sistemi e reti" },
+        cloud: { role: "Cloud", description: "Esperti certificati AWS, Azure e Google Cloud" },
+        training: { role: "Formazione", description: "Formatori esperti in informatica" }
+      },
+      valuesSection: {
+        title: "I Nostri Valori",
+        subtitle: "I principi che guidano il nostro approccio e le relazioni con i clienti"
+      },
+      values: {
+        excellence: { title: "Eccellenza", description: "Puntiamo all'eccellenza in ogni progetto, fornendo soluzioni di qualità superiore che superano le vostre aspettative." },
+        collaboration: { title: "Collaborazione", description: "Lavoriamo a stretto contatto con i nostri clienti per comprendere le loro esigenze e co-creare le migliori soluzioni." },
+        security: { title: "Sicurezza", description: "La sicurezza è al centro delle nostre preoccupazioni. Implementiamo le migliori pratiche per proteggere i vostri dati." },
+        innovation: { title: "Innovazione", description: "Rimaniamo all'avanguardia della tecnologia per offrirvi soluzioni innovative e ad alte prestazioni." }
+      },
+      approachSection: {
+        title: "Il Nostro Approccio",
+        subtitle: "Una metodologia comprovata per garantire il successo dei vostri progetti"
+      },
+      approach: {
+        step1: { title: "Ascolto e Analisi", description: "Analizziamo in profondità le vostre esigenze e vincoli per proporre la soluzione più adatta." },
+        step2: { title: "Progettazione", description: "Elaborazione di una soluzione tecnica dettagliata con architettura e pianificazione precisa." },
+        step3: { title: "Realizzazione", description: "Sviluppo e implementazione con monitoraggio regolare e comunicazione trasparente." },
+        step4: { title: "Accompagnamento", description: "Formazione, supporto continuo ed evoluzioni per garantire il vostro successo a lungo termine." }
+      },
+      cta: {
+        title: "Scopri come possiamo",
+        titleHighlight: "accompagnarvi",
+        description: "Con la nostra esperienza e competenza, il nostro team è pronto ad affrontare tutte le vostre sfide IT. Contattateci per discutere dei vostri progetti.",
+        primaryButton: "Parlateci del vostro progetto",
+        secondaryButton: "Scopri i nostri servizi"
+      }
+    },
   }
 };
 

@@ -16,75 +16,78 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
+  
   const expertise = [
-    { name: "Développement Web", percentage: 95 },
-    { name: "Administration Système", percentage: 90 },
-    { name: "Sécurité Informatique", percentage: 85 },
-    { name: "Solutions Cloud", percentage: 88 },
-    { name: "Support Technique", percentage: 92 },
-    { name: "Formation IT", percentage: 80 }
+    { name: t('about.expertise.webDev'), percentage: 95 },
+    { name: t('about.expertise.sysAdmin'), percentage: 90 },
+    { name: t('about.expertise.security'), percentage: 85 },
+    { name: t('about.expertise.cloud'), percentage: 88 },
+    { name: t('about.expertise.support'), percentage: 92 },
+    { name: t('about.expertise.training'), percentage: 80 }
   ];
 
   const stats = [
-    { number: "1+", label: "Années expérience", icon: Award },
-    { number: "10+", label: "Clients satisfaits", icon: Users },
-    { number: "20+", label: "Projets réalisés", icon: TrendingUp },
-    { number: "24/7", label: "Support technique", icon: HeadphonesIcon }
+    { number: "1+", label: t('about.stats.experience'), icon: Award },
+    { number: "10+", label: t('about.stats.clients'), icon: Users },
+    { number: "20+", label: t('about.stats.projects'), icon: TrendingUp },
+    { number: "24/7", label: t('about.stats.support'), icon: HeadphonesIcon }
   ];
 
   const values = [
     {
       icon: Target,
-      title: "Excellence",
-      description: "Nous visons l'excellence dans chaque projet, en délivrant des solutions de qualité supérieure qui dépassent vos attentes."
+      title: t('about.values.excellence.title'),
+      description: t('about.values.excellence.description')
     },
     {
       icon: Users,
-      title: "Collaboration",
-      description: "Nous travaillons en étroite collaboration avec nos clients pour comprendre leurs besoins et co-créer les meilleures solutions."
+      title: t('about.values.collaboration.title'),
+      description: t('about.values.collaboration.description')
     },
     {
       icon: Shield,
-      title: "Sécurité",
-      description: "La sécurité est au cœur de nos préoccupations. Nous mettons en place les meilleures pratiques pour protéger vos données."
+      title: t('about.values.security.title'),
+      description: t('about.values.security.description')
     },
     {
       icon: TrendingUp,
-      title: "Innovation",
-      description: "Nous restons à la pointe des technologies pour vous proposer des solutions innovantes et performantes."
+      title: t('about.values.innovation.title'),
+      description: t('about.values.innovation.description')
     }
   ];
 
   const team = [
     {
       icon: Code,
-      role: "Développement",
-      description: "Équipe de développeurs experts en technologies modernes"
+      role: t('about.team.development.role'),
+      description: t('about.team.development.description')
     },
     {
       icon: Server,
-      role: "Infrastructure",
-      description: "Spécialistes en administration système et réseau"
+      role: t('about.team.infrastructure.role'),
+      description: t('about.team.infrastructure.description')
     },
     {
       icon: Cloud,
-      role: "Cloud",
-      description: "Experts certifiés AWS, Azure et Google Cloud"
+      role: t('about.team.cloud.role'),
+      description: t('about.team.cloud.description')
     },
     {
       icon: BookOpen,
-      role: "Formation",
-      description: "Formateurs expérimentés en informatique"
+      role: t('about.team.training.role'),
+      description: t('about.team.training.description')
     }
   ];
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <SEO 
-        title="À Propos - Expertise Informatique depuis 8 ans"
-        description="Découvrez Nguessan-IT, votre expert informatique à Abidjan. +8 ans d'expérience, 10+ clients satisfaits, solutions sur mesure. Développement web, maintenance IT, cloud, formation professionnelle en Côte d'Ivoire."
+        title={t('about.seo.title')}
+        description={t('about.seo.description')}
         keywords={[
           'à propos nguessan-it',
           'expert informatique abidjan expérience',
@@ -138,11 +141,10 @@ const About = () => {
         </div>
         <div className="relative max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-6xl font-bold mb-6">
-            <span className="gradient-text">À propos de nous</span>
+            <span className="gradient-text">{t('about.hero.title')}</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Nguessan-IT accompagne les entreprises dans leur transformation digitale. 
-            Découvrez notre expertise et notre engagement envers l'excellence.
+            {t('about.hero.subtitle')}
           </p>
         </div>
       </section>
@@ -153,19 +155,17 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                <span className="gradient-text">Notre Mission</span>
+                <span className="gradient-text">{t('about.mission.title')}</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Nous proposons des solutions informatiques sur mesure pour optimiser la productivité et la sécurité de votre entreprise. 
-                Notre expertise couvre le développement web, la maintenance informatique, les solutions cloud et la formation.
+                {t('about.mission.description1')}
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Avec une approche personnalisée et un support technique réactif, nous nous engageons à être votre partenaire de confiance 
-                dans tous vos projets informatiques.
+                {t('about.mission.description2')}
               </p>
               <Button size="lg" asChild>
                 <Link to="/contact">
-                  Travaillons ensemble
+                  {t('about.mission.cta')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -193,10 +193,10 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="gradient-text">Nos Domaines d'Expertise</span>
+              <span className="gradient-text">{t('about.expertiseSection.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Des compétences techniques éprouvées dans tous les domaines de l'informatique
+              {t('about.expertiseSection.subtitle')}
             </p>
           </div>
 
@@ -235,10 +235,10 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="gradient-text">Nos Valeurs</span>
+              <span className="gradient-text">{t('about.valuesSection.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Les principes qui guident notre approche et nos relations clients
+              {t('about.valuesSection.subtitle')}
             </p>
           </div>
 
@@ -263,10 +263,10 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="gradient-text">Notre Approche</span>
+              <span className="gradient-text">{t('about.approachSection.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Une méthodologie éprouvée pour garantir le succès de vos projets
+              {t('about.approachSection.subtitle')}
             </p>
           </div>
 
@@ -274,23 +274,23 @@ const About = () => {
             {[
               { 
                 step: "01", 
-                title: "Écoute & Analyse", 
-                description: "Nous analysons en profondeur vos besoins et contraintes pour proposer la solution la plus adaptée." 
+                title: t('about.approach.step1.title'),
+                description: t('about.approach.step1.description')
               },
               { 
                 step: "02", 
-                title: "Conception", 
-                description: "Élaboration d'une solution technique détaillée avec architecture et planning précis." 
+                title: t('about.approach.step2.title'),
+                description: t('about.approach.step2.description')
               },
               { 
                 step: "03", 
-                title: "Réalisation", 
-                description: "Développement et mise en œuvre avec suivi régulier et communication transparente." 
+                title: t('about.approach.step3.title'),
+                description: t('about.approach.step3.description')
               },
               { 
                 step: "04", 
-                title: "Accompagnement", 
-                description: "Formation, support continu et évolutions pour garantir votre succès à long terme." 
+                title: t('about.approach.step4.title'),
+                description: t('about.approach.step4.description')
               }
             ].map((item, index) => (
               <div key={index} className="text-center">
@@ -309,21 +309,20 @@ const About = () => {
       <section className="py-16">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            Découvrez comment nous pouvons <span className="gradient-text">vous accompagner</span>
+            {t('about.cta.title')} <span className="gradient-text">{t('about.cta.titleHighlight')}</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Forte de notre expérience et de notre expertise, notre équipe est prête à relever tous vos défis informatiques. 
-            Contactez-nous pour échanger sur vos projets.
+            {t('about.cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="hero-glow" asChild>
               <Link to="/devis">
-                Parlez-nous de votre projet
+                {t('about.cta.primaryButton')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link to="/services">Découvrir nos services</Link>
+              <Link to="/services">{t('about.cta.secondaryButton')}</Link>
             </Button>
           </div>
         </div>
