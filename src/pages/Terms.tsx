@@ -87,12 +87,12 @@ const Terms = () => {
             <CardContent className="prose prose-lg max-w-none">
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  <strong>Raison sociale :</strong> Nguessan-IT<br/>
-                  <strong>Forme juridique :</strong> Entreprise individuelle / Auto-entrepreneur<br/>
-                  <strong>Siège social :</strong> [Adresse à compléter]<br/>
-                  <strong>SIRET :</strong> [Numéro à compléter]<br/>
-                  <strong>Email :</strong> contact@nguessan-it.fr<br/>
-                  <strong>Téléphone :</strong> +33 (0)1 XX XX XX XX
+                  <strong>{t('terms.legal.companyName')}:</strong> Nguessan-IT<br/>
+                  <strong>{t('terms.legal.legalForm')}:</strong> {t('terms.legal.legalFormValue')}<br/>
+                  <strong>{t('terms.legal.address')}:</strong> [Adresse à compléter]<br/>
+                  <strong>{t('terms.legal.siret')}:</strong> [Numéro à compléter]<br/>
+                  <strong>{t('terms.legal.email')}:</strong> contact@nguessan-it.fr<br/>
+                  <strong>{t('terms.legal.phone')}:</strong> +33 (0)1 XX XX XX XX
                 </p>
                 <p>
                   {t('terms.legal.description')}
@@ -143,13 +143,13 @@ const Terms = () => {
             <CardContent className="prose prose-lg max-w-none">
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  <strong>Devis :</strong> {t('terms.order.quote')}
+                  <strong>{t('terms.order.quoteLabel')}:</strong> {t('terms.order.quote')}
                 </p>
                 <p>
-                  <strong>Bon de commande :</strong> {t('terms.order.orderForm')}
+                  <strong>{t('terms.order.orderFormLabel')}:</strong> {t('terms.order.orderForm')}
                 </p>
                 <p>
-                  <strong>Modifications :</strong> {t('terms.order.modifications')}
+                  <strong>{t('terms.order.modificationsLabel')}:</strong> {t('terms.order.modifications')}
                 </p>
               </div>
             </CardContent>
@@ -162,10 +162,10 @@ const Terms = () => {
             <CardContent className="prose prose-lg max-w-none">
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  <strong>Tarifs :</strong> {t('terms.pricing.rates')}
+                  <strong>{t('terms.pricing.ratesLabel')}:</strong> {t('terms.pricing.rates')}
                 </p>
                 <p>
-                  <strong>Modalités de paiement :</strong>
+                  <strong>{t('terms.pricing.paymentMethodsLabel')}:</strong>
                 </p>
                 <ul className="space-y-1 ml-4">
                   <li>• {t('terms.pricing.under500')}</li>
@@ -173,7 +173,7 @@ const Terms = () => {
                   <li>• {t('terms.pricing.over2000')}</li>
                 </ul>
                 <p>
-                  <strong>Délais de paiement :</strong> {t('terms.pricing.terms')}
+                  <strong>{t('terms.pricing.termsLabel')}:</strong> {t('terms.pricing.terms')}
                 </p>
               </div>
             </CardContent>
@@ -186,16 +186,16 @@ const Terms = () => {
             <CardContent className="prose prose-lg max-w-none">
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  <strong>Délais :</strong> {t('terms.delivery.delays')}
+                  <strong>{t('terms.delivery.delaysLabel')}:</strong> {t('terms.delivery.delays')}
                 </p>
                 <p>
-                  <strong>Livraison :</strong> {t('terms.delivery.delivery')}
+                  <strong>{t('terms.delivery.deliveryLabel')}:</strong> {t('terms.delivery.delivery')}
                 </p>
                 <p>
-                  <strong>Réception :</strong> {t('terms.delivery.reception')}
+                  <strong>{t('terms.delivery.receptionLabel')}:</strong> {t('terms.delivery.reception')}
                 </p>
                 <p>
-                  <strong>Formation :</strong> {t('terms.delivery.training')}
+                  <strong>{t('terms.delivery.trainingLabel')}:</strong> {t('terms.delivery.training')}
                 </p>
               </div>
             </CardContent>
@@ -208,10 +208,10 @@ const Terms = () => {
             <CardContent className="prose prose-lg max-w-none">
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  <strong>Garantie :</strong> {t('terms.warranty.warranty')}
+                  <strong>{t('terms.warranty.warrantyLabel')}:</strong> {t('terms.warranty.warranty')}
                 </p>
                 <p>
-                  <strong>Support technique :</strong>
+                  <strong>{t('terms.warranty.supportLabel')}:</strong>
                 </p>
                 <ul className="space-y-1 ml-4">
                   <li>• {t('terms.warranty.included')}</li>
@@ -219,7 +219,7 @@ const Terms = () => {
                   <li>• {t('terms.warranty.means')}</li>
                 </ul>
                 <p>
-                  <strong>Maintenance :</strong> {t('terms.warranty.maintenance')}
+                  <strong>{t('terms.warranty.maintenanceLabel')}:</strong> {t('terms.warranty.maintenance')}
                 </p>
               </div>
             </CardContent>
@@ -232,16 +232,16 @@ const Terms = () => {
             <CardContent className="prose prose-lg max-w-none">
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  <strong>Développements spécifiques :</strong> {t('terms.ip.development')}
+                  <strong>{t('terms.ip.developmentLabel')}:</strong> {t('terms.ip.development')}
                 </p>
                 <p>
-                  <strong>Outils et méthodologies :</strong> {t('terms.ip.tools')}
+                  <strong>{t('terms.ip.toolsLabel')}:</strong> {t('terms.ip.tools')}
                 </p>
                 <p>
-                  <strong>Données client :</strong> {t('terms.ip.data')}
+                  <strong>{t('terms.ip.dataLabel')}:</strong> {t('terms.ip.data')}
                 </p>
                 <p>
-                  <strong>Logiciels tiers :</strong> {t('terms.ip.thirdParty')}
+                  <strong>{t('terms.ip.thirdPartyLabel')}:</strong> {t('terms.ip.thirdParty')}
                 </p>
               </div>
             </CardContent>
@@ -254,16 +254,16 @@ const Terms = () => {
             <CardContent className="prose prose-lg max-w-none">
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  <strong>Résiliation :</strong> {t('terms.termination.termination')}
+                  <strong>{t('terms.termination.terminationLabel')}:</strong> {t('terms.termination.termination')}
                 </p>
                 <p>
-                  <strong>Droit applicable :</strong> {t('terms.termination.law')}
+                  <strong>{t('terms.termination.lawLabel')}:</strong> {t('terms.termination.law')}
                 </p>
                 <p>
-                  <strong>Médiation :</strong> {t('terms.termination.mediation')}
+                  <strong>{t('terms.termination.mediationLabel')}:</strong> {t('terms.termination.mediation')}
                 </p>
                 <p>
-                  <strong>Nullité partielle :</strong> {t('terms.termination.nullity')}
+                  <strong>{t('terms.termination.nullityLabel')}:</strong> {t('terms.termination.nullity')}
                 </p>
               </div>
             </CardContent>
