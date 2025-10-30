@@ -259,15 +259,24 @@ const Quote = () => {
                         <Label htmlFor="phone" className="text-base font-semibold">
                           {t('quote.form.phone')} {t('contact.form.required')}
                         </Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          required
-                          className="mt-2 h-12"
-                          placeholder={t('quote.form.placeholder.phone')}
-                        />
+                        <div className="flex gap-2 mt-2">
+                          <Input
+                            id="countryCode"
+                            name="countryCode"
+                            defaultValue="+225"
+                            className="w-24 h-12"
+                            placeholder="+225"
+                          />
+                          <Input
+                            id="phone"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            required
+                            className="flex-1 h-12"
+                            placeholder={t('quote.form.placeholder.phone')}
+                          />
+                        </div>
                       </div>
                       <div>
                         <Label htmlFor="company" className="text-base font-semibold">

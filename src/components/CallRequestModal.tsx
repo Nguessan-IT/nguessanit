@@ -151,15 +151,24 @@ ${formData.message}
                 <Label htmlFor="call-phone" className="text-base font-semibold">
                   Téléphone *
                 </Label>
-                <Input
-                  id="call-phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="mt-2 h-12"
-                  placeholder="+225 0700000000"
-                />
+                <div className="flex gap-2 mt-2">
+                  <Input
+                    id="call-countryCode"
+                    name="countryCode"
+                    defaultValue="+225"
+                    className="w-24 h-12"
+                    placeholder="+225"
+                  />
+                  <Input
+                    id="call-phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="flex-1 h-12"
+                    placeholder="0700000000"
+                  />
+                </div>
               </div>
               <div>
                 <Label htmlFor="call-company" className="text-base font-semibold">

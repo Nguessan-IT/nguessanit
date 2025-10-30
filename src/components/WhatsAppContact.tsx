@@ -147,15 +147,24 @@ ${formData.message}
                 <Label htmlFor="whatsapp-phone" className="text-base font-semibold">
                   {t('whatsapp.phone')} *
                 </Label>
-                <Input
-                  id="whatsapp-phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="mt-2 h-12"
-                  placeholder={t('whatsapp.phone.placeholder')}
-                />
+                <div className="flex gap-2 mt-2">
+                  <Input
+                    id="whatsapp-countryCode"
+                    name="countryCode"
+                    defaultValue="+225"
+                    className="w-24 h-12"
+                    placeholder="+225"
+                  />
+                  <Input
+                    id="whatsapp-phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="flex-1 h-12"
+                    placeholder={t('whatsapp.phone.placeholder')}
+                  />
+                </div>
               </div>
               <div>
                 <Label htmlFor="whatsapp-company" className="text-base font-semibold">
