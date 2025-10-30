@@ -27,7 +27,13 @@ const Services = () => {
       icon: Code,
       title: t('services.main.webDev.title'),
       serviceKey: "webDev",
-      description: t('services.main.webDev.description'),
+      tagline: "Créez votre présence digitale avec impact",
+      description: "Nous concevons des sites web et applications mobiles performants, esthétiques et adaptés à vos objectifs business. De la landing page au portail e-commerce complexe, nous transformons vos besoins en expériences utilisateur exceptionnelles.",
+      benefits: [
+        "Augmentez votre visibilité en ligne et générez plus de prospects",
+        "Optimisez l'expérience utilisateur pour convertir vos visiteurs en clients",
+        "Bénéficiez d'une plateforme évolutive qui grandit avec votre entreprise"
+      ],
       features: [
         t('services.main.webDev.feature1'),
         t('services.main.webDev.feature2'),
@@ -43,7 +49,13 @@ const Services = () => {
       icon: Server,
       title: t('services.main.maintenance.title'),
       serviceKey: "maintenance",
-      description: t('services.main.maintenance.description'),
+      tagline: "Garantissez la performance et la stabilité de vos systèmes",
+      description: "Assurez la continuité et l'efficacité de vos opérations IT avec nos services de maintenance proactive. Nous surveillons, optimisons et sécurisons vos infrastructures pour que vous puissiez vous concentrer sur votre cœur de métier.",
+      benefits: [
+        "Réduisez les temps d'arrêt et maximisez la disponibilité de vos services",
+        "Prévenez les problèmes avant qu'ils n'impactent votre activité",
+        "Économisez sur les coûts de réparation grâce à une maintenance préventive"
+      ],
       features: [
         t('services.main.maintenance.feature1'),
         t('services.main.maintenance.feature2'),
@@ -59,7 +71,13 @@ const Services = () => {
       icon: Shield,
       title: t('services.main.cloud.title'),
       serviceKey: "cloud",
-      description: t('services.main.cloud.description'),
+      tagline: "Accélérez votre transformation digitale avec le cloud",
+      description: "Migrez vers le cloud en toute sécurité et optimisez vos infrastructures pour gagner en agilité, réduire vos coûts et améliorer vos performances. Nos experts vous accompagnent de la stratégie à l'implémentation avec des solutions IA innovantes.",
+      benefits: [
+        "Réduisez vos coûts IT jusqu'à 40% grâce à une infrastructure optimisée",
+        "Gagnez en flexibilité et scalabilité pour accompagner votre croissance",
+        "Renforcez votre sécurité avec des solutions cloud de niveau entreprise"
+      ],
       features: [
         t('services.main.cloud.feature1'),
         t('services.main.cloud.feature2'),
@@ -75,7 +93,13 @@ const Services = () => {
       icon: Headphones,
       title: t('services.main.training.title'),
       serviceKey: "training",
-      description: t('services.main.training.description'),
+      tagline: "Montez en compétences et libérez le potentiel de vos équipes",
+      description: "Formez vos collaborateurs aux dernières technologies et méthodologies IT avec des programmes sur mesure adaptés à votre secteur. De DevOps à l'IA, nous proposons des formations pratiques qui transforment réellement vos équipes.",
+      benefits: [
+        "Augmentez la productivité de vos équipes grâce à des compétences actualisées",
+        "Réduisez votre dépendance aux prestataires externes",
+        "Attirez et retenez les meilleurs talents grâce à un plan de développement solide"
+      ],
       features: [
         t('services.main.training.feature1'),
         t('services.main.training.feature2'),
@@ -91,7 +115,13 @@ const Services = () => {
       icon: Palette,
       title: t('services.main.branding.title'),
       serviceKey: "branding",
-      description: t('services.main.branding.description'),
+      tagline: "Construisez une identité de marque mémorable et cohérente",
+      description: "Créez une identité visuelle forte qui reflète les valeurs de votre entreprise et vous démarque de la concurrence. Du logo aux guidelines complètes, nous donnons vie à votre marque sur tous les supports digitaux et print.",
+      benefits: [
+        "Renforcez votre reconnaissance de marque auprès de vos clients",
+        "Créez une cohérence visuelle sur tous vos points de contact",
+        "Différenciez-vous de vos concurrents avec une identité unique"
+      ],
       features: [
         t('services.main.branding.feature1'),
         t('services.main.branding.feature2'),
@@ -107,7 +137,13 @@ const Services = () => {
       icon: FileText,
       title: t('services.main.interactive.title'),
       serviceKey: "interactive",
-      description: t('services.main.interactive.description'),
+      tagline: "Captivez votre audience avec des contenus interactifs",
+      description: "Transformez vos documents statiques en expériences immersives et engageantes. Catalogues, rapports annuels, présentations commerciales : nous créons des supports qui marquent les esprits et augmentent l'engagement de vos lecteurs.",
+      benefits: [
+        "Augmentez l'engagement de vos lecteurs jusqu'à 300%",
+        "Mesurez précisément l'impact de vos contenus grâce à l'analytics intégré",
+        "Réduisez vos coûts d'impression tout en modernisant votre image"
+      ],
       features: [
         t('services.main.interactive.feature1'),
         t('services.main.interactive.feature2'),
@@ -242,6 +278,50 @@ const Services = () => {
           </p>
           <div className="flex justify-center">
             <CurrencyIndicator />
+          </div>
+        </div>
+      </section>
+
+      {/* Summary Cards Section */}
+      <section className="py-8 sm:py-12 lg:py-16 -mt-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              {
+                icon: Code,
+                title: "Développement Web & Mobile",
+                description: "Sites web modernes, applications mobiles et solutions e-commerce sur mesure",
+                link: "/services#webdev"
+              },
+              {
+                icon: Cloud,
+                title: "Solutions Cloud & IA",
+                description: "Migration cloud, hébergement sécurisé et solutions d'intelligence artificielle",
+                link: "/services#cloud"
+              },
+              {
+                icon: Headphones,
+                title: "Conseil & Support IT",
+                description: "Audit, formation et accompagnement technique de vos équipes",
+                link: "/services#support"
+              }
+            ].map((item, index) => (
+              <Card key={index} className="card-elegant border-border hover-glow group hover:-translate-y-2 transition-all duration-500 shadow-elegant hover:shadow-glow">
+                <CardContent className="p-6 text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-primary rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
+                    <item.icon className="h-8 w-8 text-primary-foreground drop-shadow-sm" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">{item.description}</p>
+                  <Button variant="outline" size="sm" asChild className="w-full">
+                    <a href={item.link}>
+                      En savoir plus
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
