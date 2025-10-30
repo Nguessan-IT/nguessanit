@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Code, Server, Shield, Headphones, Palette, FileText } from "lucide-react";
+import { ArrowRight, Code, Server, Shield, Headphones, Palette, FileText, Globe } from "lucide-react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCurrency } from "@/contexts/CurrencyContext";
@@ -127,27 +128,102 @@ const Home = () => {
         </div>
         
         <div className="relative max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl mb-6 enhanced-contrast">
-            <span className="gradient-text tech-title">{t('hero.title')}</span>
-            <br />
-            <span className="font-orbitron font-semibold text-foreground tracking-wide">{t('hero.subtitle')}</span>
-          </h1>
+          {/* Logo */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-8"
+          >
+            <img
+              src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png"
+              alt="Logo Nguessan-IT"
+              className="mx-auto w-32 md:w-40 mb-4"
+            />
+            <p className="text-primary font-semibold tracking-wide uppercase text-sm md:text-base">
+              Votre partenaire digital pour innover et transformer
+            </p>
+          </motion.div>
+
+          {/* H1 - Titre principal */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-3xl sm:text-5xl lg:text-6xl mb-6 font-extrabold leading-tight enhanced-contrast"
+          >
+            Transformez vos idées en{" "}
+            <span className="gradient-text">solutions digitales performantes</span>.
+          </motion.h1>
           
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto modern-text enhanced-contrast">
-            {t('hero.description')}
-          </p>
+          {/* H2 - Sous-titre principal */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-lg sm:text-xl lg:text-2xl text-foreground mb-6 max-w-4xl mx-auto font-semibold leading-relaxed"
+          >
+            Chez <strong className="text-primary">Nguessan-IT</strong>, nous aidons entreprises, startups et institutions à
+            concevoir, développer et déployer des solutions technologiques sur mesure. 
+            Notre mission : <strong className="text-primary">digitaliser vos ambitions</strong> et libérer le potentiel de votre
+            organisation.
+          </motion.h2>
+
+          {/* Sous-texte services */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-base sm:text-lg text-muted-foreground mb-10 max-w-4xl mx-auto italic enhanced-contrast"
+          >
+            De la conception à la mise en production : <strong>Développement Web & Mobile</strong> — <strong>Cloud & IA</strong> — <strong>Conseil IT</strong> — <strong>Intégration sur mesure</strong>.
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="hero-glow animate-pulse-glow" asChild>
-              <Link to="/services">
-                {t('hero.services')}
+          {/* CTA Buttons avec animations */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          >
+            <Button 
+              size="lg" 
+              className="hero-glow animate-pulse hover:animate-none shadow-lg transition-all duration-300" 
+              style={{ boxShadow: "0 0 20px hsl(var(--primary) / 0.4)" }}
+              asChild
+            >
+              <Link to="/contact">
+                Demandez votre devis gratuit
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/devis">{t('hero.quote')}</Link>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="relative overflow-hidden group border-2 border-primary"
+              asChild
+            >
+              <Link to="/services">
+                <span className="absolute inset-0 bg-primary transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+                <span className="relative z-10 group-hover:text-primary-foreground transition-colors duration-300">
+                  Découvrez nos services
+                </span>
+              </Link>
             </Button>
-          </div>
+          </motion.div>
+
+          {/* Section internationale avec Globe */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col items-center mt-8"
+          >
+            <Globe className="w-12 h-12 text-primary mb-3 animate-pulse" />
+            <p className="text-muted-foreground text-base sm:text-lg md:text-xl font-medium text-center max-w-3xl enhanced-contrast">
+              Partenaire digital de confiance pour les entreprises d'Afrique, d'Europe et d'Amérique.
+            </p>
+          </motion.div>
         </div>
       </section>
 
