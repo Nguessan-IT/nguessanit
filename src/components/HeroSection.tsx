@@ -28,18 +28,27 @@ export default function HeroSection() {
         <span className="text-primary">solutions digitales performantes</span>.
       </motion.h1>
 
-      {/* SOUS-TITRE */}
-      <motion.p
+      {/* SOUS-TITRE PRINCIPAL */}
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="mt-6 text-lg md:text-xl max-w-3xl text-muted-foreground"
+        className="mt-6 text-xl md:text-2xl max-w-3xl font-semibold leading-relaxed"
       >
-        Chez <strong>Nguessan-IT</strong>, nous aidons les entreprises, startups et institutions à
-        concevoir, développer et déployer des solutions technologiques sur mesure.
-        <br />
+        Chez <strong>Nguessan-IT</strong>, nous aidons entreprises, startups et institutions à
+        concevoir, développer et déployer des solutions technologiques sur mesure. 
         Notre mission : <strong>digitaliser vos ambitions</strong> et libérer le potentiel de votre
-        organisation grâce à l'innovation, la fiabilité et l'expertise.
+        organisation.
+      </motion.h2>
+
+      {/* SOUS-TEXTE SERVICES */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="mt-4 text-base md:text-lg max-w-3xl text-muted-foreground italic"
+      >
+        De la conception à la mise en production : <strong>Développement Web & Mobile</strong> — <strong>Cloud & IA</strong> — <strong>Conseil IT</strong> — <strong>Intégration sur mesure</strong>.
       </motion.p>
 
       {/* CTA BUTTONS */}
@@ -48,7 +57,10 @@ export default function HeroSection() {
           href="/contact"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
-          className="bg-primary text-primary-foreground font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-lg hover:bg-primary/90 transition-all duration-300"
+          className="bg-primary text-primary-foreground font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-glow transition-all duration-300 animate-pulse hover:animate-none"
+          style={{
+            boxShadow: "0 0 20px hsl(var(--primary) / 0.3)"
+          }}
         >
           Demandez votre devis gratuit
         </motion.a>
@@ -57,9 +69,12 @@ export default function HeroSection() {
           href="/services"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
-          className="border-2 border-primary text-primary font-semibold py-3 px-8 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+          className="relative border-2 border-primary text-primary font-semibold py-3 px-8 rounded-full overflow-hidden group transition-all duration-300"
         >
-          Découvrez nos services
+          <span className="absolute inset-0 bg-primary transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+          <span className="relative z-10 group-hover:text-primary-foreground transition-colors duration-300">
+            Découvrez nos services
+          </span>
         </motion.a>
       </div>
 
@@ -67,11 +82,11 @@ export default function HeroSection() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
         className="mt-16 flex flex-col items-center"
       >
-        <Globe className="w-10 h-10 text-primary mb-2" />
-        <p className="text-muted-foreground text-lg font-medium">
+        <Globe className="w-12 h-12 text-primary mb-3 animate-pulse" />
+        <p className="text-muted-foreground text-lg md:text-xl font-medium text-center max-w-2xl">
           Partenaire digital de confiance pour les entreprises d'Afrique, d'Europe et d'Amérique.
         </p>
       </motion.div>
