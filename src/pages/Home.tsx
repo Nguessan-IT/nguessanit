@@ -81,39 +81,44 @@ const Home = () => {
   return (
     <div>
       <SEO 
-        title="Accueil"
-        description="🚀 Solutions informatiques expertes à Abidjan, Côte d'Ivoire. Développement web moderne, maintenance IT 24/7, solutions cloud sécurisées, formation professionnelle. +8 ans d'expérience, devis gratuit 24h."
+        title="Nguessan-IT | Digitalisez vos idées et transformez votre entreprise"
+        description="Nguessan-IT accompagne entreprises, startups et institutions à concevoir, développer et déployer des solutions digitales sur mesure en Afrique, Europe et Amérique. Demandez un devis gratuit."
         keywords={[
-          'nguessan-it accueil',
-          'solutions informatiques abidjan',
-          'expert IT côte d\'ivoire', 
-          'développement web professionnel',
-          'maintenance informatique entreprise',
-          'consultant IT premium',
-          'transformation digitale afrique'
+          'transformation digitale',
+          'solutions digitales sur mesure',
+          'développement web mobile',
+          'entreprise numérique',
+          'innovation IT',
+          'Afrique Europe Amérique',
+          'nguessan-it',
+          'cloud computing',
+          'conseil IT'
         ]}
         ogType="business.business"
         twitterCard="summary_large_image"
         image="/src/assets/og-image.jpg"
+        canonical="https://www.nguessan-it.com/"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "Nguessan-IT",
-          "url": "https://nguessan-it.lovable.app",
-          "description": "Expert en solutions informatiques à Abidjan - Développement web, maintenance IT, cloud, formation",
+          "url": "https://www.nguessan-it.com",
+          "description": "Nguessan-IT accompagne entreprises, startups et institutions à concevoir, développer et déployer des solutions digitales sur mesure en Afrique, Europe et Amérique.",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://nguessan-it.lovable.app/services?q={search_term_string}",
+            "target": "https://www.nguessan-it.com/services?q={search_term_string}",
             "query-input": "required name=search_term_string"
           },
           "mainEntity": {
             "@type": "Organization",
             "name": "Nguessan-IT",
+            "description": "Votre partenaire digital pour innover et transformer",
             "address": {
               "@type": "PostalAddress",
               "addressCountry": "CI",
               "addressLocality": "Abidjan"
-            }
+            },
+            "areaServed": ["Africa", "Europe", "America"]
           }
         }}
       />

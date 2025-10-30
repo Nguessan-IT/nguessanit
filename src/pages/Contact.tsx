@@ -105,17 +105,19 @@ const Contact = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <SEO 
-        title="Contact - Parlons de votre projet IT"
-        description="Contactez Nguessan-IT pour vos besoins informatiques à Abidjan, Côte d'Ivoire. Réponse sous 24h garantie. Email, téléphone, formulaire de contact. Expert solutions IT professionnelles."
+        title="Contactez-nous | Obtenez votre devis gratuit – Nguessan-IT"
+        description="Contactez Nguessan-IT pour un devis gratuit et un accompagnement sur mesure en transformation digitale. Réponse sous 48h."
         keywords={[
           'contact nguessan-it',
-          'consultant informatique abidjan contact',
-          'entreprise IT côte d\'ivoire téléphone',
-          'expert informatique contact direct',
-          'devis informatique gratuit contact',
-          'support technique contact',
-          'développement web contact abidjan'
+          'devis gratuit',
+          'accompagnement sur mesure',
+          'transformation digitale',
+          'réponse rapide',
+          'consultation IT',
+          'demande projet digital',
+          'contactez expert IT'
         ]}
+        canonical="https://www.nguessan-it.com/contact"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
@@ -127,7 +129,7 @@ const Contact = () => {
                 "@type": "ContactPoint",
                 "telephone": "+225-0777655416",
                 "contactType": "customer service",
-                "availableLanguage": ["French", "English"],
+                "availableLanguage": ["French", "English", "Spanish", "Portuguese", "Italian"],
                 "hoursAvailable": {
                   "@type": "OpeningHoursSpecification",
                   "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -139,14 +141,15 @@ const Contact = () => {
                 "@type": "ContactPoint",
                 "email": "fiacrenguessan@outlook.com",
                 "contactType": "customer service",
-                "responseTime": "PT24H"
+                "responseTime": "PT48H"
               }
             ],
             "address": {
               "@type": "PostalAddress",
               "addressCountry": "CI",
               "addressLocality": "Abidjan"
-            }
+            },
+            "areaServed": ["Africa", "Europe", "America"]
           }
         }}
       />

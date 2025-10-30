@@ -147,78 +147,80 @@ const Services = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <SEO 
-        title="Services Informatiques Professionnels"
-        description="Découvrez nos services IT complets : développement web React/Vue.js, maintenance informatique 24/7, solutions cloud AWS/Azure, formation professionnelle, identité visuelle digitale. Expert Abidjan, Côte d'Ivoire."
+        title="Services Nguessan-IT | Développement web, Cloud & Solutions digitales"
+        description="Nos services : développement web & mobile, solutions cloud, IA, conseil IT et intégration sur mesure. Bénéficiez d'accompagnement stratégique et technique."
         keywords={[
-          'services informatiques abidjan',
-          'développement web react vue.js',
-          'maintenance informatique professionnel', 
-          'solutions cloud aws azure',
-          'formation informatique entreprise',
-          'identité visuelle digitale',
-          'documents interactifs',
-          'consultant IT côte d\'ivoire',
-          'expert informatique abidjan',
-          'services IT premium'
+          'services informatiques',
+          'développement web mobile',
+          'solutions cloud',
+          'intelligence artificielle',
+          'conseil IT',
+          'intégration sur mesure',
+          'accompagnement stratégique',
+          'expertise technique',
+          'transformation digitale'
         ]}
-        type="service"
+        canonical="https://www.nguessan-it.com/services"
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "ItemList",
-          "name": "Services Informatiques Nguessan-IT",
-          "description": "Services informatiques professionnels en Côte d'Ivoire",
-          "itemListElement": [
-            {
-              "@type": "Service",
-              "position": 1,
-              "name": "Développement Web",
-              "description": "Sites web modernes et applications sur mesure",
-              "provider": {
-                "@type": "Organization", 
-                "name": "Nguessan-IT"
-              },
-              "offers": {
+          "@type": "Service",
+          "serviceType": "IT Services",
+          "provider": {
+            "@type": "Organization",
+            "name": "Nguessan-IT",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "CI",
+              "addressLocality": "Abidjan"
+            },
+            "areaServed": ["Africa", "Europe", "America"]
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services Nguessan-IT",
+            "itemListElement": [
+              {
                 "@type": "Offer",
-                "priceRange": "À partir de 800€",
-                "priceCurrency": "EUR"
-              }
-            },
-            {
-              "@type": "Service",
-              "position": 2, 
-              "name": "Maintenance Informatique",
-              "description": "Support technique 24/7 et maintenance préventive",
-              "provider": {
-                "@type": "Organization",
-                "name": "Nguessan-IT"
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Développement Web & Mobile",
+                  "description": "Sites web modernes, applications mobiles et solutions e-commerce sur mesure"
+                }
               },
-              "offers": {
+              {
                 "@type": "Offer",
-                "priceRange": "À partir de 50€/h",
-                "priceCurrency": "EUR"
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Solutions Cloud & Infrastructure",
+                  "description": "Migration cloud, hébergement sécurisé et optimisation d'infrastructure IT"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Intelligence Artificielle & Automatisation",
+                  "description": "Solutions IA intelligentes pour automatiser et optimiser vos processus"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Conseil & Stratégie IT",
+                  "description": "Audit, digitalisation et optimisation de votre stratégie technologique"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Formation & Support",
+                  "description": "Accompagnement technique et montée en compétences de vos équipes"
+                }
               }
-            },
-            {
-              "@type": "Service", 
-              "position": 3,
-              "name": "Solutions Cloud",
-              "description": "Migration et infrastructure cloud sécurisée",
-              "provider": {
-                "@type": "Organization",
-                "name": "Nguessan-IT"
-              }
-            },
-            {
-              "@type": "Service",
-              "position": 4,
-              "name": "Formation & Conseil", 
-              "description": "Formation professionnelle et conseil en transformation digitale",
-              "provider": {
-                "@type": "Organization",
-                "name": "Nguessan-IT"
-              }
-            }
-          ]
+            ]
+          }
         }}
       />
       

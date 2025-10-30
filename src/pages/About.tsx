@@ -86,46 +86,44 @@ const About = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <SEO 
-        title={t('about.seo.title')}
-        description={t('about.seo.description')}
+        title="À propos de Nguessan-IT | Votre partenaire digital international"
+        description="Découvrez l'équipe, la mission et les valeurs de Nguessan-IT — expertise en transformation digitale pour entreprises en Afrique, Europe et Amérique."
         keywords={[
           'à propos nguessan-it',
-          'expert informatique abidjan expérience',
-          'entreprise informatique côte d\'ivoire',
-          'consultant IT professionnel',
-          'équipe développement web',
-          'spécialiste maintenance informatique',
-          'solutions digitales sur mesure',
-          'transformation digitale entreprise'
+          'équipe nguessan-it',
+          'mission nguessan-it',
+          'partenaire digital international',
+          'expertise transformation digitale',
+          'valeurs entreprise IT',
+          'innovation technologique',
+          'accompagnement entreprises'
         ]}
         type="article"
+        canonical="https://www.nguessan-it.com/about"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
           "mainEntity": {
             "@type": "Organization",
             "name": "Nguessan-IT",
-            "description": "Expert en solutions informatiques à Abidjan, Côte d'Ivoire depuis 8 ans",
+            "description": "Votre partenaire digital international pour la transformation digitale",
             "foundingDate": "2016",
             "address": {
               "@type": "PostalAddress",
               "addressCountry": "CI",
               "addressLocality": "Abidjan"
             },
+            "areaServed": ["Africa", "Europe", "America"],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
               "name": "Services IT",
               "itemListElement": [
-                "Développement Web",
-                "Maintenance Informatique", 
+                "Développement Web & Mobile",
                 "Solutions Cloud",
-                "Formation & Conseil"
+                "Intelligence Artificielle",
+                "Conseil IT",
+                "Intégration sur mesure"
               ]
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "10"
             }
           }
         }}
