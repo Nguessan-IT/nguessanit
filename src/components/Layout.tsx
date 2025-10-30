@@ -1,10 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Instagram, Linkedin, Facebook } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "./LanguageSelector";
 import Footer from "./Footer";
+import ScrollToTop from "./ScrollToTop";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
@@ -66,19 +67,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </Link>
               ))}
               
-              {/* Social Media Icons */}
-              <div className="flex items-center gap-2 pl-2 border-l border-border">
-                <a href="https://www.instagram.com/nguessanit" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110" aria-label="Instagram">
-                  <Instagram className="h-4 w-4" />
-                </a>
-                <a href="https://www.linkedin.com/company/nguessan-it" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110" aria-label="LinkedIn">
-                  <Linkedin className="h-4 w-4" />
-                </a>
-                <a href="https://www.facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110" aria-label="Facebook">
-                  <Facebook className="h-4 w-4" />
-                </a>
-              </div>
-              
               <LanguageSelector />
               <Button variant="outline" className="hero-glow" asChild>
                 <Link to="/devis">{t('nav.quote')}</Link>
@@ -127,6 +115,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       {/* Main Content */}
       <main className="flex-1">{children}</main>
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
 
       {/* Footer */}
       <Footer />

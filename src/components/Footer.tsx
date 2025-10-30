@@ -44,12 +44,9 @@ const Footer = () => {
   const socialLinks = [
     { icon: Instagram, href: "https://www.instagram.com/nguessanit", label: "Instagram" },
     { icon: Linkedin, href: "https://www.linkedin.com/company/nguessan-it", label: "LinkedIn" },
-    { icon: Facebook, href: "https://www.facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr", label: "Facebook" }
+    { icon: Facebook, href: "https://www.facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr", label: "Facebook" },
+    { icon: Twitter, href: "#", label: "Twitter" }
   ];
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <footer className="relative bg-primary/10 border-t border-primary/20 overflow-hidden backdrop-blur-lg shadow-lg shadow-primary/10">
@@ -205,16 +202,6 @@ const Footer = () => {
               >
                 {t('footer.terms')}
               </Link>
-              
-              {/* Scroll to top button */}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={scrollToTop}
-                className="ml-4 w-10 h-10 p-0 hover:shadow-glow transition-all duration-300"
-              >
-                <ArrowUp className="h-4 w-4" />
-              </Button>
             </div>
           </div>
         </div>
