@@ -85,6 +85,9 @@ const translations = {
     'cta.description': 'Contactez-nous pour un devis gratuit et découvrez comment nous pouvons transformer votre infrastructure IT',
     'cta.button': 'Demander un devis',
     
+    // Header
+    'header.slogan': 'Votre partenaire digital pour innover et transformer',
+    
     // Footer
     'footer.description': 'Solutions informatiques de pointe pour propulser votre entreprise vers l\'excellence digitale. Innovation, expertise et accompagnement personnalisé depuis 2025.',
     'footer.navigation': 'Navigation',
@@ -96,6 +99,53 @@ const translations = {
     'footer.location': 'en Côte d\'Ivoire',
     'footer.privacy': 'Politique de confidentialité',
     'footer.terms': 'Conditions d\'utilisation',
+    
+    // Home Page
+    'home.seo.title': 'Nguessan-IT - Transformation Digitale & Solutions IT en Côte d\'Ivoire',
+    'home.seo.description': 'Nguessan-IT accompagne les entreprises, startups et institutions dans leur transformation digitale. Solutions fiables et innovantes pour améliorer vos performances.',
+    'home.seo.keywords': 'transformation digitale, développement web, solutions cloud, conseil IT, Côte d\'Ivoire, Abidjan, innovation technologique',
+    
+    'home.hero.badge': 'Solutions Digitales Innovantes',
+    'home.hero.title': 'Transformez votre entreprise avec Nguessan-IT',
+    'home.hero.subtitle': 'Votre partenaire digital pour innover et transformer',
+    'home.hero.description': 'Chez Nguessan-IT, nous accompagnons les entreprises, startups et institutions publiques dans leur transformation digitale. Nos solutions fiables et innovantes améliorent vos performances et votre visibilité.',
+    'home.hero.cta1': 'Demandez un devis',
+    'home.hero.cta2': 'Découvrir nos services',
+    
+    'home.services.title': 'Nos Services Phares',
+    'home.services.subtitle': 'Des solutions complètes pour votre transformation digitale',
+    'home.services.web.title': 'Développement Web & Mobile',
+    'home.services.web.description': 'Création de sites web et applications mobiles sur mesure, optimisés pour la performance et l\'expérience utilisateur.',
+    'home.services.cloud.title': 'Solutions Cloud & IA',
+    'home.services.cloud.description': 'Intégration de solutions cloud et intelligence artificielle pour automatiser vos processus et sécuriser vos données.',
+    'home.services.support.title': 'Conseil & Support IT',
+    'home.services.support.description': 'Accompagnement stratégique et technique pour toutes vos problématiques digitales.',
+    'home.services.learnMore': 'En savoir plus',
+    
+    'home.whyUs.title': 'Pourquoi Nous Choisir ?',
+    'home.whyUs.subtitle': 'Des avantages qui font la différence',
+    'home.whyUs.international.title': 'Expertise Internationale',
+    'home.whyUs.international.description': 'Une expérience éprouvée en Afrique, Europe et Amérique avec les meilleures pratiques mondiales.',
+    'home.whyUs.reliability.title': 'Fiabilité & Suivi',
+    'home.whyUs.reliability.description': 'Un suivi personnalisé et une disponibilité constante pour garantir votre succès.',
+    'home.whyUs.innovation.title': 'Innovation Technologique',
+    'home.whyUs.innovation.description': 'Les dernières technologies et tendances pour garder votre entreprise compétitive.',
+    'home.whyUs.support.title': 'Service Client Dédié',
+    'home.whyUs.support.description': 'Une équipe réactive et à l\'écoute, disponible 24/7 pour répondre à vos besoins.',
+    
+    'home.testimonials.title': 'Témoignages Clients',
+    'home.testimonials.subtitle': 'Ce que nos clients disent de nous',
+    'home.testimonials.client1.quote': 'Grâce à Nguessan-IT, notre entreprise a digitalisé tous ses processus en un temps record.',
+    'home.testimonials.client1.author': 'Client A',
+    'home.testimonials.client2.quote': 'Leur équipe est réactive et toujours à l\'écoute de nos besoins.',
+    'home.testimonials.client2.author': 'Client B',
+    'home.testimonials.clientLabel': 'Client satisfait',
+    
+    'home.cta.badge': 'Prêt à commencer ?',
+    'home.cta.title': 'Démarrez Votre Transformation Digitale Aujourd\'hui',
+    'home.cta.description': 'Rejoignez les centaines d\'entreprises qui nous font confiance pour leur transformation digitale. Obtenez un devis gratuit et découvrez comment nous pouvons propulser votre succès.',
+    'home.cta.primary': 'Demander un devis gratuit',
+    'home.cta.secondary': 'Contactez-nous',
     
     // Contact form placeholders
     'contact.name': 'Votre nom',
@@ -760,6 +810,9 @@ const translations = {
     'cta.description': 'Contact us for a free quote and discover how we can transform your IT infrastructure',
     'cta.button': 'Request a quote',
     
+    // Header
+    'header.slogan': 'Your digital partner to innovate and transform',
+    
     // Footer
     'footer.description': 'Cutting-edge IT solutions to propel your business to digital excellence. Innovation, expertise and personalized support since 2025.',
     'footer.navigation': 'Navigation',
@@ -771,6 +824,52 @@ const translations = {
     'footer.location': 'in Côte d\'Ivoire',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Use',
+    
+    // Home Page
+    'home.seo.title': 'Nguessan-IT - Digital Transformation & IT Solutions in Côte d\'Ivoire',
+    'home.seo.description': 'Nguessan-IT supports businesses, startups and institutions in their digital transformation. Reliable and innovative solutions to improve your performance.',
+    
+    'home.hero.badge': 'Innovative Digital Solutions',
+    'home.hero.title': 'Transform your business with Nguessan-IT',
+    'home.hero.subtitle': 'Your digital partner to innovate and transform',
+    'home.hero.description': 'At Nguessan-IT, we support businesses, startups and public institutions in their digital transformation. Our reliable and innovative solutions improve your performance and visibility.',
+    'home.hero.cta1': 'Request a quote',
+    'home.hero.cta2': 'Discover our services',
+    
+    'home.services.title': 'Our Flagship Services',
+    'home.services.subtitle': 'Complete solutions for your digital transformation',
+    'home.services.web.title': 'Web & Mobile Development',
+    'home.services.web.description': 'Creation of custom websites and mobile applications, optimized for performance and user experience.',
+    'home.services.cloud.title': 'Cloud & AI Solutions',
+    'home.services.cloud.description': 'Integration of cloud solutions and artificial intelligence to automate your processes and secure your data.',
+    'home.services.support.title': 'Consulting & IT Support',
+    'home.services.support.description': 'Strategic and technical support for all your digital challenges.',
+    'home.services.learnMore': 'Learn more',
+    
+    'home.whyUs.title': 'Why Choose Us?',
+    'home.whyUs.subtitle': 'Advantages that make the difference',
+    'home.whyUs.international.title': 'International Expertise',
+    'home.whyUs.international.description': 'Proven experience in Africa, Europe and America with global best practices.',
+    'home.whyUs.reliability.title': 'Reliability & Follow-up',
+    'home.whyUs.reliability.description': 'Personalized follow-up and constant availability to guarantee your success.',
+    'home.whyUs.innovation.title': 'Technological Innovation',
+    'home.whyUs.innovation.description': 'Latest technologies and trends to keep your business competitive.',
+    'home.whyUs.support.title': 'Dedicated Customer Service',
+    'home.whyUs.support.description': 'A responsive and attentive team, available 24/7 to meet your needs.',
+    
+    'home.testimonials.title': 'Customer Testimonials',
+    'home.testimonials.subtitle': 'What our customers say about us',
+    'home.testimonials.client1.quote': 'Thanks to Nguessan-IT, our company digitized all its processes in record time.',
+    'home.testimonials.client1.author': 'Client A',
+    'home.testimonials.client2.quote': 'Their team is responsive and always attentive to our needs.',
+    'home.testimonials.client2.author': 'Client B',
+    'home.testimonials.clientLabel': 'Satisfied customer',
+    
+    'home.cta.badge': 'Ready to start?',
+    'home.cta.title': 'Start Your Digital Transformation Today',
+    'home.cta.description': 'Join hundreds of companies that trust us for their digital transformation. Get a free quote and discover how we can propel your success.',
+    'home.cta.primary': 'Request a free quote',
+    'home.cta.secondary': 'Contact us',
     
     // Contact form placeholders
     'contact.name': 'Your name',
@@ -1346,6 +1445,9 @@ const translations = {
     'cta.description': 'Contáctenos para un presupuesto gratuito y descubra cómo podemos transformar su infraestructura IT',
     'cta.button': 'Solicitar presupuesto',
     
+    // Header
+    'header.slogan': 'Su socio digital para innovar y transformar',
+    
     // Footer
     'footer.description': 'Soluciones informáticas de vanguardia para impulsar su empresa hacia la excelencia digital. Innovación, experiencia y acompañamiento personalizado desde 2025.',
     'footer.navigation': 'Navegación',
@@ -1357,6 +1459,52 @@ const translations = {
     'footer.location': 'en Costa de Marfil',
     'footer.privacy': 'Política de Privacidad',
     'footer.terms': 'Términos de Uso',
+    
+    // Home Page
+    'home.seo.title': 'Nguessan-IT - Transformación Digital y Soluciones IT en Costa de Marfil',
+    'home.seo.description': 'Nguessan-IT acompaña a empresas, startups e instituciones en su transformación digital. Soluciones fiables e innovadoras para mejorar su rendimiento.',
+    
+    'home.hero.badge': 'Soluciones Digitales Innovadoras',
+    'home.hero.title': 'Transforme su empresa con Nguessan-IT',
+    'home.hero.subtitle': 'Su socio digital para innovar y transformar',
+    'home.hero.description': 'En Nguessan-IT, acompañamos a empresas, startups e instituciones públicas en su transformación digital. Nuestras soluciones fiables e innovadoras mejoran su rendimiento y visibilidad.',
+    'home.hero.cta1': 'Solicitar presupuesto',
+    'home.hero.cta2': 'Descubrir nuestros servicios',
+    
+    'home.services.title': 'Nuestros Servicios Principales',
+    'home.services.subtitle': 'Soluciones completas para su transformación digital',
+    'home.services.web.title': 'Desarrollo Web y Móvil',
+    'home.services.web.description': 'Creación de sitios web y aplicaciones móviles personalizadas, optimizadas para el rendimiento y la experiencia del usuario.',
+    'home.services.cloud.title': 'Soluciones Cloud e IA',
+    'home.services.cloud.description': 'Integración de soluciones cloud e inteligencia artificial para automatizar sus procesos y asegurar sus datos.',
+    'home.services.support.title': 'Consultoría y Soporte IT',
+    'home.services.support.description': 'Acompañamiento estratégico y técnico para todos sus desafíos digitales.',
+    'home.services.learnMore': 'Saber más',
+    
+    'home.whyUs.title': '¿Por Qué Elegirnos?',
+    'home.whyUs.subtitle': 'Ventajas que marcan la diferencia',
+    'home.whyUs.international.title': 'Experiencia Internacional',
+    'home.whyUs.international.description': 'Experiencia probada en África, Europa y América con las mejores prácticas globales.',
+    'home.whyUs.reliability.title': 'Fiabilidad y Seguimiento',
+    'home.whyUs.reliability.description': 'Seguimiento personalizado y disponibilidad constante para garantizar su éxito.',
+    'home.whyUs.innovation.title': 'Innovación Tecnológica',
+    'home.whyUs.innovation.description': 'Las últimas tecnologías y tendencias para mantener su empresa competitiva.',
+    'home.whyUs.support.title': 'Servicio al Cliente Dedicado',
+    'home.whyUs.support.description': 'Un equipo reactivo y atento, disponible 24/7 para satisfacer sus necesidades.',
+    
+    'home.testimonials.title': 'Testimonios de Clientes',
+    'home.testimonials.subtitle': 'Lo que nuestros clientes dicen de nosotros',
+    'home.testimonials.client1.quote': 'Gracias a Nguessan-IT, nuestra empresa digitalizó todos sus procesos en un tiempo récord.',
+    'home.testimonials.client1.author': 'Cliente A',
+    'home.testimonials.client2.quote': 'Su equipo es reactivo y siempre está atento a nuestras necesidades.',
+    'home.testimonials.client2.author': 'Cliente B',
+    'home.testimonials.clientLabel': 'Cliente satisfecho',
+    
+    'home.cta.badge': '¿Listo para empezar?',
+    'home.cta.title': 'Comience su Transformación Digital Hoy',
+    'home.cta.description': 'Únase a cientos de empresas que confían en nosotros para su transformación digital. Obtenga un presupuesto gratuito y descubra cómo podemos impulsar su éxito.',
+    'home.cta.primary': 'Solicitar presupuesto gratuito',
+    'home.cta.secondary': 'Contáctenos',
     
     // Contact form placeholders
     'contact.name': 'Su nombre',
@@ -1922,6 +2070,9 @@ const translations = {
     'services.featuresIncluded': 'Funcionalidades incluídas:',
     'services.technologies': 'Tecnologias:',
     
+    // Header
+    'header.slogan': 'Seu parceiro digital para inovar e transformar',
+    
     // Footer
     'footer.description': 'Soluções de TI de ponta para impulsionar sua empresa rumo à excelência digital. Inovação, expertise e acompanhamento personalizado desde 2025.',
     'footer.navigation': 'Navegação',
@@ -1933,6 +2084,52 @@ const translations = {
     'footer.location': 'na Costa do Marfim',
     'footer.privacy': 'Política de Privacidade',
     'footer.terms': 'Termos de Uso',
+    
+    // Home Page
+    'home.seo.title': 'Nguessan-IT - Transformação Digital e Soluções de TI na Costa do Marfim',
+    'home.seo.description': 'Nguessan-IT apoia empresas, startups e instituições em sua transformação digital. Soluções confiáveis e inovadoras para melhorar seu desempenho.',
+    
+    'home.hero.badge': 'Soluções Digitais Inovadoras',
+    'home.hero.title': 'Transforme sua empresa com Nguessan-IT',
+    'home.hero.subtitle': 'Seu parceiro digital para inovar e transformar',
+    'home.hero.description': 'Na Nguessan-IT, apoiamos empresas, startups e instituições públicas em sua transformação digital. Nossas soluções confiáveis e inovadoras melhoram seu desempenho e visibilidade.',
+    'home.hero.cta1': 'Solicitar orçamento',
+    'home.hero.cta2': 'Descobrir nossos serviços',
+    
+    'home.services.title': 'Nossos Serviços Principais',
+    'home.services.subtitle': 'Soluções completas para sua transformação digital',
+    'home.services.web.title': 'Desenvolvimento Web e Mobile',
+    'home.services.web.description': 'Criação de sites e aplicativos móveis personalizados, otimizados para desempenho e experiência do usuário.',
+    'home.services.cloud.title': 'Soluções Cloud e IA',
+    'home.services.cloud.description': 'Integração de soluções cloud e inteligência artificial para automatizar seus processos e proteger seus dados.',
+    'home.services.support.title': 'Consultoria e Suporte de TI',
+    'home.services.support.description': 'Acompanhamento estratégico e técnico para todos os seus desafios digitais.',
+    'home.services.learnMore': 'Saber mais',
+    
+    'home.whyUs.title': 'Por Que Nos Escolher?',
+    'home.whyUs.subtitle': 'Vantagens que fazem a diferença',
+    'home.whyUs.international.title': 'Experiência Internacional',
+    'home.whyUs.international.description': 'Experiência comprovada na África, Europa e América com as melhores práticas globais.',
+    'home.whyUs.reliability.title': 'Confiabilidade e Acompanhamento',
+    'home.whyUs.reliability.description': 'Acompanhamento personalizado e disponibilidade constante para garantir seu sucesso.',
+    'home.whyUs.innovation.title': 'Inovação Tecnológica',
+    'home.whyUs.innovation.description': 'As últimas tecnologias e tendências para manter sua empresa competitiva.',
+    'home.whyUs.support.title': 'Atendimento ao Cliente Dedicado',
+    'home.whyUs.support.description': 'Uma equipe reativa e atenta, disponível 24/7 para atender suas necessidades.',
+    
+    'home.testimonials.title': 'Depoimentos de Clientes',
+    'home.testimonials.subtitle': 'O que nossos clientes dizem sobre nós',
+    'home.testimonials.client1.quote': 'Graças à Nguessan-IT, nossa empresa digitalizou todos os seus processos em tempo recorde.',
+    'home.testimonials.client1.author': 'Cliente A',
+    'home.testimonials.client2.quote': 'A equipe deles é reativa e sempre atenta às nossas necessidades.',
+    'home.testimonials.client2.author': 'Cliente B',
+    'home.testimonials.clientLabel': 'Cliente satisfeito',
+    
+    'home.cta.badge': 'Pronto para começar?',
+    'home.cta.title': 'Inicie Sua Transformação Digital Hoje',
+    'home.cta.description': 'Junte-se a centenas de empresas que confiam em nós para sua transformação digital. Obtenha um orçamento gratuito e descubra como podemos impulsionar seu sucesso.',
+    'home.cta.primary': 'Solicitar orçamento gratuito',
+    'home.cta.secondary': 'Contate-nos',
     
     // Contact form placeholders
     'contact.name': 'Seu nome',
@@ -2498,6 +2695,9 @@ const translations = {
     'cta.description': 'Contattaci per un preventivo gratuito e scopri come possiamo trasformare la tua infrastruttura IT',
     'cta.button': 'Richiedi preventivo',
     
+    // Header
+    'header.slogan': 'Il vostro partner digitale per innovare e trasformare',
+    
     // Footer
     'footer.description': 'Soluzioni IT all\'avanguardia per spingere la vostra azienda verso l\'eccellenza digitale. Innovazione, competenza e accompagnamento personalizzato dal 2025.',
     'footer.navigation': 'Navigazione',
@@ -2509,6 +2709,52 @@ const translations = {
     'footer.location': 'in Costa d\'Avorio',
     'footer.privacy': 'Politica sulla Privacy',
     'footer.terms': 'Termini di Utilizzo',
+    
+    // Home Page
+    'home.seo.title': 'Nguessan-IT - Trasformazione Digitale e Soluzioni IT in Costa d\'Avorio',
+    'home.seo.description': 'Nguessan-IT accompagna aziende, startup e istituzioni nella loro trasformazione digitale. Soluzioni affidabili e innovative per migliorare le vostre prestazioni.',
+    
+    'home.hero.badge': 'Soluzioni Digitali Innovative',
+    'home.hero.title': 'Trasformate la vostra azienda con Nguessan-IT',
+    'home.hero.subtitle': 'Il vostro partner digitale per innovare e trasformare',
+    'home.hero.description': 'Presso Nguessan-IT, accompagniamo aziende, startup e istituzioni pubbliche nella loro trasformazione digitale. Le nostre soluzioni affidabili e innovative migliorano le vostre prestazioni e visibilità.',
+    'home.hero.cta1': 'Richiedi preventivo',
+    'home.hero.cta2': 'Scopri i nostri servizi',
+    
+    'home.services.title': 'I Nostri Servizi Principali',
+    'home.services.subtitle': 'Soluzioni complete per la vostra trasformazione digitale',
+    'home.services.web.title': 'Sviluppo Web e Mobile',
+    'home.services.web.description': 'Creazione di siti web e applicazioni mobili personalizzate, ottimizzate per prestazioni ed esperienza utente.',
+    'home.services.cloud.title': 'Soluzioni Cloud e IA',
+    'home.services.cloud.description': 'Integrazione di soluzioni cloud e intelligenza artificiale per automatizzare i vostri processi e proteggere i vostri dati.',
+    'home.services.support.title': 'Consulenza e Supporto IT',
+    'home.services.support.description': 'Accompagnamento strategico e tecnico per tutte le vostre sfide digitali.',
+    'home.services.learnMore': 'Saperne di più',
+    
+    'home.whyUs.title': 'Perché Sceglierci?',
+    'home.whyUs.subtitle': 'Vantaggi che fanno la differenza',
+    'home.whyUs.international.title': 'Esperienza Internazionale',
+    'home.whyUs.international.description': 'Esperienza comprovata in Africa, Europa e America con le migliori pratiche globali.',
+    'home.whyUs.reliability.title': 'Affidabilità e Follow-up',
+    'home.whyUs.reliability.description': 'Follow-up personalizzato e disponibilità costante per garantire il vostro successo.',
+    'home.whyUs.innovation.title': 'Innovazione Tecnologica',
+    'home.whyUs.innovation.description': 'Le ultime tecnologie e tendenze per mantenere la vostra azienda competitiva.',
+    'home.whyUs.support.title': 'Servizio Clienti Dedicato',
+    'home.whyUs.support.description': 'Un team reattivo e attento, disponibile 24/7 per soddisfare le vostre esigenze.',
+    
+    'home.testimonials.title': 'Testimonianze dei Clienti',
+    'home.testimonials.subtitle': 'Cosa dicono di noi i nostri clienti',
+    'home.testimonials.client1.quote': 'Grazie a Nguessan-IT, la nostra azienda ha digitalizzato tutti i suoi processi in tempi record.',
+    'home.testimonials.client1.author': 'Cliente A',
+    'home.testimonials.client2.quote': 'Il loro team è reattivo e sempre attento alle nostre esigenze.',
+    'home.testimonials.client2.author': 'Cliente B',
+    'home.testimonials.clientLabel': 'Cliente soddisfatto',
+    
+    'home.cta.badge': 'Pronti a iniziare?',
+    'home.cta.title': 'Iniziate Oggi la Vostra Trasformazione Digitale',
+    'home.cta.description': 'Unitevi a centinaia di aziende che si fidano di noi per la loro trasformazione digitale. Ottenete un preventivo gratuito e scoprite come possiamo far decollare il vostro successo.',
+    'home.cta.primary': 'Richiedi preventivo gratuito',
+    'home.cta.secondary': 'Contattateci',
     
     // Contact form placeholders
     'contact.name': 'Il tuo nome',

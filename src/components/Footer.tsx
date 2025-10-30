@@ -42,10 +42,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" }
+    { icon: Instagram, href: "https://www.instagram.com/nguessanit", label: "Instagram" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/nguessan-it", label: "LinkedIn" },
+    { icon: Facebook, href: "https://www.facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr", label: "Facebook" }
   ];
 
   const scrollToTop = () => {

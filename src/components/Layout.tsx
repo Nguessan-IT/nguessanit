@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Linkedin, Facebook } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSelector from "./LanguageSelector";
@@ -31,7 +31,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+            {/* Logo & Slogan */}
             <Link to="/" className="flex items-center space-x-3 group">
               <img 
                 src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png" 
@@ -42,9 +42,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 width="40"
                 height="40"
               />
-              <span className="font-bold text-xl gradient-text hidden sm:block transition-all duration-300 group-hover:tracking-wide">
-                Nguessan-IT
-              </span>
+              <div className="hidden sm:block">
+                <span className="font-bold text-xl gradient-text block transition-all duration-300 group-hover:tracking-wide">
+                  Nguessan-IT
+                </span>
+                <span className="text-xs text-muted-foreground">{t('header.slogan')}</span>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
@@ -62,6 +65,20 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Social Media Icons */}
+              <div className="flex items-center gap-2 pl-2 border-l border-border">
+                <a href="https://www.instagram.com/nguessanit" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110" aria-label="Instagram">
+                  <Instagram className="h-4 w-4" />
+                </a>
+                <a href="https://www.linkedin.com/company/nguessan-it" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110" aria-label="LinkedIn">
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a href="https://www.facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110" aria-label="Facebook">
+                  <Facebook className="h-4 w-4" />
+                </a>
+              </div>
+              
               <LanguageSelector />
               <Button variant="outline" className="hero-glow" asChild>
                 <Link to="/devis">{t('nav.quote')}</Link>
