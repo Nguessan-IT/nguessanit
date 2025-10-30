@@ -1,44 +1,45 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Scale, FileText, CheckCircle, ShieldCheck, Globe, Mail } from "lucide-react";
+import { Building2, Server, Copyright, Globe, Mail, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Terms = () => {
+const Legal = () => {
   const sections = [
     {
-      icon: FileText,
-      title: "Objet",
+      icon: Building2,
+      title: "Éditeur du site",
       content: [
-        "Présentation de nos services et solutions numériques",
-        "Destinés aux entreprises, startups, institutions et particuliers",
-        "Solutions web, applications, cloud et digitalisation"
+        "Nguessan-IT, Société par Actions Simplifiée Unipersonnelle (SASU)",
+        "Siège social : Abidjan, Côte d'Ivoire",
+        "Email : contact@nguessan-it.com",
+        "Directeur de la publication : Fiacre N'Guessan"
       ]
     },
     {
-      icon: CheckCircle,
-      title: "Acceptation",
+      icon: Server,
+      title: "Hébergement",
       content: [
-        "En accédant au site, vous acceptez les présentes conditions",
-        "Si vous refusez, veuillez cesser d'utiliser nos services",
-        "L'utilisation continue vaut acceptation"
+        "Site hébergé par Lovable Cloud Hosting",
+        "Infrastructure sécurisée et conforme aux normes de protection de données",
+        "Serveurs basés en Europe et aux États-Unis"
       ]
     },
     {
-      icon: ShieldCheck,
-      title: "Utilisation du contenu",
+      icon: Copyright,
+      title: "Propriété intellectuelle",
       content: [
-        "Tous les contenus sont la propriété exclusive de Nguessan-IT",
-        "Reproduction, distribution ou modification interdites",
-        "Sans autorisation écrite préalable"
+        "Tous les éléments du site sont la propriété de Nguessan-IT",
+        "Textes, images, codes, logos, documents, vidéos protégés",
+        "Reproduction partielle ou totale strictement interdite sans autorisation"
       ]
     },
     {
-      icon: Scale,
-      title: "Responsabilité",
+      icon: Globe,
+      title: "Liens externes",
       content: [
-        "Informations exactes mais sans garantie absolue",
-        "Aucune responsabilité en cas de dommage indirect",
-        "Lié à l'utilisation du site"
+        "Liens vers Instagram, LinkedIn, Facebook",
+        "Nguessan-IT ne saurait être responsable du contenu de ces plateformes",
+        "Vérification régulière des liens externes"
       ]
     }
   ];
@@ -54,43 +55,15 @@ const Terms = () => {
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              Conditions générales d'utilisation
+              Mentions légales
             </span>
           </h1>
           <p className="text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
-            Nguessan-IT — Société spécialisée en ingénierie logicielle et digitalisation
+            Informations légales officielles de <strong>Nguessan-IT</strong>
           </p>
           <p className="text-sm text-muted-foreground">
             Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
           </p>
-        </div>
-      </section>
-
-      {/* Introduction */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto">
-          <Card className="border-primary/20 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <CardHeader>
-              <CardTitle className="text-2xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                Éditeur du site
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-lg max-w-none space-y-3">
-              <p className="text-muted-foreground leading-relaxed">
-                Le site{" "}
-                <a href="https://www.nguessan-it.com" className="text-primary hover:underline font-medium">
-                  www.nguessan-it.com
-                </a>{" "}
-                est édité par <strong>Nguessan-IT</strong>, société spécialisée en ingénierie logicielle, 
-                solutions web et digitalisation d'entreprises.
-              </p>
-              <div className="space-y-2 text-muted-foreground">
-                <p><strong>Siège social :</strong> Abidjan, Côte d'Ivoire</p>
-                <p><strong>Email :</strong> <a href="mailto:contact@nguessan-it.com" className="text-primary hover:underline">contact@nguessan-it.com</a></p>
-                <p><strong>Directeur de la publication :</strong> Fiacre N'Guessan</p>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
@@ -127,7 +100,7 @@ const Terms = () => {
         </div>
       </section>
 
-      {/* Detailed Terms */}
+      {/* Detailed Sections */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto space-y-8">
           <Card className="border-primary/20 shadow-md">
@@ -139,15 +112,31 @@ const Terms = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                Le site contient des liens vers des plateformes tierces :
+                Le site{" "}
+                <a href="https://www.nguessan-it.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+                  www.nguessan-it.com
+                </a>{" "}
+                contient des liens vers :
               </p>
               <ul className="space-y-2 ml-4 text-muted-foreground">
-                <li>• <a href="https://linkedin.com/company/nguessan-it" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">LinkedIn</a></li>
-                <li>• <a href="https://instagram.com/nguessanit" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Instagram</a></li>
-                <li>• <a href="https://facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Facebook</a></li>
+                <li>
+                  • <a href="https://instagram.com/nguessanit" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  • <a href="https://linkedin.com/company/nguessan-it" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  • <a href="https://www.facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    Facebook
+                  </a>
+                </li>
               </ul>
               <p className="text-muted-foreground leading-relaxed">
-                Nguessan-IT décline toute responsabilité concernant leur contenu.
+                Nguessan-IT ne saurait être responsable du contenu de ces plateformes.
               </p>
             </CardContent>
           </Card>
@@ -161,10 +150,24 @@ const Terms = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                Les présentes conditions sont régies par la <strong>législation ivoirienne</strong>.
+                Les présentes mentions légales sont régies par la <strong>loi ivoirienne</strong>.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Compétence exclusive : <strong>tribunaux d'Abidjan</strong>.
+                En cas de litige, compétence exclusive attribuée aux <strong>tribunaux d'Abidjan</strong>.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-primary/20 shadow-md">
+            <CardHeader className="flex flex-row items-center gap-3">
+              <Copyright className="h-6 w-6 text-primary" />
+              <CardTitle className="text-2xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                Mise à jour
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed">
+                Cette page peut être modifiée à tout moment. La date de dernière révision est affichée en haut de cette page.
               </p>
             </CardContent>
           </Card>
@@ -176,14 +179,15 @@ const Terms = () => {
         <div className="max-w-4xl mx-auto">
           <Card className="border-primary/30 shadow-xl">
             <CardHeader>
-              <CardTitle className="text-3xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                En utilisant ce site, vous acceptez les présentes conditions d'utilisation.
+              <CardTitle className="text-3xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent flex items-center gap-3">
+                <Mail className="h-8 w-8 text-primary" />
+                Contactez-nous
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Pour toute question ou information complémentaire :
+                  Pour toute question concernant les mentions légales :
                 </p>
                 
                 <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
@@ -201,13 +205,10 @@ const Terms = () => {
                     <Link to="/contact">Contactez-nous</Link>
                   </Button>
                   <Button variant="outline" asChild className="hover:bg-primary/10">
-                    <Link to="/devis">Demander un devis</Link>
-                  </Button>
-                  <Button variant="outline" asChild className="hover:bg-primary/10">
                     <Link to="/politique-confidentialite">Politique de confidentialité</Link>
                   </Button>
                   <Button variant="outline" asChild className="hover:bg-primary/10">
-                    <Link to="/mentions-legales">Mentions légales</Link>
+                    <Link to="/conditions">Conditions d'utilisation</Link>
                   </Button>
                 </div>
               </div>
@@ -219,4 +220,4 @@ const Terms = () => {
   );
 };
 
-export default Terms;
+export default Legal;

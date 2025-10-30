@@ -1,51 +1,48 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Shield, Eye, Lock, Database, Mail, Phone } from "lucide-react";
+import { Shield, Lock, Database, Mail, Cookie, UserCheck, Globe, Server } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const Privacy = () => {
-  const { t } = useLanguage();
-  
   const sections = [
     {
       icon: Database,
-      title: t('privacy.dataCollection.title'),
+      title: "Collecte des données",
       content: [
-        t('privacy.dataCollection.item1'),
-        t('privacy.dataCollection.item2'),
-        t('privacy.dataCollection.item3'),
-        t('privacy.dataCollection.item4')
+        "Formulaires (contact, devis, newsletter)",
+        "Interactions avec nos services",
+        "Navigation (Google Analytics, Meta Ads)",
+        "Données transmises : nom, e-mail, téléphone, pays, société"
       ]
     },
     {
-      icon: Eye,
-      title: t('privacy.dataUsage.title'),
+      icon: UserCheck,
+      title: "Utilisation des données",
       content: [
-        t('privacy.dataUsage.item1'),
-        t('privacy.dataUsage.item2'),
-        t('privacy.dataUsage.item3'),
-        t('privacy.dataUsage.item4')
+        "Répondre à vos demandes et devis",
+        "Améliorer nos services et votre expérience",
+        "Relations commerciales et partenariales",
+        "Suivi client personnalisé"
       ]
     },
     {
-      icon: Lock,
-      title: t('privacy.dataProtection.title'),
+      icon: Cookie,
+      title: "Cookies et technologies",
       content: [
-        t('privacy.dataProtection.item1'),
-        t('privacy.dataProtection.item2'),
-        t('privacy.dataProtection.item3'),
-        t('privacy.dataProtection.item4')
+        "Garantir le bon fonctionnement du site",
+        "Analyser les performances",
+        "Personnaliser les publicités",
+        "Refus possible via votre navigateur"
       ]
     },
     {
       icon: Shield,
-      title: t('privacy.rights.title'),
+      title: "Vos droits (RGPD)",
       content: [
-        t('privacy.rights.item1'),
-        t('privacy.rights.item2'),
-        t('privacy.rights.item3'),
-        t('privacy.rights.item4')
+        "Accès, rectification, effacement",
+        "Portabilité et opposition",
+        "Contact : contact@nguessan-it.com",
+        "Réponse sous 30 jours maximum"
       ]
     }
   ];
@@ -54,21 +51,24 @@ const Privacy = () => {
     <div className="px-4 sm:px-6 lg:px-8">
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-hero opacity-60"></div>
-        <div className="floating-elements">
-          <div className="floating-orb"></div>
-          <div className="floating-orb"></div>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
         <div className="relative max-w-4xl mx-auto">
-          <Shield className="h-16 w-16 mx-auto mb-6 text-primary" />
+          <div className="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-2xl bg-primary/10 animate-pulse">
+            <Lock className="h-10 w-10 text-primary" />
+          </div>
           <h1 className="text-4xl sm:text-6xl font-bold mb-6">
-            <span className="gradient-text">{t('privacy.title')}</span>
+            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              Politique de confidentialité
+            </span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            {t('privacy.subtitle')}
+          <p className="text-xl text-muted-foreground mb-4 max-w-2xl mx-auto">
+            Bienvenue sur le site officiel de <strong>Nguessan-IT</strong>.
+          </p>
+          <p className="text-lg text-muted-foreground mb-8">
+            La protection de vos données personnelles est une priorité.
           </p>
           <p className="text-sm text-muted-foreground">
-            {t('privacy.lastUpdate')} {new Date().toLocaleDateString()}
+            Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
           </p>
         </div>
       </section>
@@ -76,16 +76,21 @@ const Privacy = () => {
       {/* Introduction */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto">
-          <Card className="card-elegant border-border mb-8">
+          <Card className="border-primary/20 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl gradient-text">{t('privacy.intro.title')}</CardTitle>
+              <CardTitle className="text-2xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                Introduction
+              </CardTitle>
             </CardHeader>
-            <CardContent className="prose prose-lg max-w-none">
-              <p className="text-muted-foreground">
-                {t('privacy.intro.text1')}
+            <CardContent className="prose prose-lg max-w-none space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                Cette politique explique comment nous collectons, utilisons et protégeons vos informations lorsque vous naviguez sur{" "}
+                <a href="https://www.nguessan-it.com" className="text-primary hover:underline font-medium">
+                  www.nguessan-it.com
+                </a>.
               </p>
-              <p className="text-muted-foreground">
-                {t('privacy.intro.text2')}
+              <p className="text-muted-foreground leading-relaxed">
+                Nguessan-IT s'engage à respecter le <strong>RGPD</strong> et la législation ivoirienne en matière de protection des données.
               </p>
             </CardContent>
           </Card>
@@ -93,25 +98,28 @@ const Privacy = () => {
       </section>
 
       {/* Main Sections */}
-      <section className="py-16">
+      <section className="py-16 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {sections.map((section, index) => (
-              <Card key={index} className="card-elegant border-border hover:shadow-glow transition-all duration-500">
+              <Card 
+                key={index} 
+                className="border-primary/20 hover:border-primary/40 hover:shadow-lg transition-all duration-300 group"
+              >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center">
-                      <section.icon className="h-6 w-6 text-primary-foreground" />
+                    <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 rounded-xl flex items-center justify-center transition-colors duration-300">
+                      <section.icon className="h-6 w-6 text-primary" />
                     </div>
-                    <CardTitle className="text-xl">{section.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold">{section.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {section.content.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="text-muted-foreground">{item}</span>
+                      <li key={idx} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                        <span className="text-muted-foreground leading-relaxed">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -123,138 +131,96 @@ const Privacy = () => {
       </section>
 
       {/* Detailed Sections */}
-      <section className="py-16 bg-card/30">
+      <section className="py-16">
         <div className="max-w-4xl mx-auto space-y-8">
-          <Card className="card-elegant border-border">
-            <CardHeader>
-              <CardTitle className="text-2xl gradient-text">{t('privacy.legalBasis.title')}</CardTitle>
+          <Card className="border-primary/20 shadow-md">
+            <CardHeader className="flex flex-row items-center gap-3">
+              <Lock className="h-6 w-6 text-primary" />
+              <CardTitle className="text-2xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                Sécurité et conservation
+              </CardTitle>
             </CardHeader>
-            <CardContent className="prose prose-lg max-w-none">
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  <strong>Exécution contractuelle :</strong> {t('privacy.legalBasis.contractual')}
-                </p>
-                <p>
-                  <strong>Intérêt légitime :</strong> {t('privacy.legalBasis.legitimate')}
-                </p>
-                <p>
-                  <strong>Consentement :</strong> {t('privacy.legalBasis.consent')}
-                </p>
-                <p>
-                  <strong>Obligation légale :</strong> {t('privacy.legalBasis.legal')}
-                </p>
-              </div>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                Vos données sont protégées via <strong>SSL</strong>, hébergement sécurisé et accès restreint.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Durée de conservation :</strong> Maximum 3 ans sans activité.
+              </p>
             </CardContent>
           </Card>
 
-          <Card className="card-elegant border-border">
-            <CardHeader>
-              <CardTitle className="text-2xl gradient-text">{t('privacy.retention.title')}</CardTitle>
+          <Card className="border-primary/20 shadow-md">
+            <CardHeader className="flex flex-row items-center gap-3">
+              <Server className="h-6 w-6 text-primary" />
+              <CardTitle className="text-2xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                Partage des données
+              </CardTitle>
             </CardHeader>
-            <CardContent className="prose prose-lg max-w-none">
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  <strong>Clients actifs :</strong> {t('privacy.retention.clients')}
-                </p>
-                <p>
-                  <strong>Prospects :</strong> {t('privacy.retention.prospects')}
-                </p>
-                <p>
-                  <strong>Données techniques :</strong> {t('privacy.retention.technical')}
-                </p>
-                <p>
-                  <strong>Cookies :</strong> {t('privacy.retention.cookies')}
-                </p>
-              </div>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Nguessan-IT ne revend ni ne loue aucune donnée.</strong>
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Vos informations peuvent être partagées uniquement avec des sous-traitants techniques (hébergement, analytics) 
+                dans le respect strict du RGPD.
+              </p>
             </CardContent>
           </Card>
 
-          <Card className="card-elegant border-border">
-            <CardHeader>
-              <CardTitle className="text-2xl gradient-text">{t('privacy.sharing.title')}</CardTitle>
+          <Card className="border-primary/20 shadow-md">
+            <CardHeader className="flex flex-row items-center gap-3">
+              <Globe className="h-6 w-6 text-primary" />
+              <CardTitle className="text-2xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                Mises à jour
+              </CardTitle>
             </CardHeader>
-            <CardContent className="prose prose-lg max-w-none">
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  {t('privacy.sharing.intro')}
-                </p>
-                <ul className="space-y-2 ml-4">
-                  <li>• <strong>Sous-traitants techniques :</strong> {t('privacy.sharing.subcontractors')}</li>
-                  <li>• <strong>Partenaires commerciaux :</strong> {t('privacy.sharing.partners')}</li>
-                  <li>• <strong>Autorités compétentes :</strong> {t('privacy.sharing.authorities')}</li>
-                </ul>
-                <p>
-                  {t('privacy.sharing.location')}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="card-elegant border-border">
-            <CardHeader>
-              <CardTitle className="text-2xl gradient-text">{t('privacy.security.title')}</CardTitle>
-            </CardHeader>
-            <CardContent className="prose prose-lg max-w-none">
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  {t('privacy.security.intro')}
-                </p>
-                <ul className="space-y-2 ml-4">
-                  <li>• <strong>Chiffrement :</strong> {t('privacy.security.encryption')}</li>
-                  <li>• <strong>Accès :</strong> {t('privacy.security.access')}</li>
-                  <li>• <strong>Surveillance :</strong> {t('privacy.security.monitoring')}</li>
-                  <li>• <strong>Formation :</strong> {t('privacy.security.training')}</li>
-                </ul>
-              </div>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed">
+                Cette politique peut être révisée à tout moment. La date de dernière mise à jour est affichée en haut de cette page.
+              </p>
             </CardContent>
           </Card>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-16">
+      <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto">
-          <Card className="card-elegant border-border">
+          <Card className="border-primary/30 shadow-xl">
             <CardHeader>
-              <CardTitle className="text-2xl gradient-text flex items-center gap-2">
-                <Mail className="h-6 w-6" />
-                {t('privacy.contact.title')}
+              <CardTitle className="text-3xl bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent flex items-center gap-3">
+                <Mail className="h-8 w-8 text-primary" />
+                Pour toute question
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                <p className="text-muted-foreground">
-                  {t('privacy.contact.description')}
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Pour exercer vos droits ou toute question concernant vos données personnelles, contactez-nous :
                 </p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-primary" />
-                    <div>
-                      <p className="font-medium">{t('privacy.contact.email')}</p>
-                      <p className="text-muted-foreground">contact@nguessan-it.fr</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-primary" />
-                    <div>
-                      <p className="font-medium">{t('privacy.contact.phone')}</p>
-                      <p className="text-muted-foreground">+33 (0)1 XX XX XX XX</p>
-                    </div>
+                <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-lg">
+                  <Mail className="h-6 w-6 text-primary" />
+                  <div>
+                    <p className="font-semibold text-foreground">Email</p>
+                    <a href="mailto:contact@nguessan-it.com" className="text-primary hover:underline text-lg">
+                      contact@nguessan-it.com
+                    </a>
                   </div>
                 </div>
                 
-                <p className="text-sm text-muted-foreground">
-                  {t('privacy.contact.response')}
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button asChild>
-                    <Link to="/contact">{t('privacy.contact.contactUs')}</Link>
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Button asChild className="group hover:scale-105 transition-transform duration-200">
+                    <Link to="/contact">
+                      Contactez-nous
+                    </Link>
                   </Button>
-                  <Button variant="outline" asChild>
-                    <Link to="/conditions">{t('privacy.contact.terms')}</Link>
+                  <Button variant="outline" asChild className="hover:bg-primary/10">
+                    <Link to="/conditions">Conditions générales</Link>
+                  </Button>
+                  <Button variant="outline" asChild className="hover:bg-primary/10">
+                    <Link to="/mentions-legales">Mentions légales</Link>
                   </Button>
                 </div>
               </div>
