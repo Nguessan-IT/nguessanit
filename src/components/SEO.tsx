@@ -343,9 +343,15 @@ const SEO = ({
     };
 
     // Add hreflang links for supported languages
-    updateHreflang('fr', currentUrl.replace(/\?.*$/, '') + '?lang=fr');
-    updateHreflang('en', currentUrl.replace(/\?.*$/, '') + '?lang=en');
-    updateHreflang('x-default', currentUrl.replace(/\?.*$/, ''));
+    const baseHrefUrl = url || 'https://www.nguessan-it.com/';
+    const cleanUrl = baseHrefUrl.replace(/\/(en|es|pt|it)\/?$/, '/');
+    
+    updateHreflang('fr', cleanUrl);
+    updateHreflang('en', cleanUrl.replace(/\/$/, '') + '/en/');
+    updateHreflang('es', cleanUrl.replace(/\/$/, '') + '/es/');
+    updateHreflang('pt', cleanUrl.replace(/\/$/, '') + '/pt/');
+    updateHreflang('it', cleanUrl.replace(/\/$/, '') + '/it/');
+    updateHreflang('x-default', cleanUrl);
 
     // Structured data
     let script = document.querySelector('#structured-data') as HTMLScriptElement;

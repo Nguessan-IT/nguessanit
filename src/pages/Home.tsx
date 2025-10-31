@@ -10,7 +10,7 @@ import { ServiceModal } from "@/components/ServiceModal";
 import { useState } from "react";
 
 const Home = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { formatPrice, isLoading } = useCurrency();
   const [selectedService, setSelectedService] = useState<string | null>(null);
   
@@ -78,11 +78,43 @@ const Home = () => {
     { number: "24/7", label: t('stats.support') }
   ];
 
+  const seoContent = {
+    fr: {
+      title: "Nguessan-IT | Digitalisez vos idées et transformez votre entreprise",
+      description: "Nguessan-IT accompagne entreprises, startups et institutions pour concevoir et déployer des solutions digitales sur mesure en Afrique, Europe et Amérique. Demandez un devis gratuit.",
+      ogDescription: "Développement web, cloud, IA et branding digital. Solutions sur mesure pour entreprises."
+    },
+    en: {
+      title: "Nguessan-IT | Digitize your ideas and unlock your business potential",
+      description: "Nguessan-IT helps businesses, startups and institutions design and deploy custom digital solutions across Africa, Europe and America. Get a free quote.",
+      ogDescription: "Web development, cloud, AI and digital branding. Tailored solutions for businesses."
+    },
+    es: {
+      title: "Nguessan-IT | Digitaliza tus ideas y potencia tu empresa",
+      description: "Nguessan-IT ayuda a empresas, startups e instituciones a diseñar y desplegar soluciones digitales a medida en África, Europa y América. Solicita una cotización gratuita.",
+      ogDescription: "Desarrollo web, nube, IA y branding digital. Soluciones a medida para empresas."
+    },
+    pt: {
+      title: "Nguessan-IT | Digitalize suas ideias e libere o potencial do seu negócio",
+      description: "Nguessan-IT ajuda empresas, startups e instituições a projetar e implementar soluções digitais personalizadas na África, Europa e América. Solicite um orçamento gratuito.",
+      ogDescription: "Desenvolvimento web, nuvem, IA e branding digital. Soluções personalizadas para empresas."
+    },
+    it: {
+      title: "Nguessan-IT | Digitalizza le tue idee e sblocca il potenziale della tua azienda",
+      description: "Nguessan-IT aiuta aziende, startup e istituzioni a progettare e implementare soluzioni digitali personalizzate in Africa, Europa e America. Richiedi un preventivo gratuito.",
+      ogDescription: "Sviluppo web, cloud, IA e branding digitale. Soluzioni su misura per le aziende."
+    }
+  };
+
+  const currentContent = seoContent[language as keyof typeof seoContent] || seoContent.fr;
+  const baseUrl = "https://www.nguessan-it.com";
+  const languagePath = language === 'fr' ? '' : `/${language}`;
+
   return (
     <div>
       <SEO 
-        title="Nguessan-IT | Digitalisez vos idées et transformez votre entreprise"
-        description="Nguessan-IT accompagne entreprises, startups et institutions à concevoir, développer et déployer des solutions digitales sur mesure en Afrique, Europe et Amérique. Demandez un devis gratuit."
+        title={currentContent.title}
+        description={currentContent.description}
         keywords={[
           'transformation digitale',
           'solutions digitales sur mesure',
@@ -94,32 +126,26 @@ const Home = () => {
           'cloud computing',
           'conseil IT'
         ]}
-        ogType="business.business"
+        ogType="website"
         twitterCard="summary_large_image"
-        image="/src/assets/og-image.jpg"
-        canonical="https://www.nguessan-it.com/"
+        image="https://www.nguessan-it.com/assets/og-home.jpg"
+        url={`${baseUrl}${languagePath}/`}
+        canonical={`${baseUrl}${languagePath}/`}
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "WebSite",
+          "@type": "Organization",
           "name": "Nguessan-IT",
-          "url": "https://www.nguessan-it.com",
-          "description": "Nguessan-IT accompagne entreprises, startups et institutions à concevoir, développer et déployer des solutions digitales sur mesure en Afrique, Europe et Amérique.",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://www.nguessan-it.com/services?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          },
-          "mainEntity": {
-            "@type": "Organization",
-            "name": "Nguessan-IT",
-            "description": "Votre partenaire digital pour innover et transformer",
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "CI",
-              "addressLocality": "Abidjan"
-            },
-            "areaServed": ["Africa", "Europe", "America"]
-          }
+          "url": baseUrl,
+          "logo": `${baseUrl}/logo.png`,
+          "sameAs": [
+            "https://linkedin.com/company/nguessan-it",
+            "https://instagram.com/nguessanit",
+            "https://www.facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr"
+          ],
+          "founder": "Fiacre N'Guessan",
+          "foundingLocation": "Abidjan, Côte d'Ivoire",
+          "areaServed": ["Afrique", "Europe", "Amérique"],
+          "description": currentContent.ogDescription
         }}
       />
       
