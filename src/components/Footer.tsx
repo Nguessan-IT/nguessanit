@@ -68,8 +68,9 @@ const Footer = () => {
             <Link to="/" className="inline-block">
               <img
                 src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png"
-                alt="Logo Nguessan-IT"
+                alt="Logo officiel Nguessan-IT, solutions digitales innovantes"
                 className="h-16 w-auto"
+                loading="lazy"
               />
             </Link>
             <p className="text-muted-foreground leading-relaxed">

@@ -9,8 +9,9 @@ export default function HeroSection() {
       <div className="mb-6">
         <img
           src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png"
-          alt="Logo Nguessan-IT"
+          alt="Nguessan-IT, partenaire de confiance en digitalisation - Solutions web, cloud et branding digital en Afrique, Europe et Amérique"
           className="mx-auto w-32 md:w-40"
+          loading="eager"
         />
         <p className="mt-3 text-primary font-semibold tracking-wide uppercase">
           Votre partenaire digital pour innover et transformer

@@ -168,8 +168,9 @@ const Home = () => {
           >
             <img
               src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png"
-              alt="Logo Nguessan-IT"
+              alt="Logo officiel Nguessan-IT - Expertise en transformation numérique et innovation digitale"
               className="mx-auto w-32 md:w-40 mb-4"
+              loading="eager"
             />
             <p className="text-primary font-semibold tracking-wide uppercase text-sm md:text-base">
               Votre partenaire digital pour innover et transformer

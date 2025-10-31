@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { PhoneInput } from "@/components/PhoneInput";
 import { 
   Mail, 
   Phone, 
@@ -49,7 +50,7 @@ const Contact = () => {
   const contactSchema = z.object({
     fullName: z.string().trim().min(2, "Le nom doit contenir au moins 2 caractères").max(100),
     email: z.string().trim().email("Email invalide").max(255),
-    phone: z.string().trim().max(20),
+    phone: z.string().min(8, "Numéro de téléphone invalide").max(20),
     company: z.string().trim().max(100),
     projectType: z.string().min(1, "Veuillez sélectionner un type de projet"),
     budget: z.string().min(1, "Veuillez sélectionner un budget"),
@@ -368,23 +369,19 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <Label htmlFor="phone" className="text-base font-semibold">
-                          Téléphone
+                          Téléphone <span className="text-destructive">*</span>
                         </Label>
-                        <div className="flex gap-2 mt-2">
-                          <Input
-                            id="countryCode"
-                            name="countryCode"
-                            defaultValue="+225"
-                            className="w-24 h-12"
-                            placeholder="+225"
-                          />
-                          <Input
-                            id="phone"
-                            name="phone"
+                        <div className="mt-2">
+                          <PhoneInput
                             value={formData.phone}
-                            onChange={handleChange}
-                            className={`flex-1 h-12 ${formErrors.phone ? 'border-destructive' : ''}`}
-                            placeholder="0777655416"
+                            onChange={(value) => {
+                              setFormData({ ...formData, phone: value });
+                              if (formErrors.phone) {
+                                setFormErrors({ ...formErrors, phone: "" });
+                              }
+                            }}
+                            className={formErrors.phone ? 'border-destructive' : ''}
+                            placeholder="+225 07 77 65 54 16"
                           />
                         </div>
                         {formErrors.phone && (

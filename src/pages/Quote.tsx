@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { PhoneInput } from "@/components/PhoneInput";
 import { 
   Calculator, 
   Clock, 
@@ -259,22 +260,11 @@ const Quote = () => {
                         <Label htmlFor="phone" className="text-base font-semibold">
                           {t('quote.form.phone')} {t('contact.form.required')}
                         </Label>
-                        <div className="flex gap-2 mt-2">
-                          <Input
-                            id="countryCode"
-                            name="countryCode"
-                            defaultValue="+225"
-                            className="w-24 h-12"
-                            placeholder="+225"
-                          />
-                          <Input
-                            id="phone"
-                            name="phone"
+                        <div className="mt-2">
+                          <PhoneInput
                             value={formData.phone}
-                            onChange={handleChange}
-                            required
-                            className="flex-1 h-12"
-                            placeholder={t('quote.form.placeholder.phone')}
+                            onChange={(value) => setFormData({ ...formData, phone: value })}
+                            placeholder="+225 07 77 65 54 16"
                           />
                         </div>
                       </div>

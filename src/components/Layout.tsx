@@ -36,8 +36,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <Link to="/" className="flex items-center space-x-3 group">
               <img 
                 src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png" 
-                alt="Nguessan-IT - Expert informatique Abidjan Côte d'Ivoire - Logo officiel société développement web maintenance IT solutions cloud formation professionnelle" 
-                title="Nguessan-IT - Solutions informatiques professionnelles en Côte d'Ivoire"
+                alt="Logo officiel Nguessan-IT, solutions digitales innovantes en Afrique, Europe et Amérique - Développement web, cloud computing, IA et transformation numérique" 
+                title="Nguessan-IT - Votre partenaire digital pour innover et transformer"
                 className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                 loading="eager"
                 width="40"
