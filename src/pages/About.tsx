@@ -223,9 +223,31 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               <span className="gradient-text">Notre Mission</span>
             </h2>
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Digitaliser les idées innovantes et libérer le potentiel des entreprises, startups et institutions.
-            </p>
+            <div className="max-w-4xl mx-auto space-y-6">
+              <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed">
+                Dans un monde où <strong className="text-foreground">80% des entreprises accélèrent leur transformation digitale</strong> post-COVID, nous positionnons vos organisations à l'avant-garde de cette révolution technologique.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Notre mission : <strong className="text-foreground">transformer la complexité technologique en avantage concurrentiel</strong>. Nous accompagnons les entreprises, startups et institutions dans la maîtrise des enjeux critiques de l'ère numérique : <span className="text-primary">scalabilité cloud</span>, <span className="text-primary">sécurité des données</span>, <span className="text-primary">expérience utilisateur optimale</span> et <span className="text-primary">intégration IA</span>.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
+                  <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-bold text-lg mb-2">ROI mesurable</h3>
+                  <p className="text-sm text-muted-foreground">Solutions conçues pour générer un retour sur investissement quantifiable</p>
+                </Card>
+                <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
+                  <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-bold text-lg mb-2">Innovation pragmatique</h3>
+                  <p className="text-sm text-muted-foreground">Technologies de pointe adaptées à vos réalités opérationnelles</p>
+                </Card>
+                <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
+                  <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-bold text-lg mb-2">Agilité stratégique</h3>
+                  <p className="text-sm text-muted-foreground">Infrastructures évolutives pour accompagner votre croissance</p>
+                </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -237,9 +259,14 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               <span className="gradient-text">{t('about.expertiseSection.title')}</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
-              {t('about.expertiseSection.subtitle')}
-            </p>
+            <div className="max-w-4xl mx-auto space-y-4">
+              <p className="text-xl text-muted-foreground">
+                Des compétences techniques de niveau entreprise pour relever vos défis les plus critiques
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                Face à l'accélération technologique (<strong className="text-foreground">cycle de vie moyen d'une stack technique : 3 ans</strong>), nous maintenons une expertise constamment actualisée sur les frameworks modernes, les architectures cloud-native et les standards de cybersécurité. Notre approche combine <span className="text-primary">méthodologies agiles</span>, <span className="text-primary">DevOps/CI-CD</span> et <span className="text-primary">architecture microservices</span> pour des solutions robustes et évolutives.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
