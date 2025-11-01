@@ -411,16 +411,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Main Services */}
-      <section className="py-8 sm:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-            {services.map((service, index) => (
-              <ServiceCard key={index} service={service} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Additional Services */}
       <section className="py-8 sm:py-12 lg:py-16 bg-card/30">
