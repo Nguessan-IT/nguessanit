@@ -411,35 +411,6 @@ const Services = () => {
         </div>
       </section>
 
-
-      {/* Additional Services */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-card/30">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
-              <span className="gradient-text">{t('services.complementary.title')}</span>
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground px-4">
-              {t('services.complementary.subtitle')}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-            {additionalServices.map((service, index) => (
-              <Card key={index} className="card-elegant border-border hover-glow transition-all duration-500 text-center group">
-                <CardContent className="p-3 sm:p-4 lg:p-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-2 sm:mb-3 lg:mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg">
-                    <service.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground drop-shadow-sm" />
-                  </div>
-                  <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm">{service.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Notre Méthodologie - Timeline Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-card/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
