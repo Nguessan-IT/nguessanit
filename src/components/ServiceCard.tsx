@@ -57,19 +57,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
       
       <CardContent>
         <div className="space-y-6">
-          {service.benefits && service.benefits.length > 0 && (
-            <div>
-              <h4 className="font-semibold mb-3">{t('services.clientBenefits') || 'Bénéfices clients'}</h4>
-              <ul className="space-y-2">
-                {service.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span className="font-medium">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
           
           <div>
             <h4 className="font-semibold mb-3">{t('services.featuresIncluded')}</h4>
