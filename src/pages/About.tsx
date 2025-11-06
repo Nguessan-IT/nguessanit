@@ -223,44 +223,31 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               <span className="gradient-text">Notre Mission</span>
             </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Texte à gauche */}
-            <div className="flex items-center">
-              <img 
-                src="/src/assets/mission-text.png" 
-                alt="Mission Nguessan-IT" 
-                className="w-full h-auto object-contain"
-              />
+            <div className="max-w-4xl mx-auto space-y-6">
+              <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed">
+                Dans un monde où <strong className="text-foreground">80% des entreprises accélèrent leur transformation digitale</strong> post-COVID, nous positionnons vos organisations à l'avant-garde de cette révolution technologique.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Notre mission : <strong className="text-foreground">transformer la complexité technologique en avantage concurrentiel</strong>. Nous accompagnons les entreprises, startups et institutions dans la maîtrise des enjeux critiques de l'ère numérique : <span className="text-primary">scalabilité cloud</span>, <span className="text-primary">sécurité des données</span>, <span className="text-primary">expérience utilisateur optimale</span> et <span className="text-primary">intégration IA</span>.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
+                  <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-bold text-lg mb-2">ROI mesurable</h3>
+                  <p className="text-sm text-muted-foreground">Solutions conçues pour générer un retour sur investissement quantifiable</p>
+                </Card>
+                <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
+                  <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-bold text-lg mb-2">Innovation pragmatique</h3>
+                  <p className="text-sm text-muted-foreground">Technologies de pointe adaptées à vos réalités opérationnelles</p>
+                </Card>
+                <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
+                  <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h3 className="font-bold text-lg mb-2">Agilité stratégique</h3>
+                  <p className="text-sm text-muted-foreground">Infrastructures évolutives pour accompagner votre croissance</p>
+                </Card>
+              </div>
             </div>
-            
-            {/* Logo à droite */}
-            <div className="flex items-center justify-start">
-              <img 
-                src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png" 
-                alt="Logo Nguessan-IT" 
-                className="w-full max-w-sm h-auto object-contain transition-all duration-500 hover:scale-110 hover:rotate-3 cursor-pointer"
-              />
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
-              <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-lg mb-2">ROI mesurable</h3>
-              <p className="text-sm text-muted-foreground">Solutions conçues pour générer un retour sur investissement quantifiable</p>
-            </Card>
-            <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
-              <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-lg mb-2">Innovation pragmatique</h3>
-              <p className="text-sm text-muted-foreground">Technologies de pointe adaptées à vos réalités opérationnelles</p>
-            </Card>
-            <Card className="card-elegant border-border text-center p-6 hover:shadow-glow transition-all duration-300">
-              <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-lg mb-2">Agilité stratégique</h3>
-              <p className="text-sm text-muted-foreground">Infrastructures évolutives pour accompagner votre croissance</p>
-            </Card>
           </div>
         </div>
       </section>
