@@ -397,10 +397,10 @@ const Services = () => {
                       <p className="text-xs text-primary font-medium">Technologies :</p>
                       <p className="text-xs text-muted-foreground mt-1">{service.tech}</p>
                     </div>
-                    <Button variant="outline" size="sm" asChild className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Link to={service.link}>
+                    <Button variant="outline" size="sm" asChild className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors whitespace-normal h-auto py-2">
+                      <Link to={service.link} className="text-center">
                         {service.cta}
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                        <ArrowRight className="ml-2 h-4 w-4 inline-block flex-shrink-0" />
                       </Link>
                     </Button>
                   </CardContent>
