@@ -225,22 +225,22 @@ const About = () => {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Texte à gauche */}
-            <div className="space-y-6">
+            <div className="flex items-center">
               <img 
-                src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png" 
-                alt="Mission text" 
+                src="/src/assets/mission-text.png" 
+                alt="Mission Nguessan-IT" 
                 className="w-full h-auto object-contain"
               />
             </div>
             
             {/* Logo à droite */}
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-start">
               <img 
                 src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png" 
                 alt="Logo Nguessan-IT" 
-                className="w-full max-w-md h-auto object-contain"
+                className="w-full max-w-sm h-auto object-contain"
               />
             </div>
           </div>
