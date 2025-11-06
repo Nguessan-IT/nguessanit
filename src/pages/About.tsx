@@ -240,7 +240,7 @@ const About = () => {
               <img 
                 src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png" 
                 alt="Logo Nguessan-IT" 
-                className="w-full max-w-sm h-auto object-contain"
+                className="w-full max-w-sm h-auto object-contain transition-all duration-500 hover:scale-110 hover:rotate-3 cursor-pointer"
               />
             </div>
           </div>
