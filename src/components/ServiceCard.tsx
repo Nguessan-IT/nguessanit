@@ -79,10 +79,10 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
             </div>
           </div>
           
-          <Button className="w-full hero-glow" asChild>
-            <Link to={`/contact?service=${encodeURIComponent(service.title)}`}>
-              Demandez un devis pour ce service
-              <ArrowRight className="ml-2 h-4 w-4" />
+          <Button className="w-full hero-glow text-center" asChild>
+            <Link to={`/contact?service=${encodeURIComponent(service.title)}`} className="flex items-center justify-center text-center">
+              <span className="text-center">Demandez un devis pour ce service</span>
+              <ArrowRight className="ml-2 h-4 w-4 flex-shrink-0" />
             </Link>
           </Button>
         </div>
