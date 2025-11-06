@@ -68,10 +68,9 @@ const About = () => {
   ];
 
   const teamLocations = [
-    { city: "Abidjan", country: "Côte d'Ivoire", icon: MapPin },
-    { city: "Paris", country: "France", icon: MapPin },
-    { city: "Montréal", country: "Canada", icon: MapPin },
-    { city: "Lisbonne", country: "Portugal", icon: MapPin }
+    { city: "Abidjan", country: "Côte d'Ivoire", icon: MapPin, active: true },
+    { city: "France", country: "Bientôt", icon: MapPin, active: false },
+    { city: "Amérique du Nord", country: "Bientôt", icon: MapPin, active: false }
   ];
 
   const counters = [
@@ -368,7 +367,7 @@ const About = () => {
                 <h3 className="text-xl font-bold mb-6">Notre équipe internationale</h3>
                 <div className="space-y-4">
                   {teamLocations.map((location, index) => (
-                    <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-card/50 hover:bg-card transition-colors">
+                    <div key={index} className={`flex items-center gap-3 p-3 rounded-lg bg-card/50 hover:bg-card transition-colors ${!location.active && 'opacity-70'}`}>
                       <MapPin className="h-5 w-5 text-primary" />
                       <div>
                         <p className="font-semibold">{location.city}</p>
