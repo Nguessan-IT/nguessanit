@@ -316,21 +316,36 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Contact Form */}
             <div className="lg:col-span-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <Card className="card-elegant border-border hover:shadow-2xl transition-all duration-500">
-                <CardHeader className="text-center">
-                  <CardTitle className="text-3xl flex items-center justify-center gap-3">
-                    <MessageSquare className="h-8 w-8 text-primary animate-pulse" />
-                    <span className="gradient-text">Formulaire de contact</span>
-                  </CardTitle>
-                  <p className="text-muted-foreground text-lg">
-                    Remplissez ce formulaire et nous vous répondrons sous 48h maximum
-                  </p>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <form onSubmit={handleSubmit} className="space-y-6">
+              <Card className="relative card-elegant border-border hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                {/* Background captivant avec gradient animé */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 opacity-50"></div>
+                <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-primary rounded-full blur-3xl opacity-10 animate-pulse"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-br from-accent to-secondary rounded-full blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '1s' }}></div>
+                
+                {/* Floating elements decoratifs */}
+                <div className="absolute top-10 left-10 w-2 h-2 bg-primary rounded-full animate-pulse opacity-40"></div>
+                <div className="absolute top-20 right-20 w-3 h-3 bg-accent rounded-full animate-pulse opacity-40" style={{ animationDelay: '0.5s' }}></div>
+                <div className="absolute bottom-20 left-20 w-2 h-2 bg-secondary rounded-full animate-pulse opacity-40" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute bottom-10 right-10 w-3 h-3 bg-primary rounded-full animate-pulse opacity-40" style={{ animationDelay: '1.5s' }}></div>
+                
+                <div className="relative z-10">
+                  <CardHeader className="text-center pb-8">
+                    <CardTitle className="text-3xl flex items-center justify-center gap-3 mb-2">
+                      <div className="relative">
+                        <MessageSquare className="h-8 w-8 text-primary animate-pulse" />
+                        <div className="absolute inset-0 bg-primary rounded-full blur-md opacity-30 animate-pulse"></div>
+                      </div>
+                      <span className="gradient-text">Formulaire de contact</span>
+                    </CardTitle>
+                    <p className="text-muted-foreground text-lg">
+                      Remplissez ce formulaire et nous vous répondrons sous 48h maximum
+                    </p>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="fullName" className="text-base font-semibold">
+                      <div className="group">
+                        <Label htmlFor="fullName" className="text-base font-semibold flex items-center gap-2">
                           Nom complet <span className="text-destructive">*</span>
                         </Label>
                         <Input
@@ -339,15 +354,15 @@ const Contact = () => {
                           value={formData.fullName}
                           onChange={handleChange}
                           required
-                          className={`mt-2 h-12 ${formErrors.fullName ? 'border-destructive' : ''}`}
+                          className={`mt-2 h-12 transition-all duration-300 hover:border-primary focus:border-primary ${formErrors.fullName ? 'border-destructive' : ''}`}
                           placeholder="Ex: Jean Dupont"
                         />
                         {formErrors.fullName && (
                           <p className="text-sm text-destructive mt-1">{formErrors.fullName}</p>
                         )}
                       </div>
-                      <div>
-                        <Label htmlFor="email" className="text-base font-semibold">
+                      <div className="group">
+                        <Label htmlFor="email" className="text-base font-semibold flex items-center gap-2">
                           Email professionnel <span className="text-destructive">*</span>
                         </Label>
                         <Input
@@ -357,7 +372,7 @@ const Contact = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className={`mt-2 h-12 ${formErrors.email ? 'border-destructive' : ''}`}
+                          className={`mt-2 h-12 transition-all duration-300 hover:border-primary focus:border-primary ${formErrors.email ? 'border-destructive' : ''}`}
                           placeholder="votre.email@entreprise.com"
                         />
                         {formErrors.email && (
@@ -367,8 +382,8 @@ const Contact = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="phone" className="text-base font-semibold">
+                      <div className="group">
+                        <Label htmlFor="phone" className="text-base font-semibold flex items-center gap-2">
                           Téléphone <span className="text-destructive">*</span>
                         </Label>
                         <div className="mt-2">
@@ -388,8 +403,8 @@ const Contact = () => {
                           <p className="text-sm text-destructive mt-1">{formErrors.phone}</p>
                         )}
                       </div>
-                      <div>
-                        <Label htmlFor="company" className="text-base font-semibold">
+                      <div className="group">
+                        <Label htmlFor="company" className="text-base font-semibold flex items-center gap-2">
                           Entreprise
                         </Label>
                         <Input
@@ -397,15 +412,15 @@ const Contact = () => {
                           name="company"
                           value={formData.company}
                           onChange={handleChange}
-                          className={`mt-2 h-12 ${formErrors.company ? 'border-destructive' : ''}`}
+                          className={`mt-2 h-12 transition-all duration-300 hover:border-primary focus:border-primary ${formErrors.company ? 'border-destructive' : ''}`}
                           placeholder="Ex: MonEntreprise SARL"
                         />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="projectType" className="text-base font-semibold">
+                      <div className="group">
+                        <Label htmlFor="projectType" className="text-base font-semibold flex items-center gap-2">
                           Type de projet <span className="text-destructive">*</span>
                         </Label>
                         <Select
@@ -417,7 +432,7 @@ const Contact = () => {
                             }
                           }}
                         >
-                          <SelectTrigger className={`mt-2 h-12 ${formErrors.projectType ? 'border-destructive' : ''}`}>
+                          <SelectTrigger className={`mt-2 h-12 transition-all duration-300 hover:border-primary focus:border-primary ${formErrors.projectType ? 'border-destructive' : ''}`}>
                             <SelectValue placeholder="Sélectionnez un type" />
                           </SelectTrigger>
                           <SelectContent>
@@ -432,8 +447,8 @@ const Contact = () => {
                           <p className="text-sm text-destructive mt-1">{formErrors.projectType}</p>
                         )}
                       </div>
-                      <div>
-                        <Label htmlFor="budget" className="text-base font-semibold">
+                      <div className="group">
+                        <Label htmlFor="budget" className="text-base font-semibold flex items-center gap-2">
                           Budget estimé <span className="text-destructive">*</span>
                         </Label>
                         <Select
@@ -445,7 +460,7 @@ const Contact = () => {
                             }
                           }}
                         >
-                          <SelectTrigger className={`mt-2 h-12 ${formErrors.budget ? 'border-destructive' : ''}`}>
+                          <SelectTrigger className={`mt-2 h-12 transition-all duration-300 hover:border-primary focus:border-primary ${formErrors.budget ? 'border-destructive' : ''}`}>
                             <SelectValue placeholder="Sélectionnez une fourchette" />
                           </SelectTrigger>
                           <SelectContent>
@@ -462,8 +477,8 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    <div>
-                      <Label htmlFor="message" className="text-base font-semibold">
+                    <div className="group">
+                      <Label htmlFor="message" className="text-base font-semibold flex items-center gap-2">
                         Description du besoin <span className="text-destructive">*</span>
                       </Label>
                       <Textarea
@@ -473,7 +488,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows={6}
-                        className={`mt-2 ${formErrors.message ? 'border-destructive' : ''}`}
+                        className={`mt-2 transition-all duration-300 hover:border-primary focus:border-primary ${formErrors.message ? 'border-destructive' : ''}`}
                         placeholder="Décrivez votre projet, vos objectifs et vos contraintes éventuelles..."
                       />
                       {formErrors.message && (
@@ -482,7 +497,7 @@ const Contact = () => {
                     </div>
 
                     {/* GDPR Consent */}
-                    <div className="flex items-start gap-3 p-4 bg-muted/50 rounded-lg border border-border">
+                    <div className="flex items-start gap-3 p-5 bg-gradient-to-r from-muted/50 to-muted/30 rounded-lg border border-border hover:border-primary/50 transition-all duration-300">
                       <Checkbox
                         id="gdpr"
                         checked={gdprConsent}
@@ -492,40 +507,44 @@ const Contact = () => {
                       <div className="flex-1">
                         <Label htmlFor="gdpr" className="text-sm font-normal cursor-pointer">
                           J'accepte que mes données soient utilisées dans le cadre de ma demande et de la relation commerciale qui peut en découler. 
-                          <Link to="/privacy" className="text-primary hover:underline ml-1">
+                          <Link to="/privacy" className="text-primary hover:underline ml-1 transition-colors">
                             Voir la politique de confidentialité
                           </Link>
                         </Label>
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4 pt-2">
                       <Button 
                         type="submit" 
                         size="lg" 
-                        className="w-full hero-glow text-lg py-6"
+                        className="w-full hero-glow text-lg py-7 relative overflow-hidden group"
                         disabled={isSubmitting}
                       >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="mr-3 h-6 w-6 animate-spin" />
-                            Envoi en cours...
-                          </>
-                        ) : (
-                          <>
-                            <Send className="mr-3 h-6 w-6" />
-                            Envoyer ma demande 🚀
-                          </>
-                        )}
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] opacity-50"></div>
+                        <span className="relative z-10 flex items-center justify-center">
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                              Envoi en cours...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="mr-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                              Envoyer ma demande 🚀
+                            </>
+                          )}
+                        </span>
                       </Button>
 
                       {/* WhatsApp Contact Button */}
-                      <div className="pt-4 border-t border-border">
+                      <div className="pt-4 border-t border-border/50">
                         <WhatsAppContact />
                       </div>
-                    </div>
-                  </form>
-                </CardContent>
+                      </div>
+                    </form>
+                  </CardContent>
+                </div>
               </Card>
             </div>
 

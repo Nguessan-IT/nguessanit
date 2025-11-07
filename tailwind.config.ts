@@ -124,6 +124,10 @@ export default {
 					'50%': { 
 						textShadow: '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--primary)), 0 0 40px hsl(var(--primary))' 
 					}
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '200% center' },
+					'100%': { backgroundPosition: '-200% center' }
 				}
 			},
 			animation: {
@@ -131,7 +135,8 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'glow-rotate': 'glow-rotate 2s linear infinite',
 				'float-complex': 'float-complex 25s infinite linear',
-				'neon-pulse': 'neon-pulse 3s ease-in-out infinite'
+				'neon-pulse': 'neon-pulse 3s ease-in-out infinite',
+				'shimmer': 'shimmer 3s linear infinite'
 			}
 		}
 	},
