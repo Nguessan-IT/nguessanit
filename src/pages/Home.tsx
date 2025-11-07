@@ -164,12 +164,12 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8"
+            className="mb-8 flex items-center justify-center gap-4"
           >
             <img
               src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png"
               alt="Logo officiel Nguessan-IT - Expertise en transformation numérique et innovation digitale"
-              className="mx-auto w-32 md:w-40 mb-4"
+              className="w-32 md:w-40"
               loading="eager"
             />
             <p className="text-primary font-semibold tracking-wide uppercase text-sm md:text-base">
