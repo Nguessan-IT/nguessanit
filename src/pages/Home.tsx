@@ -158,58 +158,71 @@ const Home = () => {
           <div className="floating-orb"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto text-center">
-          {/* Logo */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8 flex items-center justify-center gap-4"
-          >
-            <img
-              src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png"
-              alt="Logo officiel Nguessan-IT - Expertise en transformation numérique et innovation digitale"
-              className="w-32 md:w-40"
-              loading="eager"
-            />
-            <p className="text-primary font-semibold tracking-wide uppercase text-sm md:text-base">
-              Votre partenaire digital pour innover et transformer
-            </p>
-          </motion.div>
+        <div className="relative max-w-7xl mx-auto">
+          {/* Layout avec logo à gauche et contenu à droite */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            
+            {/* Logo à gauche */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex-shrink-0"
+            >
+              <img
+                src="/lovable-uploads/bc7144b0-fd62-41b6-942a-989408889f91.png"
+                alt="Logo officiel Nguessan-IT - Expertise en transformation numérique et innovation digitale"
+                className="w-48 md:w-64 lg:w-80"
+                loading="eager"
+              />
+            </motion.div>
 
-          {/* H1 - Titre principal */}
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-3xl sm:text-5xl lg:text-6xl mb-6 font-extrabold leading-tight enhanced-contrast"
-          >
-            Transformez vos idées en{" "}
-            <span className="gradient-text">solutions digitales performantes</span>.
-          </motion.h1>
-          
-          {/* H2 - Sous-titre principal */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-lg sm:text-xl lg:text-2xl text-foreground mb-6 max-w-4xl mx-auto font-semibold leading-relaxed"
-          >
-            Chez <strong className="text-primary">Nguessan-IT</strong>, nous aidons entreprises, startups et institutions à
-            concevoir, développer et déployer des solutions technologiques sur mesure. 
-            Notre mission : <strong className="text-primary">digitaliser vos ambitions</strong> et libérer le potentiel de votre
-            organisation.
-          </motion.h2>
+            {/* Contenu texte à droite */}
+            <div className="flex-1 text-center lg:text-left">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-primary font-semibold tracking-wide uppercase text-sm md:text-base mb-6"
+              >
+                Votre partenaire digital pour innover et transformer
+              </motion.p>
 
-          {/* Sous-texte services */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-base sm:text-lg text-muted-foreground mb-10 max-w-4xl mx-auto italic enhanced-contrast"
-          >
-            De la conception à la mise en production : <strong>Développement Web & Mobile</strong> — <strong>Cloud & IA</strong> — <strong>Conseil IT</strong> — <strong>Intégration sur mesure</strong>.
-          </motion.p>
+              {/* H1 - Titre principal */}
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-3xl sm:text-5xl lg:text-6xl mb-6 font-extrabold leading-tight enhanced-contrast"
+              >
+                Transformez vos idées en{" "}
+                <span className="gradient-text">solutions digitales performantes</span>.
+              </motion.h1>
+              
+              {/* H2 - Sous-titre principal */}
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="text-lg sm:text-xl lg:text-2xl text-foreground mb-6 font-semibold leading-relaxed"
+              >
+                Chez <strong className="text-primary">Nguessan-IT</strong>, nous aidons entreprises, startups et institutions à
+                concevoir, développer et déployer des solutions technologiques sur mesure. 
+                Notre mission : <strong className="text-primary">digitaliser vos ambitions</strong> et libérer le potentiel de votre
+                organisation.
+              </motion.h2>
+
+              {/* Sous-texte services */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="text-base sm:text-lg text-muted-foreground mb-10 italic enhanced-contrast"
+              >
+                De la conception à la mise en production : <strong>Développement Web & Mobile</strong> — <strong>Cloud & IA</strong> — <strong>Conseil IT</strong> — <strong>Intégration sur mesure</strong>.
+              </motion.p>
+            </div>
+          </div>
           
           {/* CTA Buttons avec animations */}
           <motion.div
