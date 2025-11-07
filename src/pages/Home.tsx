@@ -159,8 +159,8 @@ const Home = () => {
         </div>
         
         <div className="relative max-w-7xl mx-auto">
-          {/* Layout avec logo à gauche et contenu à droite */}
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          {/* Layout avec texte à gauche et logo à droite */}
+          <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-12">
             
             {/* Logo à gauche */}
             <motion.div 
