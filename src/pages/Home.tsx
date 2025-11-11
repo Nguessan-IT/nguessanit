@@ -211,18 +211,18 @@ const Home = () => {
                 Notre mission : <strong className="text-primary">digitaliser vos ambitions</strong> et libérer le potentiel de votre
                 organisation.
               </motion.h2>
-
-              {/* Sous-texte services */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-base sm:text-lg text-muted-foreground mb-10 italic enhanced-contrast"
-              >
-                De la conception à la mise en production : <strong>Développement Web & Mobile</strong> — <strong>Cloud & IA</strong> — <strong>Conseil IT</strong> — <strong>Intégration sur mesure</strong>.
-              </motion.p>
             </div>
           </div>
+
+          {/* Sous-texte services - centré sous les deux colonnes */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-base sm:text-lg text-muted-foreground mt-8 mb-10 italic enhanced-contrast text-center"
+          >
+            De la conception à la mise en production : <strong>Développement Web & Mobile</strong> — <strong>Cloud & IA</strong> — <strong>Conseil IT</strong> — <strong>Intégration sur mesure</strong>.
+          </motion.p>
           
           {/* CTA Buttons avec animations */}
           <motion.div
