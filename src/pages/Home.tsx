@@ -185,7 +185,7 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 className="text-primary font-semibold tracking-wide uppercase text-sm md:text-base mb-6"
               >
-                Votre partenaire digital pour innover et transformer
+                {t('hero.subtitle')}
               </motion.p>
 
               {/* H1 - Titre principal */}
@@ -195,8 +195,8 @@ const Home = () => {
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="text-3xl sm:text-5xl lg:text-6xl mb-6 font-extrabold leading-tight enhanced-contrast"
               >
-                Transformez vos idées en{" "}
-                <span className="gradient-text">solutions digitales performantes</span>.
+                {t('home.hero.title1')}{" "}
+                <span className="gradient-text">{t('home.hero.title2')}</span>
               </motion.h1>
               
               {/* H2 - Sous-titre principal */}
@@ -206,10 +206,7 @@ const Home = () => {
                 transition={{ delay: 0.3, duration: 0.8 }}
                 className="text-lg sm:text-xl lg:text-2xl text-foreground mb-6 font-semibold leading-relaxed"
               >
-                Chez <strong className="text-primary">Nguessan-IT</strong>, nous aidons entreprises, startups et institutions à
-                concevoir, développer et déployer des solutions technologiques sur mesure. 
-                Notre mission : <strong className="text-primary">digitaliser vos ambitions</strong> et libérer le potentiel de votre
-                organisation.
+                {t('home.hero.description')}
               </motion.h2>
             </div>
           </div>
@@ -221,7 +218,7 @@ const Home = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-base sm:text-lg text-muted-foreground mt-8 mb-10 italic enhanced-contrast text-center"
           >
-            De la conception à la mise en production : <strong>Développement Web & Mobile</strong> — <strong>Cloud & IA</strong> — <strong>Conseil IT</strong> — <strong>Intégration sur mesure</strong>.
+            {t('home.hero.servicesLine')}
           </motion.p>
           
           {/* CTA Buttons avec animations */}
@@ -238,7 +235,7 @@ const Home = () => {
               asChild
             >
               <Link to="/contact">
-                Demandez votre devis gratuit
+                {t('home.cta.primary')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -251,7 +248,7 @@ const Home = () => {
               <Link to="/services">
                 <span className="absolute inset-0 bg-primary transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
                 <span className="relative z-10 group-hover:text-primary-foreground transition-colors duration-300">
-                  Découvrez nos services
+                  {t('home.hero.cta2')}
                 </span>
               </Link>
             </Button>
@@ -266,7 +263,7 @@ const Home = () => {
           >
             <Globe className="w-12 h-12 text-primary mb-3 animate-pulse" />
             <p className="text-muted-foreground text-base sm:text-lg md:text-xl font-medium text-center max-w-3xl enhanced-contrast">
-              Partenaire digital de confiance pour les entreprises d'Afrique, d'Europe et d'Amérique.
+              {t('home.hero.international')}
             </p>
           </motion.div>
         </div>
