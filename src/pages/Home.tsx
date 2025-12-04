@@ -272,47 +272,61 @@ const Home = () => {
       {/* Services Overview */}
       <section className="px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl sm:text-5xl mb-4 enhanced-contrast">
               <span className="gradient-text tech-heading">{t('services.title')}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto modern-text enhanced-contrast">
               {t('services.description')}
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <Card key={index} className="card-elegant border-border hover:shadow-glow transition-all duration-500 group">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-2xl mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  
-                  <h3 className="text-xl tech-heading mb-2 text-center">{service.title}</h3>
-                  <p className="text-primary font-semibold text-center mb-4 code-text">{getPriceDisplay(service.serviceKey)}</p>
-                  <p className="text-muted-foreground text-center mb-6">{service.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 justify-center mb-6">
-                    {service.features.map((feature, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-secondary text-secondary-foreground text-sm rounded-full"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <Button 
-                    variant="outline" 
-                    className="w-full" 
-                    onClick={() => setSelectedService(service.serviceKey)}
-                  >
-                    {t('services.learnMore')}
-                  </Button>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                <Card className="card-elegant border-border hover:shadow-glow transition-all duration-500 group h-full">
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-2xl mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="h-8 w-8 text-primary-foreground" />
+                    </div>
+                    
+                    <h3 className="text-xl tech-heading mb-2 text-center">{service.title}</h3>
+                    <p className="text-primary font-semibold text-center mb-4 code-text">{getPriceDisplay(service.serviceKey)}</p>
+                    <p className="text-muted-foreground text-center mb-6">{service.description}</p>
+                    
+                    <div className="flex flex-wrap gap-2 justify-center mb-6">
+                      {service.features.map((feature, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-secondary text-secondary-foreground text-sm rounded-full"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <Button 
+                      variant="outline" 
+                      className="w-full" 
+                      onClick={() => setSelectedService(service.serviceKey)}
+                    >
+                      {t('services.learnMore')}
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -323,12 +337,19 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
+              <motion.div 
+                key={index} 
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                viewport={{ once: true, margin: "-50px" }}
+              >
                 <div className="text-4xl lg:text-6xl font-bold gradient-text mb-2">
                   {stat.number}
                 </div>
                 <p className="text-muted-foreground font-medium">{stat.label}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -336,20 +357,33 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-16">
-        <div className="max-w-4xl mx-auto text-center">
+        <motion.div 
+          className="max-w-4xl mx-auto text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <h2 className="text-3xl sm:text-5xl mb-6 enhanced-contrast">
             <span className="tech-heading">{t('cta.title1')}</span> <span className="gradient-text">{t('cta.title2')}</span> <span className="tech-heading">{t('cta.title3')}</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-8 modern-text enhanced-contrast">
             {t('cta.description')}
           </p>
-          <Button size="lg" className="hero-glow" asChild>
-            <Link to="/devis">
-              {t('cta.button')}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <Button size="lg" className="hero-glow" asChild>
+              <Link to="/devis">
+                {t('cta.button')}
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
       </section>
 
       <ServiceModal 
