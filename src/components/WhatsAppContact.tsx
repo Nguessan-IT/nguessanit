@@ -8,12 +8,14 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { MessageCircle, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { whatsAppContactSchema, type WhatsAppContactFormData } from "@/lib/validationSchemas";
 
 const WhatsAppContact = () => {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState({
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [formData, setFormData] = useState<WhatsAppContactFormData>({
     fullName: "",
     email: "",
     phone: "",
@@ -24,31 +26,54 @@ const WhatsAppContact = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Effacer l'erreur du champ modifié
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation avec zod
+    const result = whatsAppContactSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[err.path[0] as string] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
+      toast({
+        title: "Erreur de validation",
+        description: result.error.errors[0]?.message || "Veuillez corriger les erreurs du formulaire",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const validatedData = result.data;
     
     // Construire le message WhatsApp formaté
     const whatsappMessage = `
 🌟 *CONTACT DEPUIS LE SITE NGUESSAN-IT* 🌟
 
 👤 *Informations personnelles:*
-• Nom: ${formData.fullName}
-• Email: ${formData.email}
-• Téléphone: ${formData.phone}
-• Entreprise: ${formData.company || "Non spécifié"}
+• Nom: ${validatedData.fullName}
+• Email: ${validatedData.email}
+• Téléphone: ${validatedData.phone}
+• Entreprise: ${validatedData.company || "Non spécifié"}
 
 💼 *Détails du projet:*
-• Type de projet: ${formData.projectType || "Non spécifié"}
-• Budget approximatif: ${formData.budget || "À discuter"}
+• Type de projet: ${validatedData.projectType || "Non spécifié"}
+• Budget approximatif: ${validatedData.budget || "À discuter"}
 
 📝 *Message:*
-${formData.message}
+${validatedData.message}
 
 ---
 ✅ Formulaire complété depuis nguessan-it.com
@@ -65,6 +90,7 @@ ${formData.message}
     
     // Fermer le modal et réinitialiser le formulaire
     setIsOpen(false);
+    setErrors({});
     setFormData({
       fullName: "",
       email: "",
