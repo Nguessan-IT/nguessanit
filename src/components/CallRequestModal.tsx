@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Calendar, MessageCircle, Phone, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { callRequestSchema, type CallRequestFormData } from "@/lib/validationSchemas";
 
 interface CallRequestModalProps {
   isOpen: boolean;
@@ -16,7 +17,8 @@ interface CallRequestModalProps {
 
 const CallRequestModal = ({ isOpen, onClose, serviceTitle }: CallRequestModalProps) => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [formData, setFormData] = useState<CallRequestFormData>({
     fullName: "",
     email: "",
     phone: "",
@@ -29,14 +31,37 @@ const CallRequestModal = ({ isOpen, onClose, serviceTitle }: CallRequestModalPro
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Effacer l'erreur du champ modifié
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validation avec zod
+    const result = callRequestSchema.safeParse(formData);
+    
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[err.path[0] as string] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
+      toast({
+        title: "Erreur de validation",
+        description: result.error.errors[0]?.message || "Veuillez corriger les erreurs du formulaire",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const validatedData = result.data;
     
     // Construire le message WhatsApp formaté pour demande d'appel
     const whatsappMessage = `
@@ -44,19 +69,19 @@ const CallRequestModal = ({ isOpen, onClose, serviceTitle }: CallRequestModalPro
 
 ${serviceTitle ? `🔵 *Service concerné:* ${serviceTitle}\n` : ''}
 👤 *Informations de contact:*
-• Nom: ${formData.fullName}
-• Email: ${formData.email}
-• Téléphone: ${formData.phone}
-• Entreprise: ${formData.company || "Non spécifié"}
+• Nom: ${validatedData.fullName}
+• Email: ${validatedData.email}
+• Téléphone: ${validatedData.phone}
+• Entreprise: ${validatedData.company || "Non spécifié"}
 
 ⏰ *Préférences pour l'appel:*
-• Date souhaitée: ${formData.preferredDate || "À convenir"}
-• Heure souhaitée: ${formData.preferredTime || "À convenir"}
-• Fuseau horaire: ${formData.timezone || "À confirmer"}
-• Type d'appel: ${formData.callType || "À discuter"}
+• Date souhaitée: ${validatedData.preferredDate || "À convenir"}
+• Heure souhaitée: ${validatedData.preferredTime || "À convenir"}
+• Fuseau horaire: ${validatedData.timezone || "À confirmer"}
+• Type d'appel: ${validatedData.callType || "À discuter"}
 
 📝 *Message/Contexte:*
-${formData.message}
+${validatedData.message}
 
 ---
 ✅ Demande générée depuis nguessan-it.com
@@ -73,6 +98,7 @@ ${formData.message}
     
     // Fermer le modal et réinitialiser le formulaire
     onClose();
+    setErrors({});
     setFormData({
       fullName: "",
       email: "",
