@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import Layout from "./components/Layout";
 import TechBackground from "./components/TechBackground";
 import Home from "./pages/Home";
@@ -16,6 +17,17 @@ import Terms from "./pages/Terms";
 import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
 
+// Admin pages
+import Login from "./pages/admin/Login";
+import Register from "./pages/admin/Register";
+import Dashboard from "./pages/admin/Dashboard";
+import Clients from "./pages/admin/Clients";
+import AdminServices from "./pages/admin/Services";
+import Quotes from "./pages/admin/Quotes";
+import Invoices from "./pages/admin/Invoices";
+import Interactions from "./pages/admin/Interactions";
+import { AdminLayout } from "./components/admin/AdminLayout";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -23,24 +35,38 @@ const App = () => (
     <TooltipProvider>
       <LanguageProvider>
         <CurrencyProvider>
-          <TechBackground />
-          <Toaster />
-          <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/devis" element={<Quote />} />
-              <Route path="/politique-confidentialite" element={<Privacy />} />
-              <Route path="/conditions" element={<Terms />} />
-              <Route path="/mentions-legales" element={<Legal />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
+          <AuthProvider>
+            <TechBackground />
+            <Toaster />
+            <BrowserRouter>
+              <Routes>
+                {/* Public routes */}
+                <Route path="/" element={<Layout><Home /></Layout>} />
+                <Route path="/services" element={<Layout><Services /></Layout>} />
+                <Route path="/about" element={<Layout><About /></Layout>} />
+                <Route path="/contact" element={<Layout><Contact /></Layout>} />
+                <Route path="/devis" element={<Layout><Quote /></Layout>} />
+                <Route path="/politique-confidentialite" element={<Layout><Privacy /></Layout>} />
+                <Route path="/conditions" element={<Layout><Terms /></Layout>} />
+                <Route path="/mentions-legales" element={<Layout><Legal /></Layout>} />
+
+                {/* Admin auth routes */}
+                <Route path="/admin/login" element={<Login />} />
+                <Route path="/admin/register" element={<Register />} />
+
+                {/* Admin protected routes */}
+                <Route path="/admin" element={<AdminLayout><Dashboard /></AdminLayout>} />
+                <Route path="/admin/clients" element={<AdminLayout><Clients /></AdminLayout>} />
+                <Route path="/admin/services" element={<AdminLayout><AdminServices /></AdminLayout>} />
+                <Route path="/admin/quotes" element={<AdminLayout><Quotes /></AdminLayout>} />
+                <Route path="/admin/invoices" element={<AdminLayout><Invoices /></AdminLayout>} />
+                <Route path="/admin/interactions" element={<AdminLayout><Interactions /></AdminLayout>} />
+
+                {/* Catch-all */}
+                <Route path="*" element={<Layout><NotFound /></Layout>} />
+              </Routes>
+            </BrowserRouter>
+          </AuthProvider>
         </CurrencyProvider>
       </LanguageProvider>
     </TooltipProvider>
