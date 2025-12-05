@@ -49,9 +49,11 @@ export function AdminSidebar() {
     <Sidebar className="border-r border-sidebar-border">
       <SidebarHeader className="p-4 border-b border-sidebar-border">
         <Link to="/admin" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">N</span>
-          </div>
+          <img 
+            src="/lovable-uploads/4f2a1c12-fb89-40b3-a468-dccf8db5850a.png" 
+            alt="Nguessan-IT Logo" 
+            className="w-10 h-10 object-contain rounded-lg"
+          />
           <div>
             <h2 className="font-bold text-sidebar-foreground">Nguessan-IT</h2>
             <p className="text-xs text-muted-foreground">ERP / CRM</p>
