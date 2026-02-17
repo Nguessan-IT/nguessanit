@@ -3,6 +3,7 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Send } from "lucide-react";
+import { motion } from "framer-motion";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Le nom doit contenir au moins 2 caractères").max(100),
@@ -10,6 +11,11 @@ const contactSchema = z.object({
   phone: z.string().trim().max(20).optional().or(z.literal("")),
   message: z.string().trim().min(10, "Le message doit contenir au moins 10 caractères").max(2000),
 });
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
@@ -49,33 +55,62 @@ export default function ContactPage() {
   };
 
   const inputClass = (field: string) =>
-    `w-full px-4 py-3 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 transition ${
+    `w-full px-4 py-3 rounded-lg border bg-background text-foreground text-sm focus:outline-none focus:ring-2 transition-all duration-300 group-hover:border-primary/50 ${
       errors[field] ? "border-destructive focus:ring-destructive" : "border-input focus:ring-ring"
     }`;
 
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-primary/10 via-background to-accent/30 overflow-hidden">
+    <div className="overflow-hidden">
+      {/* Hero with animated gradient */}
+      <section className="relative py-16 sm:py-24 overflow-hidden">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-background to-accent/30 animate-gradient-shift" />
+        
+        {/* Floating luminous orbs */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/20 rounded-full blur-3xl animate-pulse delay-1000" />
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+            animate={{ y: [0, -20, 0], x: [0, 10, 0], scale: [1, 1.1, 1] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/20 rounded-full blur-3xl"
+            animate={{ y: [0, 15, 0], x: [0, -10, 0], scale: [1, 0.9, 1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          />
+          <motion.div
+            className="absolute top-1/2 right-[10%] w-32 h-32 bg-primary/15 rounded-full blur-2xl"
+            animate={{ y: [0, -25, 0], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          />
         </div>
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
+
+        <motion.div
+          className="relative max-w-4xl mx-auto px-4 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-6">Contactez-nous</h1>
           <p className="text-lg text-muted-foreground">
             Une question, un projet ? Nous sommes à votre écoute.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Form */}
-          <div className="bg-card border border-border rounded-2xl p-8">
+          <motion.div
+            className="bg-card border border-border rounded-2xl p-8"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="font-display text-2xl font-bold text-foreground mb-6">Envoyez-nous un message</h2>
             <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
+              <div className="group">
                 <label className="block text-sm font-medium text-foreground mb-1">Nom complet *</label>
                 <input
                   value={form.name}
@@ -85,7 +120,7 @@ export default function ContactPage() {
                 />
                 {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
               </div>
-              <div>
+              <div className="group">
                 <label className="block text-sm font-medium text-foreground mb-1">Email *</label>
                 <input
                   type="email"
@@ -96,7 +131,7 @@ export default function ContactPage() {
                 />
                 {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
               </div>
-              <div>
+              <div className="group">
                 <label className="block text-sm font-medium text-foreground mb-1">Téléphone</label>
                 <input
                   value={form.phone}
@@ -105,7 +140,7 @@ export default function ContactPage() {
                   placeholder="+225 XX XX XX XX"
                 />
               </div>
-              <div>
+              <div className="group">
                 <label className="block text-sm font-medium text-foreground mb-1">Message *</label>
                 <textarea
                   value={form.message}
@@ -116,19 +151,29 @@ export default function ContactPage() {
                 />
                 {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
               </div>
-              <button
+              <motion.button
                 type="submit"
                 disabled={sending}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition disabled:opacity-50"
+                className="relative w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium transition disabled:opacity-50 overflow-hidden"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
               >
-                <Send size={18} />
-                {sending ? "Envoi en cours..." : "Envoyer le message"}
-              </button>
+                {/* Shimmer effect */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/10 to-transparent -translate-x-full animate-shimmer" />
+                <Send size={18} className="relative z-10" />
+                <span className="relative z-10">{sending ? "Envoi en cours..." : "Envoyer le message"}</span>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Info */}
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div>
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">Informations de contact</h2>
               <ul className="space-y-4">
@@ -159,18 +204,26 @@ export default function ContactPage() {
             <div>
               <h3 className="font-display text-lg font-semibold text-foreground mb-4">Suivez-nous</h3>
               <div className="flex gap-4">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-accent rounded-lg hover:bg-primary hover:text-primary-foreground transition">
-                  <Linkedin size={20} />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-accent rounded-lg hover:bg-primary hover:text-primary-foreground transition">
-                  <Instagram size={20} />
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-accent rounded-lg hover:bg-primary hover:text-primary-foreground transition">
-                  <Facebook size={20} />
-                </a>
+                {[
+                  { icon: Linkedin, href: "https://linkedin.com" },
+                  { icon: Instagram, href: "https://instagram.com" },
+                  { icon: Facebook, href: "https://facebook.com" },
+                ].map(({ icon: Icon, href }) => (
+                  <motion.a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-accent rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Icon size={20} />
+                  </motion.a>
+                ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
