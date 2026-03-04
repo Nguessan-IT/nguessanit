@@ -1,11 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Menu, X, Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Menu, X, Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Globe, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import logoImg from "@/assets/logo-nguessan-it.png";
 
 const navLinks = [
   { to: "/", label: "Accueil" },
-  { to: "/services", label: "Services" },
   { to: "/about", label: "À propos" },
+  { to: "/services", label: "Services" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -15,33 +16,48 @@ export default function PublicLayout() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
+      <header className="sticky top-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-          <NavLink to="/" className="font-display text-xl font-bold text-primary">
-            Nguessan-IT
+          {/* Logo */}
+          <NavLink to="/" className="flex items-center gap-3">
+            <img src={logoImg} alt="Logo Nguessan-IT" className="h-9 w-auto" />
+            <div className="hidden sm:block">
+              <span className="font-display text-lg font-bold text-primary leading-tight block">Nguessan-IT</span>
+              <span className="text-[11px] text-muted-foreground leading-tight block">Votre partenaire digital pour innover et transformer</span>
+            </div>
           </NavLink>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 end={l.to === "/"}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition ${isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"}`
+                  `px-4 py-2 rounded-md text-sm font-medium transition ${isActive ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground hover:bg-accent"}`
                 }
               >
                 {l.label}
               </NavLink>
             ))}
+          </nav>
+
+          <div className="hidden md:flex items-center gap-3">
+            {/* Language selector */}
+            <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-accent transition">
+              <Globe size={16} />
+              <span className="text-xs">🇫🇷</span>
+              <span className="text-sm">Français</span>
+              <ChevronDown size={14} />
+            </button>
             <NavLink
               to="/contact"
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:opacity-90 transition"
+              className="px-5 py-2 border border-foreground/20 rounded-md text-sm font-medium text-foreground hover:bg-accent transition"
             >
-              Demandez un devis
+              Devis gratuit
             </NavLink>
-          </nav>
+          </div>
 
           {/* Mobile toggle */}
           <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
@@ -51,7 +67,7 @@ export default function PublicLayout() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <nav className="md:hidden border-t border-border bg-card px-4 pb-4 space-y-2">
+          <nav className="md:hidden border-t border-border bg-card px-4 pb-4 space-y-1 pt-2">
             {navLinks.map((l) => (
               <NavLink
                 key={l.to}
@@ -59,7 +75,7 @@ export default function PublicLayout() {
                 end={l.to === "/"}
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `block py-2 text-sm font-medium ${isActive ? "text-primary" : "text-muted-foreground"}`
+                  `block py-2.5 px-3 rounded-md text-sm font-medium ${isActive ? "bg-primary/10 text-primary" : "text-muted-foreground"}`
                 }
               >
                 {l.label}
@@ -68,9 +84,9 @@ export default function PublicLayout() {
             <NavLink
               to="/contact"
               onClick={() => setMenuOpen(false)}
-              className="block text-center py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium"
+              className="block text-center py-2.5 border border-foreground/20 rounded-md text-sm font-medium mt-2"
             >
-              Demandez un devis
+              Devis gratuit
             </NavLink>
           </nav>
         )}
@@ -84,9 +100,11 @@ export default function PublicLayout() {
       {/* Footer */}
       <footer className="bg-sidebar text-sidebar-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand */}
           <div>
-            <h3 className="font-display text-lg font-bold mb-3">Nguessan-IT</h3>
+            <div className="flex items-center gap-2 mb-3">
+              <img src={logoImg} alt="Logo" className="h-8 w-auto" />
+              <h3 className="font-display text-lg font-bold">Nguessan-IT</h3>
+            </div>
             <p className="text-sm text-sidebar-foreground/70 mb-4">
               Votre partenaire digital pour innover et transformer.
             </p>
@@ -97,7 +115,6 @@ export default function PublicLayout() {
             </div>
           </div>
 
-          {/* Liens utiles */}
           <div>
             <h4 className="font-semibold text-sm mb-3">Liens utiles</h4>
             <ul className="space-y-2 text-sm text-sidebar-foreground/70">
@@ -109,24 +126,22 @@ export default function PublicLayout() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <h4 className="font-semibold text-sm mb-3">Services</h4>
             <ul className="space-y-2 text-sm text-sidebar-foreground/70">
-              <li>Transformation digitale</li>
+              <li>Développement Web & Mobile</li>
               <li>Cloud & Infrastructure</li>
-              <li>Développement web & mobile</li>
-              <li>Conseil IT & IA</li>
+              <li>Intelligence Artificielle</li>
+              <li>Conseil & Stratégie IT</li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="font-semibold text-sm mb-3">Contact</h4>
             <ul className="space-y-2 text-sm text-sidebar-foreground/70">
               <li className="flex items-center gap-2"><MapPin size={14} /> Abidjan, Côte d'Ivoire</li>
-              <li className="flex items-center gap-2"><Mail size={14} /> contact@nguessan-it.com</li>
-              <li className="flex items-center gap-2"><Phone size={14} /> +225 XX XX XX XX</li>
+              <li className="flex items-center gap-2"><Mail size={14} /> fiacrenguessan@outlook.com</li>
+              <li className="flex items-center gap-2"><Phone size={14} /> 0777655416</li>
             </ul>
           </div>
         </div>
