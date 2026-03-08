@@ -269,7 +269,7 @@ export default function HomePage() {
 
       {/* CTA */}
       <motion.section
-        className="py-16 sm:py-24 bg-background"
+        className="py-16 sm:py-24"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

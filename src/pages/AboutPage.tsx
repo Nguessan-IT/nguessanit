@@ -325,7 +325,7 @@ export default function AboutPage() {
       </section>
 
       {/* Approach */}
-      <section className="py-16 bg-primary/5">
+      <section className="py-16 bg-primary/5 backdrop-blur-sm rounded-lg">
         <div className="max-w-5xl mx-auto px-4">
           <motion.div
             className="text-center mb-10"
