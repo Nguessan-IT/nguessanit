@@ -101,7 +101,7 @@ export default function AdminPage() {
 
   const markAsSent = async (id: string) => {
     const { error } = await supabase
-      .from("newsletters")
+      .from("newsletters" as any)
       .update({ status: "sent", sent_at: new Date().toISOString() })
       .eq("id", id);
     if (error) {
