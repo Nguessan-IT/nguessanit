@@ -49,6 +49,8 @@ export default {
       fontFamily: {
         sans: ["DM Sans", "sans-serif"],
         display: ["Space Grotesk", "sans-serif"],
+        orbitron: ["Orbitron", "sans-serif"],
+        mono: ["Courier New", "monospace"],
       },
     },
   },
