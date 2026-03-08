@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, Sparkles, Code, Wrench, Cloud, GraduationCap, Palette, FileText } from "lucide-react";
+import { ArrowRight, CheckCircle, Sparkles, Code, Wrench, Cloud, GraduationCap, Palette, FileText, Brain, Database } from "lucide-react";
 import { motion } from "framer-motion";
 import logoImg from "@/assets/logo-nguessan-it.png";
 import FloatingOrbs from "@/components/shared/FloatingOrbs";
@@ -18,6 +18,7 @@ const services = [
     price: "À partir de 300$",
     desc: "Sites web modernes, applications web sur mesure et e-commerce",
     tags: ["React/Vue.js", "E-commerce", "CMS"],
+    glowColor: "210 100% 60%",
   },
   {
     icon: Wrench,
@@ -25,6 +26,7 @@ const services = [
     price: "Devis sur mesure",
     desc: "Support technique, maintenance préventive et dépannage urgent",
     tags: ["Support 24/7", "Maintenance", "Sécurité"],
+    glowColor: "160 80% 45%",
   },
   {
     icon: Cloud,
@@ -32,6 +34,7 @@ const services = [
     price: "Devis sur mesure",
     desc: "Migration vers le cloud, serveurs et infrastructure réseau",
     tags: ["AWS/Azure", "Migration", "Infrastructure"],
+    glowColor: "200 90% 55%",
   },
   {
     icon: GraduationCap,
@@ -39,20 +42,39 @@ const services = [
     price: "Devis sur mesure",
     desc: "Formation informatique et conseil en transformation digitale",
     tags: ["Formation", "Audit IT", "Stratégie"],
+    glowColor: "270 70% 60%",
   },
   {
     icon: Palette,
-    title: "Identité Visuelle & Branding Digital",
+    title: "Identité Visuelle & Branding",
     price: "Devis sur mesure",
     desc: "Créez une identité visuelle forte et cohérente pour votre marque digitale",
-    tags: ["Logo & charte graphique", "Identité complète", "Déclinaisons digitales"],
+    tags: ["Logo & charte", "Identité complète", "Digital"],
+    glowColor: "330 80% 55%",
   },
   {
     icon: FileText,
     title: "Documents Interactifs",
     price: "Devis sur mesure",
     desc: "Transformez vos documents statiques en expériences interactives engageantes",
-    tags: ["PDF interactifs", "Catalogues digitaux", "Présentations animées"],
+    tags: ["PDF interactifs", "Catalogues", "Présentations"],
+    glowColor: "30 90% 55%",
+  },
+  {
+    icon: Brain,
+    title: "Intelligence Artificielle",
+    price: "Devis sur mesure",
+    desc: "Optimisez vos processus grâce à l'IA : chatbots, analyse prédictive, automatisation",
+    tags: ["Machine Learning", "NLP", "RPA"],
+    glowColor: "180 80% 45%",
+  },
+  {
+    icon: Database,
+    title: "Bases de Données",
+    price: "Devis sur mesure",
+    desc: "Modélisation, administration et sécurisation de bases de données",
+    tags: ["PostgreSQL", "SQL Server", "Firebase"],
+    glowColor: "45 85% 50%",
   },
 ];
 
