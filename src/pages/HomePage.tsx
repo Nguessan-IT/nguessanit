@@ -257,7 +257,7 @@ export default function HomePage() {
                   <s.icon style={{ color: `hsl(${s.glowColor})` }} size={22} />
                 </div>
                 <h3 className="font-display font-semibold text-foreground text-base mb-1">{s.title}</h3>
-                <p className="text-xs font-medium text-primary mb-2">{s.price}</p>
+                
                 <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{s.desc}</p>
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {s.tags.map((tag) => (
