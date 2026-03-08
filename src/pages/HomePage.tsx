@@ -29,7 +29,6 @@ const services = [
   {
     icon: Cloud,
     title: "Solutions Cloud",
-    price: "Devis sur mesure",
     desc: "Migration vers le cloud, serveurs et infrastructure réseau",
     tags: ["AWS/Azure", "Migration", "Infrastructure"],
     glowColor: "200 90% 55%",
