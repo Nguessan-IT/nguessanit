@@ -6,6 +6,7 @@ import PublicServicesPage from "@/pages/PublicServicesPage";
 import ContactPage from "@/pages/ContactPage";
 import TermsPage from "@/pages/TermsPage";
 import PrivacyPage from "@/pages/PrivacyPage";
+import AdminPage from "@/pages/AdminPage";
 
 export default function App() {
   return (
