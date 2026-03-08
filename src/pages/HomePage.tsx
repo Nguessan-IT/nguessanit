@@ -50,7 +50,6 @@ const services = [
   {
     icon: FileText,
     title: "Documents Interactifs",
-    price: "Devis sur mesure",
     desc: "Transformez vos documents statiques en expériences interactives engageantes",
     tags: ["PDF interactifs", "Catalogues", "Présentations"],
     glowColor: "30 90% 55%",
