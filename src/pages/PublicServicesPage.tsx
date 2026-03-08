@@ -168,7 +168,7 @@ export default function PublicServicesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-3xl font-bold text-foreground mb-3">Notre Méthodologie</h2>
+            <h2 className="font-display text-3xl font-bold gradient-text mb-3">Notre Méthodologie</h2>
             <p className="text-muted-foreground">Un processus éprouvé pour garantir le succès de vos projets digitaux</p>
           </motion.div>
           <motion.div
