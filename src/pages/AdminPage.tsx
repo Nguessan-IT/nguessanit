@@ -90,7 +90,7 @@ export default function AdminPage() {
   };
 
   const deleteNewsletter = async (id: string) => {
-    const { error } = await supabase.from("newsletters").delete().eq("id", id);
+    const { error } = await supabase.from("newsletters" as any).delete().eq("id", id);
     if (error) {
       toast.error("Erreur suppression");
       return;
