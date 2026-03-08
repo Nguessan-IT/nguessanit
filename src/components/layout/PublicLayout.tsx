@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { Menu, X, Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Globe, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import logoImg from "@/assets/logo-nguessan-it.png";
+import HighTechBackground from "@/components/shared/HighTechBackground";
 
 const navLinks = [
   { to: "/", label: "Accueil" },
