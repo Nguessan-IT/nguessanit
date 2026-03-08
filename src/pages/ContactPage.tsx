@@ -5,6 +5,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Users, Sparkles, Globe, Shield, ArrowRight, Send, Clock, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { isValidPhoneNumber } from "react-phone-number-input";
+import PhoneInput from "@/components/shared/PhoneInput";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Le nom doit contenir au moins 2 caractères").max(100),
