@@ -289,32 +289,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-primary/5 backdrop-blur-sm rounded-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            {stats.map((s) => (
-              <motion.div key={s.label} variants={fadeInUp}>
-                <motion.div
-                  className="font-display text-3xl sm:text-4xl font-bold text-primary mb-1"
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, type: "spring" }}
-                >
-                  {s.value}
-                </motion.div>
-                <div className="text-sm text-muted-foreground">{s.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <AnimatedStats />
 
       {/* CTA */}
       <motion.section
