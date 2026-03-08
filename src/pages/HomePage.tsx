@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Sparkles, Code, Wrench, Cloud, GraduationCap, Palette, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import logoImg from "@/assets/logo-nguessan-it.png";
+import FloatingOrbs from "@/components/shared/FloatingOrbs";
 
 const features = [
   "Solutions 100% sur mesure",
@@ -77,8 +78,9 @@ export default function HomePage() {
     <div className="overflow-hidden">
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        <FloatingOrbs />
 
-        <div className="relative max-w-5xl mx-auto px-4 w-full text-center py-20">
+        <div className="relative max-w-5xl mx-auto px-4 w-full text-center py-20 z-10">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
