@@ -64,7 +64,6 @@ const services = [
   {
     icon: Database,
     title: "Bases de Données",
-    price: "Devis sur mesure",
     desc: "Modélisation, administration et sécurisation de bases de données",
     tags: ["PostgreSQL", "SQL Server", "Firebase"],
     glowColor: "45 85% 50%",
