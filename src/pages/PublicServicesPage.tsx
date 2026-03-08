@@ -96,10 +96,7 @@ export default function PublicServicesPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6"
-            style={{ textShadow: "0 0 40px hsl(220 72% 50% / 0.3)" }}
-          >
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold gradient-text mb-6">
             Nos Services Digitaux
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">

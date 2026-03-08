@@ -138,10 +138,7 @@ export default function ContactPage() {
           >
             <div className="flex items-center gap-2 mb-2">
               <MessageCircle className="text-primary" size={24} />
-              <h2
-                className="font-display text-2xl font-bold text-primary"
-                style={{ textShadow: "0 0 20px hsl(220 72% 50% / 0.2)" }}
-              >
+              <h2 className="font-display text-2xl font-bold gradient-text">
                 Formulaire de contact
               </h2>
             </div>

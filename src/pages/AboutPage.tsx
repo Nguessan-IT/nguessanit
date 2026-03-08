@@ -85,8 +85,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-20">
         <div className="max-w-5xl mx-auto px-4">
           <motion.h2
-            className="font-display text-3xl font-bold text-primary text-center mb-6"
-            style={{ textShadow: "0 0 30px hsl(220 72% 50% / 0.2)" }}
+            className="font-display text-3xl font-bold gradient-text text-center mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
