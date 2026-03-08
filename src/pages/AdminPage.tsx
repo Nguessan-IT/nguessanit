@@ -41,7 +41,7 @@ export default function AdminPage() {
   const fetchSubscribers = async () => {
     setLoadingSubs(true);
     const { data } = await supabase
-      .from("newsletter_subscribers")
+      .from("newsletter_subscribers" as any)
       .select("*")
       .order("subscribed_at", { ascending: false });
     setSubscribers(data || []);
