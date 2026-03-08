@@ -102,6 +102,7 @@ export default function PublicLayout() {
       </main>
 
       <Footer />
+      <WhatsAppChat />
     </div>
   );
 }
