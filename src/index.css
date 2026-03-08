@@ -161,7 +161,8 @@ All colors MUST be HSL.
 
 @layer components {
   .gradient-text {
-    @apply font-orbitron font-bold;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -172,19 +173,26 @@ All colors MUST be HSL.
 
   /* Classes de typographie améliorées */
   .tech-title {
-    @apply font-orbitron font-bold tracking-wide;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
   }
 
   .tech-heading {
-    @apply font-orbitron font-semibold tracking-wide;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
   }
 
   .modern-text {
-    @apply font-sans font-medium tracking-tight;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.025em;
   }
 
   .code-text {
-    @apply font-mono tracking-wider;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
   }
 
   /* Amélioration des contrastes sur le fond high-tech */
