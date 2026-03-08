@@ -11,7 +11,7 @@ import PhoneInput from "@/components/shared/PhoneInput";
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Le nom doit contenir au moins 2 caractères").max(100),
   email: z.string().trim().email("Email invalide").max(255),
-  phone: z.string().trim().max(20).optional().or(z.literal("")),
+  phone: z.string().trim().refine((val) => !val || isValidPhoneNumber(val), { message: "Numéro de téléphone invalide" }).optional().or(z.literal("")),
   company: z.string().trim().max(100).optional().or(z.literal("")),
   projectType: z.string().min(1, "Sélectionnez un type de projet"),
   budget: z.string().min(1, "Sélectionnez un budget estimé"),
