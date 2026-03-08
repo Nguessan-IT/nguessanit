@@ -229,36 +229,45 @@ export default function HomePage() {
                 custom={i}
                 variants={fadeInUp}
                 whileHover={{
-                  y: -8,
+                  y: -10,
                   rotateY: -4,
                   rotateX: 4,
-                  scale: 1.03,
-                  boxShadow: `0 20px 50px -15px hsl(${s.glowColor} / 0.35), 0 0 30px -5px hsl(${s.glowColor} / 0.15)`,
+                  scale: 1.04,
+                  boxShadow: `0 25px 60px -10px hsl(${s.glowColor} / 0.45), 0 0 40px -5px hsl(${s.glowColor} / 0.2)`,
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="relative bg-card border border-border rounded-xl p-5 transition-all group overflow-hidden"
+                className="relative bg-card border border-border rounded-xl p-5 pt-6 transition-all group overflow-hidden"
                 style={{ transformStyle: "preserve-3d" }}
               >
+                {/* Vivid colored top border */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-1 rounded-t-xl transition-all duration-500 group-hover:h-1.5"
+                  style={{
+                    background: `linear-gradient(90deg, hsl(${s.glowColor}), hsl(${s.glowColor} / 0.6))`,
+                    boxShadow: `0 2px 12px hsl(${s.glowColor} / 0.4)`,
+                  }}
+                />
+
                 {/* Shimmer effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none z-10" />
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/15 to-transparent pointer-events-none z-10" />
                 
-                {/* Colored glow background on hover */}
+                {/* Colored glow background on hover — more visible */}
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none"
                   style={{
-                    background: `radial-gradient(ellipse at center, hsl(${s.glowColor} / 0.08) 0%, transparent 70%)`,
+                    background: `radial-gradient(ellipse at top, hsl(${s.glowColor} / 0.18) 0%, hsl(${s.glowColor} / 0.06) 50%, transparent 80%)`,
                   }}
                 />
 
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-shadow duration-300"
-                  style={{ background: `hsl(${s.glowColor} / 0.1)` }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                  style={{ background: `hsl(${s.glowColor} / 0.12)` }}
                 >
-                  <s.icon style={{ color: `hsl(${s.glowColor})` }} size={22} />
+                  <s.icon style={{ color: `hsl(${s.glowColor})` }} size={24} />
                 </div>
-                <h3 className="font-display font-semibold text-foreground text-base mb-1">{s.title}</h3>
+                <h3 className="font-display font-bold text-foreground text-[15px] tracking-tight mb-1.5">{s.title}</h3>
                 
-                <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{s.desc}</p>
+                <p className="text-xs text-muted-foreground mb-3 line-clamp-2 leading-relaxed">{s.desc}</p>
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {s.tags.map((tag) => (
                     <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-accent text-accent-foreground">{tag}</span>
