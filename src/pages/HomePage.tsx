@@ -71,12 +71,6 @@ const services = [
   },
 ];
 
-const stats = [
-  { value: "1+", label: "Années expérience" },
-  { value: "10+", label: "Clients satisfaits" },
-  { value: "20+", label: "Projets réalisés" },
-  { value: "24/7", label: "Support technique" },
-];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40, rotateX: 10 },
