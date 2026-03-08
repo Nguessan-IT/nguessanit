@@ -266,12 +266,9 @@ export default function AdminPage() {
                   placeholder="Sujet de la newsletter"
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                 />
-                <textarea
-                  value={nlForm.content}
-                  onChange={(e) => setNlForm((f) => ({ ...f, content: e.target.value }))}
-                  placeholder="Contenu de la newsletter..."
-                  rows={6}
-                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                <RichTextEditor
+                  content={nlForm.content}
+                  onChange={(html) => setNlForm((f) => ({ ...f, content: html }))}
                 />
                 <button
                   type="submit"
