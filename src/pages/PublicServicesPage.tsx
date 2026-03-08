@@ -96,10 +96,7 @@ export default function PublicServicesPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6"
-            style={{ textShadow: "0 0 40px hsl(220 72% 50% / 0.3)" }}
-          >
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold gradient-text mb-6">
             Nos Services Digitaux
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
@@ -171,7 +168,7 @@ export default function PublicServicesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-3xl font-bold text-foreground mb-3">Notre Méthodologie</h2>
+            <h2 className="font-display text-3xl font-bold gradient-text mb-3">Notre Méthodologie</h2>
             <p className="text-muted-foreground">Un processus éprouvé pour garantir le succès de vos projets digitaux</p>
           </motion.div>
           <motion.div
@@ -201,7 +198,7 @@ export default function PublicServicesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-3xl font-bold text-foreground mb-3">Nos Résultats</h2>
+            <h2 className="font-display text-3xl font-bold gradient-text mb-3">Nos Résultats</h2>
             <p className="text-muted-foreground">Des chiffres qui témoignent de notre engagement et de notre expertise</p>
           </motion.div>
           <motion.div

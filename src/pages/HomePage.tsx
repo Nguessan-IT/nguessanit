@@ -116,7 +116,7 @@ export default function HomePage() {
           >
             Transformez vos idées en
             <br />
-            <span className="text-primary" style={{ textShadow: "0 0 40px hsl(220 72% 50% / 0.4), 0 0 80px hsl(220 72% 50% / 0.2)" }}>
+            <span className="gradient-text">
               solutions digitales performantes
             </span>
           </motion.h1>
