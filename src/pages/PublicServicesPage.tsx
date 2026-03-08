@@ -223,7 +223,7 @@ export default function PublicServicesPage() {
 
       {/* CTA */}
       <motion.section
-        className="py-16 bg-primary/5"
+        className="py-16 bg-primary/5 backdrop-blur-sm rounded-lg"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

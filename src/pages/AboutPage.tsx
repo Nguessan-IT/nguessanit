@@ -356,7 +356,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <motion.section
-        className="py-16 sm:py-20 bg-background"
+        className="py-16 sm:py-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
