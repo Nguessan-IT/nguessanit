@@ -78,8 +78,9 @@ export default function HomePage() {
     <div className="overflow-hidden">
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        <FloatingOrbs />
 
-        <div className="relative max-w-5xl mx-auto px-4 w-full text-center py-20">
+        <div className="relative max-w-5xl mx-auto px-4 w-full text-center py-20 z-10">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
