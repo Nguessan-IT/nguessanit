@@ -85,7 +85,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="py-16 sm:py-20 bg-background">
+      <section className="py-16 sm:py-20">
         <div className="max-w-5xl mx-auto px-4">
           <motion.h2
             className="font-display text-3xl font-bold text-primary text-center mb-6"
