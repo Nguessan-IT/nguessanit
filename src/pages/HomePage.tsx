@@ -43,7 +43,6 @@ const services = [
   {
     icon: Palette,
     title: "Identité Visuelle & Branding",
-    price: "Devis sur mesure",
     desc: "Créez une identité visuelle forte et cohérente pour votre marque digitale",
     tags: ["Logo & charte", "Identité complète", "Digital"],
     glowColor: "330 80% 55%",
