@@ -4,6 +4,7 @@ import { useState } from "react";
 import logoImg from "@/assets/logo-nguessan-it.png";
 import HighTechBackground from "@/components/shared/HighTechBackground";
 import Footer from "@/components/layout/Footer";
+import WhatsAppChat from "@/components/shared/WhatsAppChat";
 
 const navLinks = [
   { to: "/", label: "Accueil" },
