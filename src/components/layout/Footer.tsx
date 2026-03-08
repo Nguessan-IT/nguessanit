@@ -51,6 +51,8 @@ const Footer = () => {
   };
 
   return (
+    <>
+    <NewsletterSignup />
     <footer className="relative bg-primary/10 border-t border-primary/20 overflow-hidden backdrop-blur-lg shadow-lg shadow-primary/10">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-30">
