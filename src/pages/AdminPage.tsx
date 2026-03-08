@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 import { Lock, Mail, Send, Users, FileText, Trash2, Eye, Plus } from "lucide-react";
+import RichTextEditor from "@/components/shared/RichTextEditor";
 
 const ADMIN_PASSWORD = "NgIT@2025!Admin";
 
@@ -265,12 +266,9 @@ export default function AdminPage() {
                   placeholder="Sujet de la newsletter"
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
                 />
-                <textarea
-                  value={nlForm.content}
-                  onChange={(e) => setNlForm((f) => ({ ...f, content: e.target.value }))}
-                  placeholder="Contenu de la newsletter..."
-                  rows={6}
-                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                <RichTextEditor
+                  content={nlForm.content}
+                  onChange={(html) => setNlForm((f) => ({ ...f, content: html }))}
                 />
                 <button
                   type="submit"
