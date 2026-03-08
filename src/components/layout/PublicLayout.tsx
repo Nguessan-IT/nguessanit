@@ -100,66 +100,7 @@ export default function PublicLayout() {
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className="bg-sidebar text-sidebar-foreground relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <img src={logoImg} alt="Logo" className="h-8 w-auto" />
-              <h3 className="font-display text-lg font-bold">Nguessan-IT</h3>
-            </div>
-            <p className="text-sm text-sidebar-foreground/70 mb-4">
-              Votre partenaire digital pour innover et transformer.
-            </p>
-            <div className="flex gap-3">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition"><Linkedin size={18} /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition"><Instagram size={18} /></a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition"><Facebook size={18} /></a>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-3">Liens utiles</h4>
-            <ul className="space-y-2 text-sm text-sidebar-foreground/70">
-              {navLinks.map((l) => (
-                <li key={l.to}>
-                  <NavLink to={l.to} className="hover:text-sidebar-foreground transition">{l.label}</NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-3">Services</h4>
-            <ul className="space-y-2 text-sm text-sidebar-foreground/70">
-              <li>Développement Web & Mobile</li>
-              <li>Cloud & Infrastructure</li>
-              <li>Intelligence Artificielle</li>
-              <li>Conseil & Stratégie IT</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-sm mb-3">Contact</h4>
-            <ul className="space-y-2 text-sm text-sidebar-foreground/70">
-              <li className="flex items-center gap-2"><MapPin size={14} /> Abidjan, Côte d'Ivoire</li>
-              <li className="flex items-center gap-2"><Mail size={14} /> fiacrenguessan@outlook.com</li>
-              <li className="flex items-center gap-2"><Phone size={14} /> 0777655416</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-sidebar-accent">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-sidebar-foreground/50">
-            <p>© 2025 Nguessan-IT — Tous droits réservés</p>
-            <div className="flex gap-4">
-              <span className="hover:text-sidebar-foreground cursor-pointer transition">Mentions légales</span>
-              <span className="hover:text-sidebar-foreground cursor-pointer transition">Politique de confidentialité</span>
-              <span className="hover:text-sidebar-foreground cursor-pointer transition">CGU</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
