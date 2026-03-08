@@ -5,11 +5,13 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Mail, Phone, MapPin, Users, Sparkles, Globe, Shield, ArrowRight, Send, Clock, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { isValidPhoneNumber } from "react-phone-number-input";
+import PhoneInput from "@/components/shared/PhoneInput";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Le nom doit contenir au moins 2 caractères").max(100),
   email: z.string().trim().email("Email invalide").max(255),
-  phone: z.string().trim().max(20).optional().or(z.literal("")),
+  phone: z.string().trim().refine((val) => !val || isValidPhoneNumber(val), { message: "Numéro de téléphone invalide" }).optional().or(z.literal("")),
   company: z.string().trim().max(100).optional().or(z.literal("")),
   projectType: z.string().min(1, "Sélectionnez un type de projet"),
   budget: z.string().min(1, "Sélectionnez un budget estimé"),
@@ -161,7 +163,8 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1">Téléphone <span className="text-destructive">*</span></label>
-                  <input value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))} className={inputClass("phone")} placeholder="+225" />
+                  <PhoneInput value={form.phone} onChange={(v) => setForm((f) => ({ ...f, phone: v }))} placeholder="Numéro de téléphone" />
+                  {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1">Entreprise</label>
