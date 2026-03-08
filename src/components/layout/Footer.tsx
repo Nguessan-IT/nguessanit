@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoImg from "@/assets/logo-nguessan-it.png";
+import NewsletterSignup from "@/components/shared/NewsletterSignup";
 
 const Footer = () => {
   const navigation = [
