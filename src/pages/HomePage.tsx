@@ -57,7 +57,6 @@ const services = [
   {
     icon: Brain,
     title: "Intelligence Artificielle",
-    price: "Devis sur mesure",
     desc: "Optimisez vos processus grâce à l'IA : chatbots, analyse prédictive, automatisation",
     tags: ["Machine Learning", "NLP", "RPA"],
     glowColor: "180 80% 45%",
