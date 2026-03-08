@@ -15,7 +15,6 @@ const services = [
   {
     icon: Code,
     title: "Développement Web",
-    price: "À partir de 300$",
     desc: "Sites web modernes, applications web sur mesure et e-commerce",
     tags: ["React/Vue.js", "E-commerce", "CMS"],
     glowColor: "210 100% 60%",
