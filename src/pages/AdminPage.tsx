@@ -51,7 +51,7 @@ export default function AdminPage() {
   const fetchNewsletters = async () => {
     setLoadingNl(true);
     const { data } = await supabase
-      .from("newsletters")
+      .from("newsletters" as any)
       .select("*")
       .order("created_at", { ascending: false });
     setNewsletters(data || []);
