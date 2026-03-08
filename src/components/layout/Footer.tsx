@@ -182,7 +182,7 @@ const Footer = () => {
         <div className="py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-muted-foreground text-sm">
-              <span>&copy; 2025 Nguessan-IT. Tous droits réservés.</span>
+              <span>&copy; {new Date().getFullYear()} Nguessan-IT. Tous droits réservés.</span>
               <span className="hidden md:inline">•</span>
               <span className="flex items-center gap-1">
                 Fait avec <Heart className="h-4 w-4 text-red-500 fill-current" /> en Côte d'Ivoire
