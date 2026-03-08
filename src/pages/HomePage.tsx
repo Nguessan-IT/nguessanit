@@ -91,108 +91,177 @@ export default function HomePage() {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20 pb-10">
         <FloatingOrbs />
 
-        <div className="relative max-w-5xl mx-auto px-4 w-full text-center py-20 z-10">
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <motion.img
-              src={logoImg}
-              alt="Logo Nguessan-IT"
-              className="mx-auto w-40 h-40 object-contain drop-shadow-xl"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
+        <div className="relative max-w-7xl mx-auto px-4 w-full grid lg:grid-cols-2 gap-12 items-center z-10">
+          {/* Left Column: Content */}
+          <div className="text-left flex flex-col items-start">
+            {/* Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="mb-8 hidden lg:block"
+            >
+              <motion.img
+                src={logoImg}
+                alt="Logo Nguessan-IT"
+                className="w-28 h-28 object-contain drop-shadow-xl"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
 
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-6"
-          >
-            <Sparkles size={16} />
-            Solutions Informatiques
-            <Sparkles size={16} />
-          </motion.div>
+            {/* Logo for mobile */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="mb-8 lg:hidden mx-auto"
+            >
+              <motion.img
+                src={logoImg}
+                alt="Logo Nguessan-IT"
+                className="w-32 h-32 object-contain drop-shadow-xl"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.div>
 
-          {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6"
-          >
-            Transformez vos idées en
-            <br />
-            <span className="gradient-text">
-              solutions digitales performantes
-            </span>
-          </motion.h1>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-6 lg:mx-0 mx-auto"
+            >
+              <Sparkles size={16} />
+              Solutions Informatiques
+              <Sparkles size={16} />
+            </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8"
-          >
-            Chez Nguessan-IT, nous aidons entreprises, startups et institutions à concevoir, développer et déployer des solutions technologiques sur mesure. Notre mission : digitaliser vos ambitions et libérer le potentiel de votre organisation.
-          </motion.p>
-
-          {/* Feature badges */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-wrap justify-center gap-4 mb-10"
-          >
-            {features.map((f) => (
-              <span key={f} className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <CheckCircle size={16} className="text-primary" />
-                {f}
+            {/* Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 lg:text-left text-center leading-tight"
+            >
+              Transformez vos idées en
+              <br />
+              <span className="gradient-text">
+                solutions performantes
               </span>
-            ))}
-          </motion.div>
+            </motion.h1>
 
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link
-              to="/contact"
-              className="group relative inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium text-lg transition overflow-hidden hover:shadow-lg hover:shadow-primary/25"
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="text-lg text-muted-foreground mb-8 lg:text-left text-center max-w-xl lg:mx-0 mx-auto"
             >
-              <Sparkles size={18} />
-              Demandez votre devis GRATUIT
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-border rounded-lg font-medium text-foreground hover:border-primary hover:text-primary transition"
-            >
-              Découvrir nos services
-              <ArrowRight size={18} />
-            </Link>
-          </motion.div>
+              Chez Nguessan-IT, nous aidons entreprises, startups et institutions à concevoir, développer et déployer des solutions technologiques sur mesure. Notre mission : digitaliser vos ambitions.
+            </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
-            className="mt-8 text-sm text-muted-foreground"
-          >
-            Partenaire digital de confiance pour les entreprises d'Afrique, d'Europe et d'Amérique.
-          </motion.p>
+            {/* Feature badges */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap lg:justify-start justify-center gap-4 mb-10"
+            >
+              {features.map((f) => (
+                <span key={f} className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <CheckCircle size={16} className="text-primary" />
+                  {f}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="flex flex-col sm:flex-row items-center gap-4 lg:mx-0 mx-auto w-full sm:w-auto"
+            >
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium text-lg transition overflow-hidden hover:shadow-lg hover:shadow-primary/25 w-full sm:w-auto"
+              >
+                <Sparkles size={18} />
+                Devis GRATUIT
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-border rounded-lg font-medium text-foreground hover:border-primary hover:text-primary transition w-full sm:w-auto"
+              >
+                Nos services
+                <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Scrolling Icons */}
+          <div className="relative h-[600px] hidden lg:block overflow-hidden">
+            <div className="absolute inset-0 flex gap-6 justify-center">
+              {/* First Column - Scroll Up */}
+              <motion.div
+                className="flex flex-col gap-6"
+                animate={{ y: [0, -1000] }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              >
+                {[...services, ...services].map((s, i) => (
+                  <div
+                    key={`col1-${i}`}
+                    className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 flex flex-col items-center justify-center gap-4 w-48 shadow-sm transition-transform hover:scale-105"
+                    style={{
+                      boxShadow: `0 10px 30px -10px hsl(${s.glowColor} / 0.15)`,
+                    }}
+                  >
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                      style={{ background: `hsl(${s.glowColor} / 0.1)` }}
+                    >
+                      <s.icon style={{ color: `hsl(${s.glowColor})` }} size={32} />
+                    </div>
+                    <span className="font-display font-semibold text-center text-sm">{s.title}</span>
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* Second Column - Scroll Down */}
+              <motion.div
+                className="flex flex-col gap-6 pt-12"
+                animate={{ y: [-1000, 0] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              >
+                {[...services].reverse().concat([...services].reverse()).map((s, i) => (
+                  <div
+                    key={`col2-${i}`}
+                    className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 flex flex-col items-center justify-center gap-4 w-48 shadow-sm transition-transform hover:scale-105"
+                    style={{
+                      boxShadow: `0 10px 30px -10px hsl(${s.glowColor} / 0.15)`,
+                    }}
+                  >
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                      style={{ background: `hsl(${s.glowColor} / 0.1)` }}
+                    >
+                      <s.icon style={{ color: `hsl(${s.glowColor})` }} size={32} />
+                    </div>
+                    <span className="font-display font-semibold text-center text-sm">{s.title}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+            
+            {/* Top and Bottom Fades for smooth infinite effect */}
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+          </div>
         </div>
       </section>
 
