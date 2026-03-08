@@ -21,8 +21,8 @@ export default function NewsletterSignup() {
 
     setLoading(true);
     const { error } = await supabase
-      .from("newsletter_subscribers")
-      .insert({ email: result.data });
+      .from("newsletter_subscribers" as any)
+      .insert({ email: result.data } as any);
     setLoading(false);
 
     if (error) {

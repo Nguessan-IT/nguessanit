@@ -41,7 +41,7 @@ export default function AdminPage() {
   const fetchSubscribers = async () => {
     setLoadingSubs(true);
     const { data } = await supabase
-      .from("newsletter_subscribers")
+      .from("newsletter_subscribers" as any)
       .select("*")
       .order("subscribed_at", { ascending: false });
     setSubscribers(data || []);
@@ -51,7 +51,7 @@ export default function AdminPage() {
   const fetchNewsletters = async () => {
     setLoadingNl(true);
     const { data } = await supabase
-      .from("newsletters")
+      .from("newsletters" as any)
       .select("*")
       .order("created_at", { ascending: false });
     setNewsletters(data || []);
@@ -75,10 +75,10 @@ export default function AdminPage() {
       return;
     }
     setSending(true);
-    const { error } = await supabase.from("newsletters").insert({
+    const { error } = await supabase.from("newsletters" as any).insert({
       subject: nlForm.subject.trim(),
       content: nlForm.content.trim(),
-    });
+    } as any);
     setSending(false);
     if (error) {
       toast.error("Erreur: " + error.message);
@@ -90,7 +90,7 @@ export default function AdminPage() {
   };
 
   const deleteNewsletter = async (id: string) => {
-    const { error } = await supabase.from("newsletters").delete().eq("id", id);
+    const { error } = await supabase.from("newsletters" as any).delete().eq("id", id);
     if (error) {
       toast.error("Erreur suppression");
       return;
@@ -101,7 +101,7 @@ export default function AdminPage() {
 
   const markAsSent = async (id: string) => {
     const { error } = await supabase
-      .from("newsletters")
+      .from("newsletters" as any)
       .update({ status: "sent", sent_at: new Date().toISOString() })
       .eq("id", id);
     if (error) {
