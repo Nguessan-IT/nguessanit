@@ -163,7 +163,8 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1">Téléphone <span className="text-destructive">*</span></label>
-                  <input value={form.phone} onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))} className={inputClass("phone")} placeholder="+225" />
+                  <PhoneInput value={form.phone} onChange={(v) => setForm((f) => ({ ...f, phone: v }))} placeholder="Numéro de téléphone" />
+                  {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1">Entreprise</label>
