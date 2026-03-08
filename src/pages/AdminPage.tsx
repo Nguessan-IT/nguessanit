@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 import { Lock, Mail, Send, Users, FileText, Trash2, Eye, Plus } from "lucide-react";
+import RichTextEditor from "@/components/shared/RichTextEditor";
 
 const ADMIN_PASSWORD = "NgIT@2025!Admin";
 
