@@ -240,7 +240,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-primary/5">
+      <section className="py-16 bg-primary/5 backdrop-blur-sm rounded-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center"
