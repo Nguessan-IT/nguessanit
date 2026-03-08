@@ -20,6 +20,7 @@ export default function App() {
         <Route path="/conditions" element={<TermsPage />} />
         <Route path="/politique-confidentialite" element={<PrivacyPage />} />
       </Route>
+      <Route path="/admin" element={<AdminPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
