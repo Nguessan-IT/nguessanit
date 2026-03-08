@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Sparkles, Code, Wrench, Cloud, GraduationCap, Palette, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import logoImg from "@/assets/logo-nguessan-it.png";
+import FloatingOrbs from "@/components/shared/FloatingOrbs";
 
 const features = [
   "Solutions 100% sur mesure",
