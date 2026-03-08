@@ -89,28 +89,7 @@ export default function PublicServicesPage() {
   return (
     <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative py-20 sm:py-28 overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(210 60% 97%) 0%, hsl(210 40% 98%) 30%, hsl(200 50% 96%) 60%, hsl(210 60% 95%) 100%)" }}>
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <motion.div
-            className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full blur-[120px]"
-            style={{ background: "radial-gradient(circle, hsl(210 80% 85% / 0.5) 0%, transparent 70%)" }}
-            animate={{ y: [0, -30, 0], x: [0, 15, 0], scale: [1, 1.08, 1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute top-1/4 right-[5%] w-[400px] h-[400px] rounded-full blur-[100px]"
-            style={{ background: "radial-gradient(circle, hsl(200 70% 88% / 0.4) 0%, transparent 70%)" }}
-            animate={{ y: [0, 25, 0], x: [0, -20, 0], scale: [1, 0.95, 1] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          />
-          <motion.div
-            className="absolute bottom-10 left-[20%] w-[300px] h-[300px] rounded-full blur-[90px]"
-            style={{ background: "radial-gradient(circle, hsl(215 75% 90% / 0.35) 0%, transparent 70%)" }}
-            animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          />
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, hsl(220 72% 50%) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
-        </div>
+      <section className="relative py-20 sm:py-28 overflow-hidden">
         <motion.div
           className="relative max-w-4xl mx-auto px-4 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -146,7 +125,7 @@ export default function PublicServicesPage() {
       </section>
 
       {/* Services grid */}
-      <section className="py-16 sm:py-24 bg-background">
+      <section className="py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
@@ -184,7 +163,7 @@ export default function PublicServicesPage() {
       </section>
 
       {/* Methodology */}
-      <section className="py-16 bg-primary/5">
+      <section className="py-16 bg-primary/5 backdrop-blur-sm rounded-lg">
         <div className="max-w-5xl mx-auto px-4">
           <motion.div
             className="text-center mb-12"
@@ -214,7 +193,7 @@ export default function PublicServicesPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-background">
+      <section className="py-16">
         <div className="max-w-5xl mx-auto px-4">
           <motion.div
             className="text-center mb-10"
@@ -244,7 +223,7 @@ export default function PublicServicesPage() {
 
       {/* CTA */}
       <motion.section
-        className="py-16 bg-primary/5"
+        className="py-16 bg-primary/5 backdrop-blur-sm rounded-lg"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

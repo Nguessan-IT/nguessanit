@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { Menu, X, Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Globe, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import logoImg from "@/assets/logo-nguessan-it.png";
+import HighTechBackground from "@/components/shared/HighTechBackground";
 
 const navLinks = [
   { to: "/", label: "Accueil" },
@@ -14,9 +15,10 @@ export default function PublicLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col text-foreground relative">
+      <HighTechBackground />
       {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
+      <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-md border-b border-border relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
           {/* Logo */}
           <NavLink to="/" className="flex items-center gap-3">
@@ -93,12 +95,12 @@ export default function PublicLayout() {
       </header>
 
       {/* Page content */}
-      <main className="flex-1">
+      <main className="flex-1 relative z-10">
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="bg-sidebar text-sidebar-foreground">
+      <footer className="bg-sidebar text-sidebar-foreground relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
