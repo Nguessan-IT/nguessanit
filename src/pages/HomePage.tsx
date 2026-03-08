@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle, Sparkles, Code, Wrench, Cloud, GraduationCap, 
 import { motion } from "framer-motion";
 import logoImg from "@/assets/logo-nguessan-it.png";
 import FloatingOrbs from "@/components/shared/FloatingOrbs";
+import AnimatedStats from "@/components/home/AnimatedStats";
 
 const features = [
   "Solutions 100% sur mesure",
