@@ -205,14 +205,13 @@ const Footer = () => {
               </Link>
               
               {/* Scroll to top button */}
-              <Button
-                variant="outline"
-                size="sm"
+              <button
                 onClick={scrollToTop}
-                className="ml-4 w-10 h-10 p-0 transition-all duration-300"
+                className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300"
+                aria-label="Retour en haut"
               >
-                <ArrowUp className="h-4 w-4" />
-              </Button>
+                <ArrowUp className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </div>
