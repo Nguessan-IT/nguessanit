@@ -15,7 +15,6 @@ const services = [
   {
     icon: Code,
     title: "Développement Web",
-    price: "À partir de 300$",
     desc: "Sites web modernes, applications web sur mesure et e-commerce",
     tags: ["React/Vue.js", "E-commerce", "CMS"],
     glowColor: "210 100% 60%",
@@ -23,7 +22,6 @@ const services = [
   {
     icon: Wrench,
     title: "Maintenance Informatique",
-    price: "Devis sur mesure",
     desc: "Support technique, maintenance préventive et dépannage urgent",
     tags: ["Support 24/7", "Maintenance", "Sécurité"],
     glowColor: "160 80% 45%",
@@ -31,7 +29,6 @@ const services = [
   {
     icon: Cloud,
     title: "Solutions Cloud",
-    price: "Devis sur mesure",
     desc: "Migration vers le cloud, serveurs et infrastructure réseau",
     tags: ["AWS/Azure", "Migration", "Infrastructure"],
     glowColor: "200 90% 55%",
@@ -39,7 +36,6 @@ const services = [
   {
     icon: GraduationCap,
     title: "Formation & Conseil",
-    price: "Devis sur mesure",
     desc: "Formation informatique et conseil en transformation digitale",
     tags: ["Formation", "Audit IT", "Stratégie"],
     glowColor: "270 70% 60%",
@@ -47,7 +43,6 @@ const services = [
   {
     icon: Palette,
     title: "Identité Visuelle & Branding",
-    price: "Devis sur mesure",
     desc: "Créez une identité visuelle forte et cohérente pour votre marque digitale",
     tags: ["Logo & charte", "Identité complète", "Digital"],
     glowColor: "330 80% 55%",
@@ -55,7 +50,6 @@ const services = [
   {
     icon: FileText,
     title: "Documents Interactifs",
-    price: "Devis sur mesure",
     desc: "Transformez vos documents statiques en expériences interactives engageantes",
     tags: ["PDF interactifs", "Catalogues", "Présentations"],
     glowColor: "30 90% 55%",
@@ -63,7 +57,6 @@ const services = [
   {
     icon: Brain,
     title: "Intelligence Artificielle",
-    price: "Devis sur mesure",
     desc: "Optimisez vos processus grâce à l'IA : chatbots, analyse prédictive, automatisation",
     tags: ["Machine Learning", "NLP", "RPA"],
     glowColor: "180 80% 45%",
@@ -71,7 +64,6 @@ const services = [
   {
     icon: Database,
     title: "Bases de Données",
-    price: "Devis sur mesure",
     desc: "Modélisation, administration et sécurisation de bases de données",
     tags: ["PostgreSQL", "SQL Server", "Firebase"],
     glowColor: "45 85% 50%",
@@ -265,7 +257,7 @@ export default function HomePage() {
                   <s.icon style={{ color: `hsl(${s.glowColor})` }} size={22} />
                 </div>
                 <h3 className="font-display font-semibold text-foreground text-base mb-1">{s.title}</h3>
-                <p className="text-xs font-medium text-primary mb-2">{s.price}</p>
+                
                 <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{s.desc}</p>
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {s.tags.map((tag) => (
