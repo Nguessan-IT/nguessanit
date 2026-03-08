@@ -193,7 +193,7 @@ export default function PublicServicesPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-background">
+      <section className="py-16">
         <div className="max-w-5xl mx-auto px-4">
           <motion.div
             className="text-center mb-10"
