@@ -36,7 +36,6 @@ const services = [
   {
     icon: GraduationCap,
     title: "Formation & Conseil",
-    price: "Devis sur mesure",
     desc: "Formation informatique et conseil en transformation digitale",
     tags: ["Formation", "Audit IT", "Stratégie"],
     glowColor: "270 70% 60%",
