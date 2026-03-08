@@ -75,10 +75,10 @@ export default function AdminPage() {
       return;
     }
     setSending(true);
-    const { error } = await supabase.from("newsletters").insert({
+    const { error } = await supabase.from("newsletters" as any).insert({
       subject: nlForm.subject.trim(),
       content: nlForm.content.trim(),
-    });
+    } as any);
     setSending(false);
     if (error) {
       toast.error("Erreur: " + error.message);
