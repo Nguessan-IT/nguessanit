@@ -224,32 +224,56 @@ export default function HomePage() {
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
+            style={{ perspective: 1200 }}
           >
-            {services.map((s) => (
+            {services.map((s, i) => (
               <motion.div
                 key={s.title}
+                custom={i}
                 variants={fadeInUp}
-                whileHover={{ y: -6, boxShadow: "0 20px 40px -12px hsl(220 72% 50% / 0.12)" }}
-                className="bg-card border border-border rounded-xl p-6 transition-all group"
+                whileHover={{
+                  y: -8,
+                  rotateY: -4,
+                  rotateX: 4,
+                  scale: 1.03,
+                  boxShadow: `0 20px 50px -15px hsl(${s.glowColor} / 0.35), 0 0 30px -5px hsl(${s.glowColor} / 0.15)`,
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative bg-card border border-border rounded-xl p-5 transition-all group overflow-hidden"
+                style={{ transformStyle: "preserve-3d" }}
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <s.icon className="text-primary" size={24} />
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none z-10" />
+                
+                {/* Colored glow background on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none"
+                  style={{
+                    background: `radial-gradient(ellipse at center, hsl(${s.glowColor} / 0.08) 0%, transparent 70%)`,
+                  }}
+                />
+
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-shadow duration-300"
+                  style={{ background: `hsl(${s.glowColor} / 0.1)` }}
+                >
+                  <s.icon style={{ color: `hsl(${s.glowColor})` }} size={22} />
                 </div>
-                <h3 className="font-display font-semibold text-foreground text-lg mb-1">{s.title}</h3>
-                <p className="text-sm font-medium text-primary mb-3">{s.price}</p>
-                <p className="text-sm text-muted-foreground mb-4">{s.desc}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <h3 className="font-display font-semibold text-foreground text-base mb-1">{s.title}</h3>
+                <p className="text-xs font-medium text-primary mb-2">{s.price}</p>
+                <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{s.desc}</p>
+                <div className="flex flex-wrap gap-1.5 mb-3">
                   {s.tags.map((tag) => (
-                    <span key={tag} className="text-xs px-2 py-1 rounded-full bg-accent text-accent-foreground">{tag}</span>
+                    <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-accent text-accent-foreground">{tag}</span>
                   ))}
                 </div>
-                <Link to="/contact" className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
-                  En savoir plus <ArrowRight size={14} />
+                <Link to="/contact" className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline">
+                  En savoir plus <ArrowRight size={12} />
                 </Link>
               </motion.div>
             ))}
