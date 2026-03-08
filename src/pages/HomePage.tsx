@@ -22,7 +22,6 @@ const services = [
   {
     icon: Wrench,
     title: "Maintenance Informatique",
-    price: "Devis sur mesure",
     desc: "Support technique, maintenance préventive et dépannage urgent",
     tags: ["Support 24/7", "Maintenance", "Sécurité"],
     glowColor: "160 80% 45%",
