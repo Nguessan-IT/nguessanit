@@ -1,14 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, animate, useMotionValue, useTransform } from "framer-motion";
-import { TrendingUp, Star, Rocket, Zap } from "lucide-react";
+import { TrendingUp, Star, Rocket, Zap, ThumbsUp, Globe, Headphones, Code, Cloud, Target } from "lucide-react";
 import techBg from "@/assets/tech-background.jpg";
+import { supabase } from "@/integrations/supabase/client";
 
-const stats = [
+const iconMap: Record<string, any> = { TrendingUp, Star, Rocket, Zap, ThumbsUp, Globe, Headphones, Code, Cloud, Target };
+
+const defaultStats = [
   { value: 1, suffix: "+", label: "Années expérience", Icon: TrendingUp },
   { value: 10, suffix: "+", label: "Clients satisfaits", Icon: Star },
   { value: 20, suffix: "+", label: "Projets réalisés", Icon: Rocket },
   { value: 24, suffix: "/7", label: "Support technique", Icon: Zap },
 ];
+
+function parseStatValue(val: string): { value: number; suffix: string } {
+  const match = val.match(/^(\d+)(.*)/);
+  return match ? { value: parseInt(match[1], 10), suffix: match[2] } : { value: 0, suffix: val };
+}
 
 function AnimatedCounter({ value, suffix, delay }: { value: number; suffix: string; delay: number }) {
   const [display, setDisplay] = useState(0);
@@ -151,7 +159,7 @@ function GridBackground({ isInView }: { isInView: boolean }) {
   );
 }
 
-function StatCard({ s, i, isInView }: { s: typeof stats[0]; i: number; isInView: boolean }) {
+function StatCard({ s, i, isInView }: { s: typeof defaultStats[0]; i: number; isInView: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -273,6 +281,29 @@ function StatCard({ s, i, isInView }: { s: typeof stats[0]; i: number; isInView:
 export default function AnimatedStats() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
+  const [stats, setStats] = useState(defaultStats);
+
+  useEffect(() => {
+    supabase
+      .from("site_stats")
+      .select("*")
+      .order("display_order")
+      .then(({ data }) => {
+        if (data && data.length > 0) {
+          setStats(
+            data.map((s: any) => {
+              const parsed = parseStatValue(s.stat_value);
+              return {
+                value: parsed.value,
+                suffix: parsed.suffix,
+                label: s.label,
+                Icon: iconMap[s.icon_name] || Rocket,
+              };
+            })
+          );
+        }
+      });
+  }, []);
 
   return (
     <section className="relative py-20 overflow-hidden" ref={containerRef}>
