@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Code, Cloud, Brain, Target, GraduationCap, Palette, FileText, Database, ArrowRight, Sparkles, MessageCircle, Wrench, Crosshair, Lightbulb, Zap, Rocket, ThumbsUp, Globe, Headphones } from "lucide-react";
 import techBg from "@/assets/tech-background.jpg";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 const services = [
   {
