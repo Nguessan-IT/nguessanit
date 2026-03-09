@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Code, Cloud, Brain, Target, GraduationCap, Palette, FileText, Database, ArrowRight, Sparkles, MessageCircle, Wrench, Crosshair, Lightbulb, Zap } from "lucide-react";
 import techBg from "@/assets/tech-background.jpg";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const services = [
   {
