@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Sparkles, Code, Wrench, Cloud, GraduationCap, Palette, FileText, Brain, Database } from "lucide-react";
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import logoImg from "@/assets/logo-nguessan-it.png";
 import FloatingOrbs from "@/components/shared/FloatingOrbs";
 import AnimatedStats from "@/components/home/AnimatedStats";
