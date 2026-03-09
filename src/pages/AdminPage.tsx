@@ -52,6 +52,11 @@ export default function AdminPage() {
   const [loadingStats, setLoadingStats] = useState(false);
   const [savingStats, setSavingStats] = useState(false);
 
+  const [portfolioProjects, setPortfolioProjects] = useState<any[]>([]);
+  const [loadingPortfolio, setLoadingPortfolio] = useState(false);
+  const [editingProject, setEditingProject] = useState<any | null>(null);
+  const [projectForm, setProjectForm] = useState({ title: "", short_description: "", full_description: "", image_url: "", category: "web", technologies: "", client_name: "", project_url: "" });
+
   const [nlForm, setNlForm] = useState({ subject: "", content: "" });
   const [sending, setSending] = useState(false);
 
