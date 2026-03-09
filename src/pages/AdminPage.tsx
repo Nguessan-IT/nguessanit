@@ -4,13 +4,13 @@ import { toast } from "sonner";
 import { motion } from "framer-motion";
 import {
   Lock, Mail, Send, Users, FileText, Trash2, Plus, Download,
-  MessageCircle, Receipt, Phone, Calendar, Building2, DollarSign,
+  MessageCircle, Receipt, Phone, Calendar, Building2, DollarSign, BarChart3, Save,
 } from "lucide-react";
 import RichTextEditor from "@/components/shared/RichTextEditor";
 
 const ADMIN_PASSWORD = "NgIT@2025!Admin";
 
-type TabKey = "subscribers" | "contacts" | "quotes" | "newsletters";
+type TabKey = "subscribers" | "contacts" | "quotes" | "newsletters" | "stats";
 
 function exportCSV(filename: string, headers: string[], rows: string[][]) {
   const bom = "\uFEFF";
@@ -48,6 +48,10 @@ export default function AdminPage() {
   const [loadingMsg, setLoadingMsg] = useState(false);
   const [loadingQuotes, setLoadingQuotes] = useState(false);
 
+  const [siteStats, setSiteStats] = useState<any[]>([]);
+  const [loadingStats, setLoadingStats] = useState(false);
+  const [savingStats, setSavingStats] = useState(false);
+
   const [nlForm, setNlForm] = useState({ subject: "", content: "" });
   const [sending, setSending] = useState(false);
 
@@ -67,6 +71,7 @@ export default function AdminPage() {
     fetchNewsletters();
     fetchMessages();
     fetchQuotes();
+    fetchSiteStats();
   }, [authenticated]);
 
   const fetchSubscribers = async () => {
@@ -95,6 +100,32 @@ export default function AdminPage() {
     const { data } = await supabase.from("quotes").select("*, clients(name, email)").order("created_at", { ascending: false });
     setQuotes(data || []);
     setLoadingQuotes(false);
+  };
+
+  const fetchSiteStats = async () => {
+    setLoadingStats(true);
+    const { data } = await supabase.from("site_stats").select("*").order("display_order");
+    setSiteStats(data || []);
+    setLoadingStats(false);
+  };
+
+  const updateStat = (index: number, field: string, value: string) => {
+    setSiteStats((prev) => prev.map((s, i) => (i === index ? { ...s, [field]: value } : s)));
+  };
+
+  const saveSiteStats = async () => {
+    setSavingStats(true);
+    for (const stat of siteStats) {
+      await supabase.from("site_stats").update({
+        stat_value: stat.stat_value,
+        label: stat.label,
+        icon_name: stat.icon_name,
+        color: stat.color,
+        updated_at: new Date().toISOString(),
+      }).eq("id", stat.id);
+    }
+    setSavingStats(false);
+    toast.success("Statistiques mises à jour !");
   };
 
   const createNewsletter = async (e: React.FormEvent) => {
@@ -191,6 +222,7 @@ export default function AdminPage() {
     { key: "quotes", label: "Devis", icon: Receipt, count: quotes.length },
     { key: "subscribers", label: "Abonnés", icon: Users, count: subscribers.length },
     { key: "newsletters", label: "Newsletters", icon: FileText, count: newsletters.length },
+    { key: "stats", label: "Statistiques Site", icon: BarChart3, count: siteStats.length },
   ];
 
   return (
@@ -449,6 +481,96 @@ export default function AdminPage() {
                 </div>
               )}
             </div>
+          </div>
+        )}
+
+        {/* ===================== STATS TAB ===================== */}
+        {tab === "stats" && (
+          <div className="bg-card border border-border rounded-2xl p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-display text-lg font-bold text-foreground flex items-center gap-2">
+                <BarChart3 size={20} className="text-primary" />
+                Statistiques du site ({siteStats.length})
+              </h2>
+              <button
+                onClick={saveSiteStats}
+                disabled={savingStats}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition disabled:opacity-50"
+              >
+                <Save size={16} />
+                {savingStats ? "Enregistrement..." : "Enregistrer"}
+              </button>
+            </div>
+            <p className="text-sm text-muted-foreground mb-6">
+              Modifiez les chiffres affichés sur la page Services publique. Les changements sont visibles immédiatement après enregistrement.
+            </p>
+            {loadingStats ? (
+              <p className="text-muted-foreground text-sm">Chargement...</p>
+            ) : siteStats.length === 0 ? (
+              <p className="text-muted-foreground text-sm">Aucune statistique configurée.</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {siteStats.map((stat, index) => (
+                  <div key={stat.id} className="bg-secondary/50 rounded-xl p-5 border border-border/50 space-y-3">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div
+                        className="w-8 h-8 rounded-full flex items-center justify-center"
+                        style={{ background: `hsl(${stat.color})` }}
+                      >
+                        <span className="text-white text-xs font-bold">{index + 1}</span>
+                      </div>
+                      <span className="text-xs text-muted-foreground font-mono">{stat.stat_key}</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-xs text-muted-foreground mb-1 block">Valeur affichée</label>
+                        <input
+                          value={stat.stat_value}
+                          onChange={(e) => updateStat(index, "stat_value", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs text-muted-foreground mb-1 block">Label</label>
+                        <input
+                          value={stat.label}
+                          onChange={(e) => updateStat(index, "label", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                        />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-xs text-muted-foreground mb-1 block">Icône</label>
+                        <select
+                          value={stat.icon_name}
+                          onChange={(e) => updateStat(index, "icon_name", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                        >
+                          {["Rocket", "ThumbsUp", "Globe", "Headphones", "Code", "Cloud", "Zap", "Target"].map((ic) => (
+                            <option key={ic} value={ic}>{ic}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label className="text-xs text-muted-foreground mb-1 block">Couleur HSL</label>
+                        <input
+                          value={stat.color}
+                          onChange={(e) => updateStat(index, "color", e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                          placeholder="210 100% 55%"
+                        />
+                      </div>
+                    </div>
+                    {stat.updated_at && (
+                      <p className="text-xs text-muted-foreground">
+                        Dernière mise à jour : {new Date(stat.updated_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>

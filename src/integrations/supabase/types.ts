@@ -444,6 +444,39 @@ export type Database = {
         }
         Relationships: []
       }
+      site_stats: {
+        Row: {
+          color: string
+          display_order: number
+          icon_name: string
+          id: string
+          label: string
+          stat_key: string
+          stat_value: string
+          updated_at: string
+        }
+        Insert: {
+          color?: string
+          display_order?: number
+          icon_name?: string
+          id?: string
+          label: string
+          stat_key: string
+          stat_value: string
+          updated_at?: string
+        }
+        Update: {
+          color?: string
+          display_order?: number
+          icon_name?: string
+          id?: string
+          label?: string
+          stat_key?: string
+          stat_value?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
