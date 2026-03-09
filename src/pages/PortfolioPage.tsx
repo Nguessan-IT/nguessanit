@@ -5,9 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { X, ExternalLink, ArrowRight, Sparkles, Layers } from "lucide-react";
 import techBg from "@/assets/tech-background.jpg";
 
-const categories = [
-  { key: "all", label: "Tous" },
-];
+// Categories are built dynamically from project data
 
 interface Project {
   id: string;
