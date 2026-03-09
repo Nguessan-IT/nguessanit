@@ -199,7 +199,7 @@ export default function PortfolioPage() {
       <section className="py-6 border-b border-border/50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((cat) => (
+            {dynamicCategories.map((cat) => (
               <button
                 key={cat.key}
                 onClick={() => setFilter(cat.key)}
