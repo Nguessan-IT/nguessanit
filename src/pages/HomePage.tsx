@@ -426,54 +426,58 @@ export default function HomePage() {
 
       {/* CTA */}
       <motion.section
-        className="py-16 sm:py-24"
+        className="relative py-24 sm:py-32 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="relative rounded-3xl overflow-hidden bg-card border border-border/50 shadow-2xl p-10 sm:p-16 text-center">
-            {/* Background Glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[800px] pointer-events-none">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
-            </div>
+        {/* Subtle background glow for the whole section to match the image's airy feel */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
+          <div className="w-[800px] h-[800px] bg-primary/10 rounded-full blur-[100px]"></div>
+        </div>
 
-            <div className="relative z-10">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6"
-              >
-                <Rocket size={18} />
-                <span className="text-sm font-medium tracking-wide uppercase">Prêt à décoller ?</span>
-              </motion.div>
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/20 bg-primary/5 text-primary mb-8"
+          >
+            <Rocket size={16} />
+            <span className="text-sm font-medium">Prêt à décoller ?</span>
+          </motion.div>
 
-              <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-6">
-                Prêt à propulser votre<br className="hidden sm:block" /> entreprise ?
-              </h2>
-              
-              <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-                Contactez-nous pour un devis gratuit et découvrez comment nos solutions technologiques sur mesure peuvent transformer votre infrastructure IT et accélérer votre croissance.
-              </p>
+          <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-foreground mb-6 tracking-tight leading-[1.1]">
+            Besoin d'une solution<br />
+            <span className="text-primary relative inline-block mt-2">
+              personnalisée ?
+              <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10 rounded-full"></div>
+            </span>
+          </h2>
+          
+          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+            Contactez-nous pour un devis gratuit et découvrez comment nous pouvons transformer votre infrastructure IT
+          </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                  to="/contact"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium text-lg hover:shadow-lg hover:shadow-primary/30 transition-all w-full sm:w-auto"
-                >
-                  Commencer maintenant <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary/50 text-foreground border border-border rounded-xl font-medium text-lg hover:bg-secondary transition-all w-full sm:w-auto"
-                >
-                  <Calendar size={20} />
-                  Prendre rendez-vous
-                </Link>
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              to="/contact"
+              className="group relative inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#4a77ff] text-white rounded-full font-medium text-lg transition-all w-full sm:w-auto hover:-translate-y-1"
+              style={{
+                boxShadow: '0 15px 40px -5px rgba(74, 119, 255, 0.5)'
+              }}
+            >
+              <Sparkles size={20} className="opacity-80" />
+              Demander un devis
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform opacity-80" />
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-background text-foreground border border-primary/20 shadow-sm rounded-full font-medium text-lg hover:border-primary/40 hover:bg-accent/50 transition-all w-full sm:w-auto"
+            >
+              Nous contacter
+            </Link>
           </div>
         </div>
       </motion.section>
