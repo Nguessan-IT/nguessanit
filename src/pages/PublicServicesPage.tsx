@@ -99,6 +99,27 @@ const staggerContainer = {
 };
 
 export default function PublicServicesPage() {
+  const [stats, setStats] = useState(defaultStats);
+
+  useEffect(() => {
+    supabase
+      .from("site_stats")
+      .select("*")
+      .order("display_order")
+      .then(({ data }) => {
+        if (data && data.length > 0) {
+          setStats(
+            data.map((s: any) => ({
+              value: s.stat_value,
+              label: s.label,
+              icon: iconMap[s.icon_name] || Rocket,
+              color: s.color,
+            }))
+          );
+        }
+      });
+  }, []);
+
   return (
     <div className="overflow-hidden">
       {/* Hero */}
