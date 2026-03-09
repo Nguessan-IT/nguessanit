@@ -134,6 +134,73 @@ export default function AdminPage() {
     toast.success("Statistiques mises à jour !");
   };
 
+  const fetchPortfolio = async () => {
+    setLoadingPortfolio(true);
+    const { data } = await supabase.from("portfolio_projects").select("*").order("display_order");
+    setPortfolioProjects(data || []);
+    setLoadingPortfolio(false);
+  };
+
+  const resetProjectForm = () => {
+    setProjectForm({ title: "", short_description: "", full_description: "", image_url: "", category: "web", technologies: "", client_name: "", project_url: "" });
+    setEditingProject(null);
+  };
+
+  const saveProject = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!projectForm.title.trim()) { toast.error("Le titre est requis"); return; }
+    const payload = {
+      title: projectForm.title.trim(),
+      short_description: projectForm.short_description.trim(),
+      full_description: projectForm.full_description.trim(),
+      image_url: projectForm.image_url.trim() || null,
+      category: projectForm.category,
+      technologies: projectForm.technologies.split(",").map((t: string) => t.trim()).filter(Boolean),
+      client_name: projectForm.client_name.trim() || null,
+      project_url: projectForm.project_url.trim() || null,
+      updated_at: new Date().toISOString(),
+    };
+
+    if (editingProject) {
+      const { error } = await supabase.from("portfolio_projects").update(payload).eq("id", editingProject.id);
+      if (error) { toast.error("Erreur: " + error.message); return; }
+      toast.success("Projet mis à jour !");
+    } else {
+      const maxOrder = portfolioProjects.length > 0 ? Math.max(...portfolioProjects.map((p: any) => p.display_order || 0)) : 0;
+      const { error } = await supabase.from("portfolio_projects").insert({ ...payload, display_order: maxOrder + 1 });
+      if (error) { toast.error("Erreur: " + error.message); return; }
+      toast.success("Projet ajouté !");
+    }
+    resetProjectForm();
+    fetchPortfolio();
+  };
+
+  const deleteProject = async (id: string) => {
+    const { error } = await supabase.from("portfolio_projects").delete().eq("id", id);
+    if (error) { toast.error("Erreur suppression"); return; }
+    toast.success("Projet supprimé");
+    fetchPortfolio();
+  };
+
+  const toggleProjectActive = async (id: string, active: boolean) => {
+    await supabase.from("portfolio_projects").update({ active: !active }).eq("id", id);
+    fetchPortfolio();
+  };
+
+  const startEditProject = (p: any) => {
+    setEditingProject(p);
+    setProjectForm({
+      title: p.title,
+      short_description: p.short_description || "",
+      full_description: p.full_description || "",
+      image_url: p.image_url || "",
+      category: p.category || "web",
+      technologies: (p.technologies || []).join(", "),
+      client_name: p.client_name || "",
+      project_url: p.project_url || "",
+    });
+  };
+
   const createNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!nlForm.subject.trim() || !nlForm.content.trim()) { toast.error("Remplissez tous les champs"); return; }
