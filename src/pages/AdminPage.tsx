@@ -71,6 +71,7 @@ export default function AdminPage() {
     fetchNewsletters();
     fetchMessages();
     fetchQuotes();
+    fetchSiteStats();
   }, [authenticated]);
 
   const fetchSubscribers = async () => {
