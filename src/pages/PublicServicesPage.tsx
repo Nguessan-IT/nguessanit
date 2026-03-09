@@ -97,6 +97,28 @@ const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
+function useAnimatedCounter(value: string, isInView: boolean) {
+  // Parse numeric prefix: "40+" → 40, "80%" → 80, "19/7" → 19, "2" → 2
+  const match = value.match(/^(\d+)/);
+  const numericValue = match ? parseInt(match[1], 10) : 0;
+  const suffix = match ? value.slice(match[1].length) : value;
+  const [display, setDisplay] = useState(0);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (!isInView || hasAnimated.current || numericValue === 0) return;
+    hasAnimated.current = true;
+    const controls = animate(0, numericValue, {
+      duration: 2,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setDisplay(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [isInView, numericValue]);
+
+  return numericValue > 0 ? `${display}${suffix}` : value;
+}
+
 function StatCard3D({ s }: { s: { value: string; label: string; icon: any; color: string } }) {
   const statRef = useRef<HTMLDivElement>(null);
 
