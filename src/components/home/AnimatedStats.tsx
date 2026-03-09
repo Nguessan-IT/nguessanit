@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, animate, useMotionValue, useTransform } from "framer-motion";
 import { TrendingUp, Star, Rocket, Zap } from "lucide-react";
+import techBg from "@/assets/tech-background.jpg";
 
 const stats = [
   { value: 1, suffix: "+", label: "Années expérience", Icon: TrendingUp },
