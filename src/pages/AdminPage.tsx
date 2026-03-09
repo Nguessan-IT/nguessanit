@@ -222,6 +222,7 @@ export default function AdminPage() {
     { key: "quotes", label: "Devis", icon: Receipt, count: quotes.length },
     { key: "subscribers", label: "Abonnés", icon: Users, count: subscribers.length },
     { key: "newsletters", label: "Newsletters", icon: FileText, count: newsletters.length },
+    { key: "stats", label: "Statistiques Site", icon: BarChart3, count: siteStats.length },
   ];
 
   return (
