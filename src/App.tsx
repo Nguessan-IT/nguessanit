@@ -28,7 +28,10 @@ export default function App() {
           <Route path="/politique-confidentialite" element={<PrivacyPage />} />
         </Route>
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+        <Route element={<PublicLayout />}>
+          <Route path="/404" element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </QueryClientProvider>
   );
