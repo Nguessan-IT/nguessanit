@@ -97,6 +97,108 @@ const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
+function StatCard3D({ s }: { s: { value: string; label: string; icon: any; color: string } }) {
+  const statRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = statRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -18;
+    const rotateY = ((x - centerX) / centerX) * 18;
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.06, 1.06, 1.06)`;
+    const spotlight = card.querySelector('.stat-spotlight') as HTMLElement;
+    if (spotlight) {
+      spotlight.style.background = `radial-gradient(circle at ${x}px ${y}px, hsl(${s.color} / 0.3) 0%, transparent 60%)`;
+      spotlight.style.opacity = '1';
+    }
+  };
+
+  const handleMouseLeave = () => {
+    const card = statRef.current;
+    if (!card) return;
+    card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    const spotlight = card.querySelector('.stat-spotlight') as HTMLElement;
+    if (spotlight) spotlight.style.opacity = '0';
+  };
+
+  const Icon = s.icon;
+
+  return (
+    <motion.div variants={fadeInUp} className="flex flex-col items-center">
+      <motion.div
+        className="w-14 h-14 rounded-full flex items-center justify-center mb-[-28px] z-10 relative"
+        style={{
+          background: `linear-gradient(135deg, hsl(${s.color}), hsl(${s.color} / 0.7))`,
+          boxShadow: `0 8px 25px -5px hsl(${s.color} / 0.5)`,
+        }}
+        whileHover={{ scale: 1.2, rotate: -15 }}
+        animate={{
+          boxShadow: [
+            `0 6px 20px -5px hsl(${s.color} / 0.4)`,
+            `0 6px 30px -5px hsl(${s.color} / 0.7)`,
+            `0 6px 20px -5px hsl(${s.color} / 0.4)`,
+          ],
+        }}
+        transition={{
+          boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+          scale: { type: "spring", stiffness: 400, damping: 15 },
+        }}
+      >
+        <motion.div
+          className="absolute inset-[-5px] rounded-full border-2 border-dashed"
+          style={{ borderColor: `hsl(${s.color} / 0.3)` }}
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        />
+        <Icon size={24} className="text-white relative z-10" />
+      </motion.div>
+
+      <div
+        ref={statRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="relative bg-card/90 backdrop-blur-sm rounded-xl pt-12 pb-6 px-4 text-center w-full overflow-hidden group cursor-pointer"
+        style={{
+          transformStyle: "preserve-3d",
+          transition: "transform 0.15s ease-out",
+          borderTop: `3px solid hsl(${s.color})`,
+          boxShadow: `0 10px 30px -10px hsl(${s.color} / 0.15)`,
+        }}
+      >
+        <div className="stat-spotlight absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none z-0 rounded-xl" />
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none z-10" />
+        <div className="absolute top-0 left-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ borderTop: `2px solid hsl(${s.color} / 0.6)`, borderLeft: `2px solid hsl(${s.color} / 0.6)`, borderTopLeftRadius: "12px" }} />
+        <div className="absolute bottom-0 right-0 w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ borderBottom: `2px solid hsl(${s.color} / 0.6)`, borderRight: `2px solid hsl(${s.color} / 0.6)`, borderBottomRightRadius: "12px" }} />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500" style={{ background: `linear-gradient(90deg, transparent, hsl(${s.color}), transparent)`, boxShadow: `0 0 15px hsl(${s.color} / 0.5)` }} />
+
+        <motion.div
+          className="font-display text-4xl sm:text-5xl font-bold mb-1 relative z-10"
+          style={{ color: `hsl(${s.color})`, textShadow: `0 0 20px hsl(${s.color} / 0.3)` }}
+        >
+          {s.value}
+        </motion.div>
+        <div className="text-sm text-muted-foreground relative z-10 font-medium">{s.label}</div>
+
+        <div className="flex justify-center gap-1.5 mt-3 relative z-10">
+          {[0, 1, 2].map((dot) => (
+            <motion.div
+              key={dot}
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: `hsl(${s.color})` }}
+              animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
+              transition={{ duration: 1.8, repeat: Infinity, delay: dot * 0.3 }}
+            />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function PublicServicesPage() {
   const [stats, setStats] = useState(defaultStats);
