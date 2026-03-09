@@ -68,7 +68,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             {/* Category badge */}
             <div className="absolute top-4 left-4">
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary text-primary-foreground shadow-lg">
-                {categories.find((c) => c.key === project.category)?.label || project.category}
+                {project.category}
               </span>
             </div>
           </div>
