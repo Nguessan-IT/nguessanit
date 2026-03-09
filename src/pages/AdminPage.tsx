@@ -48,6 +48,10 @@ export default function AdminPage() {
   const [loadingMsg, setLoadingMsg] = useState(false);
   const [loadingQuotes, setLoadingQuotes] = useState(false);
 
+  const [siteStats, setSiteStats] = useState<any[]>([]);
+  const [loadingStats, setLoadingStats] = useState(false);
+  const [savingStats, setSavingStats] = useState(false);
+
   const [nlForm, setNlForm] = useState({ subject: "", content: "" });
   const [sending, setSending] = useState(false);
 
