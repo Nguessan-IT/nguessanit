@@ -71,10 +71,10 @@ const services = [
 ];
 
 const methodology = [
-  { step: "01", title: "Analyse du besoin", desc: "Compréhension approfondie de vos objectifs et contraintes" },
-  { step: "02", title: "Conception", desc: "Design et architecture technique de votre solution" },
-  { step: "03", title: "Développement & tests", desc: "Développement agile avec tests continus" },
-  { step: "04", title: "Mise en ligne & support", desc: "Déploiement sécurisé et accompagnement permanent" },
+  { step: "01", title: "Analyse du besoin", desc: "Compréhension approfondie de vos objectifs et contraintes", icon: Crosshair },
+  { step: "02", title: "Conception", desc: "Design et architecture technique de votre solution", icon: Lightbulb },
+  { step: "03", title: "Développement & tests", desc: "Développement agile avec tests continus", icon: Code },
+  { step: "04", title: "Mise en ligne & support", desc: "Déploiement sécurisé et accompagnement permanent", icon: Zap },
 ];
 
 const stats = [
