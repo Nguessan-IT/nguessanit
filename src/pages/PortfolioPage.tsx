@@ -5,14 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { X, ExternalLink, ArrowRight, Sparkles, Layers } from "lucide-react";
 import techBg from "@/assets/tech-background.jpg";
 
-const categories = [
-  { key: "all", label: "Tous" },
-  { key: "web", label: "Web" },
-  { key: "erp", label: "ERP/CRM" },
-  { key: "mobile", label: "Mobile" },
-  { key: "cloud", label: "Cloud" },
-  { key: "branding", label: "Branding" },
-];
+// Categories are built dynamically from project data
 
 interface Project {
   id: string;
@@ -75,7 +68,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             {/* Category badge */}
             <div className="absolute top-4 left-4">
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary text-primary-foreground shadow-lg">
-                {categories.find((c) => c.key === project.category)?.label || project.category}
+                {project.category}
               </span>
             </div>
           </div>
@@ -157,6 +150,15 @@ export default function PortfolioPage() {
       });
   }, []);
 
+  // Build dynamic categories from project data
+  const dynamicCategories = [
+    { key: "all", label: "Tous" },
+    ...Array.from(new Set(projects.map((p) => p.category))).map((cat) => ({
+      key: cat,
+      label: cat,
+    })),
+  ];
+
   const filtered = filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
   return (
@@ -197,7 +199,7 @@ export default function PortfolioPage() {
       <section className="py-6 border-b border-border/50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((cat) => (
+            {dynamicCategories.map((cat) => (
               <button
                 key={cat.key}
                 onClick={() => setFilter(cat.key)}
@@ -261,7 +263,7 @@ export default function PortfolioPage() {
                       {/* Category badge */}
                       <div className="absolute top-3 left-3">
                         <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-primary/90 text-primary-foreground backdrop-blur-sm">
-                          {categories.find((c) => c.key === project.category)?.label || project.category}
+                          {project.category}
                         </span>
                       </div>
 

@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { motion } from "framer-motion";
 import {
   Lock, Mail, Send, Users, FileText, Trash2, Plus, Download,
-  MessageCircle, Receipt, Phone, Calendar, Building2, DollarSign, BarChart3, Save, Image, Edit, Eye, EyeOff,
+  MessageCircle, Receipt, Phone, Calendar, Building2, DollarSign, BarChart3, Save, Image, Edit, Eye, EyeOff, Upload,
 } from "lucide-react";
 import RichTextEditor from "@/components/shared/RichTextEditor";
 
@@ -55,7 +55,10 @@ export default function AdminPage() {
   const [portfolioProjects, setPortfolioProjects] = useState<any[]>([]);
   const [loadingPortfolio, setLoadingPortfolio] = useState(false);
   const [editingProject, setEditingProject] = useState<any | null>(null);
-  const [projectForm, setProjectForm] = useState({ title: "", short_description: "", full_description: "", image_url: "", category: "web", technologies: "", client_name: "", project_url: "" });
+  const [projectForm, setProjectForm] = useState({ title: "", short_description: "", full_description: "", image_url: "", category: "", technologies: "", client_name: "", project_url: "" });
+  const [uploadingImage, setUploadingImage] = useState(false);
+
+  const [services, setServices] = useState<any[]>([]);
 
   const [nlForm, setNlForm] = useState({ subject: "", content: "" });
   const [sending, setSending] = useState(false);
@@ -78,7 +81,27 @@ export default function AdminPage() {
     fetchQuotes();
     fetchSiteStats();
     fetchPortfolio();
+    fetchServices();
   }, [authenticated]);
+
+  const fetchServices = async () => {
+    const { data } = await supabase.from("services").select("id, name").eq("active", true).order("name");
+    setServices(data || []);
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingImage(true);
+    const ext = file.name.split(".").pop();
+    const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const { error } = await supabase.storage.from("portfolio").upload(path, file);
+    if (error) { toast.error("Erreur upload : " + error.message); setUploadingImage(false); return; }
+    const { data: urlData } = supabase.storage.from("portfolio").getPublicUrl(path);
+    setProjectForm(f => ({ ...f, image_url: urlData.publicUrl }));
+    setUploadingImage(false);
+    toast.success("Image téléchargée !");
+  };
 
   const fetchSubscribers = async () => {
     setLoadingSubs(true);
@@ -142,7 +165,7 @@ export default function AdminPage() {
   };
 
   const resetProjectForm = () => {
-    setProjectForm({ title: "", short_description: "", full_description: "", image_url: "", category: "web", technologies: "", client_name: "", project_url: "" });
+    setProjectForm({ title: "", short_description: "", full_description: "", image_url: "", category: "", technologies: "", client_name: "", project_url: "" });
     setEditingProject(null);
   };
 
@@ -658,16 +681,15 @@ export default function AdminPage() {
                 {editingProject ? "Modifier le projet" : "Ajouter un projet"}
               </h2>
               <form onSubmit={saveProject} className="space-y-4">
-                {/* Type de réalisation (badge affiché en haut à gauche de l'image) */}
+                {/* Type de réalisation + Titre */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs text-muted-foreground mb-1 block">Type de réalisation * <span className="text-primary">(badge sur l'image)</span></label>
                     <select value={projectForm.category} onChange={(e) => setProjectForm(f => ({ ...f, category: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring">
-                      <option value="web">Web</option>
-                      <option value="erp">ERP/CRM</option>
-                      <option value="mobile">Mobile</option>
-                      <option value="cloud">Cloud</option>
-                      <option value="branding">Branding</option>
+                      <option value="">-- Sélectionnez un service --</option>
+                      {services.map((s: any) => (
+                        <option key={s.id} value={s.name}>{s.name}</option>
+                      ))}
                     </select>
                   </div>
                   <div>
@@ -687,11 +709,20 @@ export default function AdminPage() {
                   </div>
                 </div>
 
-                {/* Image */}
+                {/* Image upload + URL */}
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1 block">Image de la réalisation <span className="text-primary">(URL de l'image)</span></label>
-                  <input value={projectForm.image_url} onChange={(e) => setProjectForm(f => ({ ...f, image_url: e.target.value }))} placeholder="https://exemple.com/image.jpg" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-                  <p className="text-xs text-muted-foreground mt-1">Collez l'URL d'une image hébergée en ligne (ex: Imgur, Cloudinary...)</p>
+                  <label className="text-xs text-muted-foreground mb-1 block">Image de la réalisation</label>
+                  <div className="flex gap-3 items-start">
+                    <label className="inline-flex items-center gap-2 px-4 py-3 border border-dashed border-primary/40 rounded-lg cursor-pointer hover:bg-primary/5 transition text-sm text-primary font-medium flex-shrink-0">
+                      <Upload size={16} />
+                      {uploadingImage ? "Envoi en cours..." : "Télécharger une image"}
+                      <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" disabled={uploadingImage} />
+                    </label>
+                    <input value={projectForm.image_url} onChange={(e) => setProjectForm(f => ({ ...f, image_url: e.target.value }))} placeholder="Ou collez une URL d'image" className="flex-1 px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                  {projectForm.image_url && (
+                    <img src={projectForm.image_url} alt="Aperçu" className="mt-2 h-24 rounded-lg object-cover border border-border" />
+                  )}
                 </div>
 
                 {/* Technologies */}
@@ -707,11 +738,10 @@ export default function AdminPage() {
                   <input value={projectForm.short_description} onChange={(e) => setProjectForm(f => ({ ...f, short_description: e.target.value }))} placeholder="À quoi sert ce projet ? Résumé en une phrase" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                 </div>
 
-                {/* Description complète (informations relatives) */}
+                {/* Description complète */}
                 <div>
                   <label className="text-xs text-muted-foreground mb-1 block">Informations relatives à la réalisation <span className="text-primary">(affiché dans le détail)</span></label>
                   <textarea value={projectForm.full_description} onChange={(e) => setProjectForm(f => ({ ...f, full_description: e.target.value }))} placeholder="Description détaillée : contexte, objectifs, fonctionnalités, bénéfices pour le client..." rows={5} className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y" />
-                  <p className="text-xs text-muted-foreground mt-1">Décrivez le projet en détail : sa destination, son utilité, les fonctionnalités clés...</p>
                 </div>
                 <div className="flex gap-3">
                   <button type="submit" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium text-sm transition hover:opacity-90">
