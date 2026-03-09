@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Sparkles, Code, Wrench, Cloud, GraduationCap, Palette, FileText, Brain, Database } from "lucide-react";
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import logoImg from "@/assets/logo-nguessan-it.png";
 import FloatingOrbs from "@/components/shared/FloatingOrbs";
 import AnimatedStats from "@/components/home/AnimatedStats";
@@ -88,6 +90,31 @@ const staggerContainer = {
 };
 
 export default function HomePage() {
+  const { data: partners = [] } = useQuery({
+    queryKey: ["partners"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("partners")
+        .select("*")
+        .eq("active", true)
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return data || [];
+    },
+  });
+
+  const mockPartners = [
+    { id: 'm1', name: 'Microsoft', logo_url: 'https://logo.clearbit.com/microsoft.com' },
+    { id: 'm2', name: 'Google', logo_url: 'https://logo.clearbit.com/google.com' },
+    { id: 'm3', name: 'Amazon', logo_url: 'https://logo.clearbit.com/amazon.com' },
+    { id: 'm4', name: 'Apple', logo_url: 'https://logo.clearbit.com/apple.com' },
+    { id: 'm5', name: 'Meta', logo_url: 'https://logo.clearbit.com/meta.com' },
+    { id: 'm6', name: 'IBM', logo_url: 'https://logo.clearbit.com/ibm.com' },
+    { id: 'm7', name: 'Oracle', logo_url: 'https://logo.clearbit.com/oracle.com' },
+  ];
+
+  const displayPartners = partners.length > 0 ? partners : mockPartners;
+
   return (
     <div className="overflow-hidden">
       {/* Hero */}
@@ -262,6 +289,43 @@ export default function HomePage() {
             <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
           </div>
+        </div>
+      </section>
+
+      {/* Partners / Clients Infinite Scroll */}
+      <section className="py-10 border-y border-border/50 bg-card/30 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 mb-6">
+          <p className="text-center text-sm font-medium text-muted-foreground uppercase tracking-wider">
+            Ils nous font confiance
+          </p>
+        </div>
+        <div className="relative flex w-full overflow-hidden">
+          <motion.div
+            className="flex gap-12 sm:gap-24 items-center whitespace-nowrap px-6"
+            animate={{ x: [0, -1000] }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {[...displayPartners, ...displayPartners, ...displayPartners].map((partner, i) => (
+              <div key={`${partner.id}-${i}`} className="flex-shrink-0 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                <img 
+                  src={partner.logo_url} 
+                  alt={partner.name} 
+                  className="h-8 sm:h-12 object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${partner.name}&background=random&color=fff&size=128`;
+                  }}
+                />
+              </div>
+            ))}
+          </motion.div>
+          
+          {/* Gradient Edges */}
+          <div className="absolute inset-y-0 left-0 w-24 sm:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-24 sm:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
         </div>
       </section>
 
