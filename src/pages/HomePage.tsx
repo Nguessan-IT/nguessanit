@@ -90,6 +90,31 @@ const staggerContainer = {
 };
 
 export default function HomePage() {
+  const { data: partners = [] } = useQuery({
+    queryKey: ["partners"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("partners")
+        .select("*")
+        .eq("active", true)
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return data || [];
+    },
+  });
+
+  const mockPartners = [
+    { id: 'm1', name: 'Microsoft', logo_url: 'https://logo.clearbit.com/microsoft.com' },
+    { id: 'm2', name: 'Google', logo_url: 'https://logo.clearbit.com/google.com' },
+    { id: 'm3', name: 'Amazon', logo_url: 'https://logo.clearbit.com/amazon.com' },
+    { id: 'm4', name: 'Apple', logo_url: 'https://logo.clearbit.com/apple.com' },
+    { id: 'm5', name: 'Meta', logo_url: 'https://logo.clearbit.com/meta.com' },
+    { id: 'm6', name: 'IBM', logo_url: 'https://logo.clearbit.com/ibm.com' },
+    { id: 'm7', name: 'Oracle', logo_url: 'https://logo.clearbit.com/oracle.com' },
+  ];
+
+  const displayPartners = partners.length > 0 ? partners : mockPartners;
+
   return (
     <div className="overflow-hidden">
       {/* Hero */}
