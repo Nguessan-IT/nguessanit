@@ -40,10 +40,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" }
+    { icon: Linkedin, href: "https://linkedin.com/company/nguessan-it", label: "LinkedIn" },
+    { icon: Instagram, href: "https://instagram.com/nguessanit", label: "Instagram" },
+    { icon: Facebook, href: "https://facebook.com/share/19vPLXiLwK/?mibextid=wwXIfr", label: "Facebook" },
   ];
 
   const scrollToTop = () => {
@@ -155,6 +154,8 @@ const Footer = () => {
                   <a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="w-9 h-9 bg-secondary hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                   >
