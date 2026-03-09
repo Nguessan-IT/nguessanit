@@ -81,7 +81,27 @@ export default function AdminPage() {
     fetchQuotes();
     fetchSiteStats();
     fetchPortfolio();
+    fetchServices();
   }, [authenticated]);
+
+  const fetchServices = async () => {
+    const { data } = await supabase.from("services").select("id, name").eq("active", true).order("name");
+    setServices(data || []);
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingImage(true);
+    const ext = file.name.split(".").pop();
+    const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const { error } = await supabase.storage.from("portfolio").upload(path, file);
+    if (error) { toast.error("Erreur upload : " + error.message); setUploadingImage(false); return; }
+    const { data: urlData } = supabase.storage.from("portfolio").getPublicUrl(path);
+    setProjectForm(f => ({ ...f, image_url: urlData.publicUrl }));
+    setUploadingImage(false);
+    toast.success("Image téléchargée !");
+  };
 
   const fetchSubscribers = async () => {
     setLoadingSubs(true);
