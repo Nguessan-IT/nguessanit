@@ -159,7 +159,7 @@ function GridBackground({ isInView }: { isInView: boolean }) {
   );
 }
 
-function StatCard({ s, i, isInView }: { s: typeof stats[0]; i: number; isInView: boolean }) {
+function StatCard({ s, i, isInView }: { s: typeof defaultStats[0]; i: number; isInView: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
