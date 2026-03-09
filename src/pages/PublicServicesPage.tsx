@@ -79,7 +79,9 @@ const methodology = [
   { step: "04", title: "Mise en ligne & support", desc: "Déploiement sécurisé et accompagnement permanent", icon: Zap, color: "35 95% 55%", gradient: "from-orange-500 to-amber-400" },
 ];
 
-const stats = [
+const iconMap: Record<string, any> = { Rocket, ThumbsUp, Globe, Headphones, Code, Cloud, Zap, Target };
+
+const defaultStats = [
   { value: "40+", label: "Projets livrés", icon: Rocket, color: "210 100% 55%" },
   { value: "80%", label: "Satisfaction client", icon: ThumbsUp, color: "160 80% 45%" },
   { value: "2", label: "Continents couverts", icon: Globe, color: "270 80% 60%" },
