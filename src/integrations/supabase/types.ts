@@ -328,6 +328,54 @@ export type Database = {
         }
         Relationships: []
       }
+      portfolio_projects: {
+        Row: {
+          active: boolean
+          category: string
+          client_name: string | null
+          created_at: string
+          display_order: number
+          full_description: string
+          id: string
+          image_url: string | null
+          project_url: string | null
+          short_description: string
+          technologies: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          category?: string
+          client_name?: string | null
+          created_at?: string
+          display_order?: number
+          full_description?: string
+          id?: string
+          image_url?: string | null
+          project_url?: string | null
+          short_description?: string
+          technologies?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          category?: string
+          client_name?: string | null
+          created_at?: string
+          display_order?: number
+          full_description?: string
+          id?: string
+          image_url?: string | null
+          project_url?: string | null
+          short_description?: string
+          technologies?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string

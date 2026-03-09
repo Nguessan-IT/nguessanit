@@ -4,13 +4,13 @@ import { toast } from "sonner";
 import { motion } from "framer-motion";
 import {
   Lock, Mail, Send, Users, FileText, Trash2, Plus, Download,
-  MessageCircle, Receipt, Phone, Calendar, Building2, DollarSign, BarChart3, Save,
+  MessageCircle, Receipt, Phone, Calendar, Building2, DollarSign, BarChart3, Save, Image, Edit, Eye, EyeOff,
 } from "lucide-react";
 import RichTextEditor from "@/components/shared/RichTextEditor";
 
 const ADMIN_PASSWORD = "NgIT@2025!Admin";
 
-type TabKey = "subscribers" | "contacts" | "quotes" | "newsletters" | "stats";
+type TabKey = "subscribers" | "contacts" | "quotes" | "newsletters" | "stats" | "portfolio";
 
 function exportCSV(filename: string, headers: string[], rows: string[][]) {
   const bom = "\uFEFF";
@@ -52,6 +52,11 @@ export default function AdminPage() {
   const [loadingStats, setLoadingStats] = useState(false);
   const [savingStats, setSavingStats] = useState(false);
 
+  const [portfolioProjects, setPortfolioProjects] = useState<any[]>([]);
+  const [loadingPortfolio, setLoadingPortfolio] = useState(false);
+  const [editingProject, setEditingProject] = useState<any | null>(null);
+  const [projectForm, setProjectForm] = useState({ title: "", short_description: "", full_description: "", image_url: "", category: "web", technologies: "", client_name: "", project_url: "" });
+
   const [nlForm, setNlForm] = useState({ subject: "", content: "" });
   const [sending, setSending] = useState(false);
 
@@ -72,6 +77,7 @@ export default function AdminPage() {
     fetchMessages();
     fetchQuotes();
     fetchSiteStats();
+    fetchPortfolio();
   }, [authenticated]);
 
   const fetchSubscribers = async () => {
@@ -126,6 +132,73 @@ export default function AdminPage() {
     }
     setSavingStats(false);
     toast.success("Statistiques mises à jour !");
+  };
+
+  const fetchPortfolio = async () => {
+    setLoadingPortfolio(true);
+    const { data } = await supabase.from("portfolio_projects").select("*").order("display_order");
+    setPortfolioProjects(data || []);
+    setLoadingPortfolio(false);
+  };
+
+  const resetProjectForm = () => {
+    setProjectForm({ title: "", short_description: "", full_description: "", image_url: "", category: "web", technologies: "", client_name: "", project_url: "" });
+    setEditingProject(null);
+  };
+
+  const saveProject = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!projectForm.title.trim()) { toast.error("Le titre est requis"); return; }
+    const payload = {
+      title: projectForm.title.trim(),
+      short_description: projectForm.short_description.trim(),
+      full_description: projectForm.full_description.trim(),
+      image_url: projectForm.image_url.trim() || null,
+      category: projectForm.category,
+      technologies: projectForm.technologies.split(",").map((t: string) => t.trim()).filter(Boolean),
+      client_name: projectForm.client_name.trim() || null,
+      project_url: projectForm.project_url.trim() || null,
+      updated_at: new Date().toISOString(),
+    };
+
+    if (editingProject) {
+      const { error } = await supabase.from("portfolio_projects").update(payload).eq("id", editingProject.id);
+      if (error) { toast.error("Erreur: " + error.message); return; }
+      toast.success("Projet mis à jour !");
+    } else {
+      const maxOrder = portfolioProjects.length > 0 ? Math.max(...portfolioProjects.map((p: any) => p.display_order || 0)) : 0;
+      const { error } = await supabase.from("portfolio_projects").insert({ ...payload, display_order: maxOrder + 1 });
+      if (error) { toast.error("Erreur: " + error.message); return; }
+      toast.success("Projet ajouté !");
+    }
+    resetProjectForm();
+    fetchPortfolio();
+  };
+
+  const deleteProject = async (id: string) => {
+    const { error } = await supabase.from("portfolio_projects").delete().eq("id", id);
+    if (error) { toast.error("Erreur suppression"); return; }
+    toast.success("Projet supprimé");
+    fetchPortfolio();
+  };
+
+  const toggleProjectActive = async (id: string, active: boolean) => {
+    await supabase.from("portfolio_projects").update({ active: !active }).eq("id", id);
+    fetchPortfolio();
+  };
+
+  const startEditProject = (p: any) => {
+    setEditingProject(p);
+    setProjectForm({
+      title: p.title,
+      short_description: p.short_description || "",
+      full_description: p.full_description || "",
+      image_url: p.image_url || "",
+      category: p.category || "web",
+      technologies: (p.technologies || []).join(", "),
+      client_name: p.client_name || "",
+      project_url: p.project_url || "",
+    });
   };
 
   const createNewsletter = async (e: React.FormEvent) => {
@@ -223,6 +296,7 @@ export default function AdminPage() {
     { key: "subscribers", label: "Abonnés", icon: Users, count: subscribers.length },
     { key: "newsletters", label: "Newsletters", icon: FileText, count: newsletters.length },
     { key: "stats", label: "Statistiques Site", icon: BarChart3, count: siteStats.length },
+    { key: "portfolio", label: "Portfolio", icon: Image, count: portfolioProjects.length },
   ];
 
   return (
@@ -571,6 +645,127 @@ export default function AdminPage() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* ===================== PORTFOLIO TAB ===================== */}
+        {tab === "portfolio" && (
+          <div className="space-y-6">
+            {/* Add/Edit form */}
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <h2 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                <Plus size={20} className="text-primary" />
+                {editingProject ? "Modifier le projet" : "Ajouter un projet"}
+              </h2>
+              <form onSubmit={saveProject} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">Titre *</label>
+                    <input value={projectForm.title} onChange={(e) => setProjectForm(f => ({ ...f, title: e.target.value }))} placeholder="Nom du projet" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">Client</label>
+                    <input value={projectForm.client_name} onChange={(e) => setProjectForm(f => ({ ...f, client_name: e.target.value }))} placeholder="Nom du client" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1 block">Description courte</label>
+                  <input value={projectForm.short_description} onChange={(e) => setProjectForm(f => ({ ...f, short_description: e.target.value }))} placeholder="Résumé en une phrase" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1 block">Description complète</label>
+                  <textarea value={projectForm.full_description} onChange={(e) => setProjectForm(f => ({ ...f, full_description: e.target.value }))} placeholder="Description détaillée du projet..." rows={4} className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">URL de l'image</label>
+                    <input value={projectForm.image_url} onChange={(e) => setProjectForm(f => ({ ...f, image_url: e.target.value }))} placeholder="https://..." className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">URL du projet</label>
+                    <input value={projectForm.project_url} onChange={(e) => setProjectForm(f => ({ ...f, project_url: e.target.value }))} placeholder="https://..." className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">Catégorie</label>
+                    <select value={projectForm.category} onChange={(e) => setProjectForm(f => ({ ...f, category: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                      <option value="web">Web</option>
+                      <option value="erp">ERP/CRM</option>
+                      <option value="mobile">Mobile</option>
+                      <option value="cloud">Cloud</option>
+                      <option value="branding">Branding</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">Technologies (séparées par des virgules)</label>
+                    <input value={projectForm.technologies} onChange={(e) => setProjectForm(f => ({ ...f, technologies: e.target.value }))} placeholder="React, Node.js, AWS" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <button type="submit" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium text-sm transition hover:opacity-90">
+                    <Save size={16} />
+                    {editingProject ? "Mettre à jour" : "Ajouter le projet"}
+                  </button>
+                  {editingProject && (
+                    <button type="button" onClick={resetProjectForm} className="px-6 py-3 border border-border rounded-lg text-sm font-medium text-foreground hover:bg-accent transition">
+                      Annuler
+                    </button>
+                  )}
+                </div>
+              </form>
+            </div>
+
+            {/* Projects list */}
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <h2 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                <Image size={20} className="text-primary" />
+                Projets ({portfolioProjects.length})
+              </h2>
+              {loadingPortfolio ? (
+                <p className="text-muted-foreground text-sm">Chargement...</p>
+              ) : portfolioProjects.length === 0 ? (
+                <p className="text-muted-foreground text-sm">Aucun projet ajouté.</p>
+              ) : (
+                <div className="space-y-4">
+                  {portfolioProjects.map((p: any) => (
+                    <div key={p.id} className="flex items-start gap-4 bg-secondary/50 rounded-xl p-4 border border-border/50">
+                      {p.image_url && (
+                        <img src={p.image_url} alt={p.title} className="w-20 h-20 rounded-lg object-cover flex-shrink-0" />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <p className="font-medium text-foreground truncate">{p.title}</p>
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-medium ${p.active ? "bg-green-500/10 text-green-500" : "bg-red-500/10 text-red-500"}`}>
+                            {p.active ? "Actif" : "Masqué"}
+                          </span>
+                          <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-primary/10 text-primary">{p.category}</span>
+                        </div>
+                        <p className="text-xs text-muted-foreground line-clamp-1">{p.short_description}</p>
+                        {p.technologies && p.technologies.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mt-1">
+                            {p.technologies.map((t: string) => (
+                              <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-secondary text-secondary-foreground">{t}</span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex gap-1 flex-shrink-0">
+                        <button onClick={() => toggleProjectActive(p.id, p.active)} className="p-2 rounded-lg hover:bg-accent transition" title={p.active ? "Masquer" : "Afficher"}>
+                          {p.active ? <EyeOff size={16} className="text-muted-foreground" /> : <Eye size={16} className="text-primary" />}
+                        </button>
+                        <button onClick={() => startEditProject(p)} className="p-2 rounded-lg hover:bg-accent transition text-primary" title="Modifier">
+                          <Edit size={16} />
+                        </button>
+                        <button onClick={() => deleteProject(p.id)} className="p-2 rounded-lg hover:bg-destructive/10 transition text-destructive" title="Supprimer">
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
