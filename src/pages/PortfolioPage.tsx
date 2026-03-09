@@ -263,7 +263,7 @@ export default function PortfolioPage() {
                       {/* Category badge */}
                       <div className="absolute top-3 left-3">
                         <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-primary/90 text-primary-foreground backdrop-blur-sm">
-                          {categories.find((c) => c.key === project.category)?.label || project.category}
+                          {project.category}
                         </span>
                       </div>
 
