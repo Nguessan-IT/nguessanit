@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Code, Cloud, Brain, Target, GraduationCap, Palette, FileText, Database, ArrowRight, Sparkles, MessageCircle, Wrench, Crosshair, Lightbulb, Zap, Rocket, ThumbsUp, Globe, Headphones } from "lucide-react";
 import techBg from "@/assets/tech-background.jpg";
-import { motion } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion, useInView, animate } from "framer-motion";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
 const services = [
@@ -97,8 +97,33 @@ const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
+function useAnimatedCounter(value: string, isInView: boolean) {
+  // Parse numeric prefix: "40+" → 40, "80%" → 80, "19/7" → 19, "2" → 2
+  const match = value.match(/^(\d+)/);
+  const numericValue = match ? parseInt(match[1], 10) : 0;
+  const suffix = match ? value.slice(match[1].length) : value;
+  const [display, setDisplay] = useState(0);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (!isInView || hasAnimated.current || numericValue === 0) return;
+    hasAnimated.current = true;
+    const controls = animate(0, numericValue, {
+      duration: 2,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setDisplay(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [isInView, numericValue]);
+
+  return numericValue > 0 ? `${display}${suffix}` : value;
+}
+
 function StatCard3D({ s }: { s: { value: string; label: string; icon: any; color: string } }) {
   const statRef = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(counterRef, { once: true, margin: "-50px" });
+  const animatedValue = useAnimatedCounter(s.value, isInView);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = statRef.current;
@@ -177,10 +202,11 @@ function StatCard3D({ s }: { s: { value: string; label: string; icon: any; color
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500" style={{ background: `linear-gradient(90deg, transparent, hsl(${s.color}), transparent)`, boxShadow: `0 0 15px hsl(${s.color} / 0.5)` }} />
 
         <motion.div
+          ref={counterRef}
           className="font-display text-4xl sm:text-5xl font-bold mb-1 relative z-10"
           style={{ color: `hsl(${s.color})`, textShadow: `0 0 20px hsl(${s.color} / 0.3)` }}
         >
-          {s.value}
+          {animatedValue}
         </motion.div>
         <div className="text-sm text-muted-foreground relative z-10 font-medium">{s.label}</div>
 
