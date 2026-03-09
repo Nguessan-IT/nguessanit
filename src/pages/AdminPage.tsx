@@ -658,37 +658,10 @@ export default function AdminPage() {
                 {editingProject ? "Modifier le projet" : "Ajouter un projet"}
               </h2>
               <form onSubmit={saveProject} className="space-y-4">
+                {/* Type de réalisation (badge affiché en haut à gauche de l'image) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs text-muted-foreground mb-1 block">Titre *</label>
-                    <input value={projectForm.title} onChange={(e) => setProjectForm(f => ({ ...f, title: e.target.value }))} placeholder="Nom du projet" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-                  </div>
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1 block">Client</label>
-                    <input value={projectForm.client_name} onChange={(e) => setProjectForm(f => ({ ...f, client_name: e.target.value }))} placeholder="Nom du client" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-xs text-muted-foreground mb-1 block">Description courte</label>
-                  <input value={projectForm.short_description} onChange={(e) => setProjectForm(f => ({ ...f, short_description: e.target.value }))} placeholder="Résumé en une phrase" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-                </div>
-                <div>
-                  <label className="text-xs text-muted-foreground mb-1 block">Description complète</label>
-                  <textarea value={projectForm.full_description} onChange={(e) => setProjectForm(f => ({ ...f, full_description: e.target.value }))} placeholder="Description détaillée du projet..." rows={4} className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1 block">URL de l'image</label>
-                    <input value={projectForm.image_url} onChange={(e) => setProjectForm(f => ({ ...f, image_url: e.target.value }))} placeholder="https://..." className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-                  </div>
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1 block">URL du projet</label>
-                    <input value={projectForm.project_url} onChange={(e) => setProjectForm(f => ({ ...f, project_url: e.target.value }))} placeholder="https://..." className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1 block">Catégorie</label>
+                    <label className="text-xs text-muted-foreground mb-1 block">Type de réalisation * <span className="text-primary">(badge sur l'image)</span></label>
                     <select value={projectForm.category} onChange={(e) => setProjectForm(f => ({ ...f, category: e.target.value }))} className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                       <option value="web">Web</option>
                       <option value="erp">ERP/CRM</option>
@@ -698,9 +671,47 @@ export default function AdminPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs text-muted-foreground mb-1 block">Technologies (séparées par des virgules)</label>
-                    <input value={projectForm.technologies} onChange={(e) => setProjectForm(f => ({ ...f, technologies: e.target.value }))} placeholder="React, Node.js, AWS" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                    <label className="text-xs text-muted-foreground mb-1 block">Titre de la réalisation *</label>
+                    <input value={projectForm.title} onChange={(e) => setProjectForm(f => ({ ...f, title: e.target.value }))} placeholder="Nom du projet" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
                   </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">Client</label>
+                    <input value={projectForm.client_name} onChange={(e) => setProjectForm(f => ({ ...f, client_name: e.target.value }))} placeholder="Nom du client" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">Lien de destination <span className="text-primary">(bouton "Voir le projet")</span></label>
+                    <input value={projectForm.project_url} onChange={(e) => setProjectForm(f => ({ ...f, project_url: e.target.value }))} placeholder="https://lien-vers-le-projet.com" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  </div>
+                </div>
+
+                {/* Image */}
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1 block">Image de la réalisation <span className="text-primary">(URL de l'image)</span></label>
+                  <input value={projectForm.image_url} onChange={(e) => setProjectForm(f => ({ ...f, image_url: e.target.value }))} placeholder="https://exemple.com/image.jpg" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <p className="text-xs text-muted-foreground mt-1">Collez l'URL d'une image hébergée en ligne (ex: Imgur, Cloudinary...)</p>
+                </div>
+
+                {/* Technologies */}
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1 block">Technologies utilisées <span className="text-primary">(badges affichés)</span></label>
+                  <input value={projectForm.technologies} onChange={(e) => setProjectForm(f => ({ ...f, technologies: e.target.value }))} placeholder="React, Node.js, AWS, PostgreSQL" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                  <p className="text-xs text-muted-foreground mt-1">Séparez les technologies par des virgules</p>
+                </div>
+
+                {/* Description courte (utilité) */}
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1 block">Utilité / Résumé <span className="text-primary">(affiché sur la carte)</span></label>
+                  <input value={projectForm.short_description} onChange={(e) => setProjectForm(f => ({ ...f, short_description: e.target.value }))} placeholder="À quoi sert ce projet ? Résumé en une phrase" className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+
+                {/* Description complète (informations relatives) */}
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1 block">Informations relatives à la réalisation <span className="text-primary">(affiché dans le détail)</span></label>
+                  <textarea value={projectForm.full_description} onChange={(e) => setProjectForm(f => ({ ...f, full_description: e.target.value }))} placeholder="Description détaillée : contexte, objectifs, fonctionnalités, bénéfices pour le client..." rows={5} className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-y" />
+                  <p className="text-xs text-muted-foreground mt-1">Décrivez le projet en détail : sa destination, son utilité, les fonctionnalités clés...</p>
                 </div>
                 <div className="flex gap-3">
                   <button type="submit" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium text-sm transition hover:opacity-90">
