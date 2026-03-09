@@ -281,6 +281,29 @@ function StatCard({ s, i, isInView }: { s: typeof stats[0]; i: number; isInView:
 export default function AnimatedStats() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
+  const [stats, setStats] = useState(defaultStats);
+
+  useEffect(() => {
+    supabase
+      .from("site_stats")
+      .select("*")
+      .order("display_order")
+      .then(({ data }) => {
+        if (data && data.length > 0) {
+          setStats(
+            data.map((s: any) => {
+              const parsed = parseStatValue(s.stat_value);
+              return {
+                value: parsed.value,
+                suffix: parsed.suffix,
+                label: s.label,
+                Icon: iconMap[s.icon_name] || Rocket,
+              };
+            })
+          );
+        }
+      });
+  }, []);
 
   return (
     <section className="relative py-20 overflow-hidden" ref={containerRef}>
