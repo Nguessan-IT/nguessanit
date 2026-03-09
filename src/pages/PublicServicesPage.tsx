@@ -585,7 +585,7 @@ export default function PublicServicesPage() {
               <ArrowRight size={18} />
             </Link>
             <Link
-              to="/contact"
+              to="/portfolio"
               className="inline-flex items-center gap-2 px-8 py-3.5 border border-border rounded-full font-medium text-foreground hover:border-primary hover:bg-primary/5 transition"
             >
               Découvrez nos réalisations
