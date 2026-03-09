@@ -165,7 +165,7 @@ export default function AdminPage() {
   };
 
   const resetProjectForm = () => {
-    setProjectForm({ title: "", short_description: "", full_description: "", image_url: "", category: "web", technologies: "", client_name: "", project_url: "" });
+    setProjectForm({ title: "", short_description: "", full_description: "", image_url: "", category: "", technologies: "", client_name: "", project_url: "" });
     setEditingProject(null);
   };
 
