@@ -10,7 +10,7 @@ import RichTextEditor from "@/components/shared/RichTextEditor";
 
 const ADMIN_PASSWORD = "NgIT@2025!Admin";
 
-type TabKey = "subscribers" | "contacts" | "quotes" | "newsletters";
+type TabKey = "subscribers" | "contacts" | "quotes" | "newsletters" | "stats";
 
 function exportCSV(filename: string, headers: string[], rows: string[][]) {
   const bom = "\uFEFF";
