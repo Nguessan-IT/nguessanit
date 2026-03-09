@@ -102,6 +102,32 @@ export default function AdminPage() {
     setLoadingQuotes(false);
   };
 
+  const fetchSiteStats = async () => {
+    setLoadingStats(true);
+    const { data } = await supabase.from("site_stats").select("*").order("display_order");
+    setSiteStats(data || []);
+    setLoadingStats(false);
+  };
+
+  const updateStat = (index: number, field: string, value: string) => {
+    setSiteStats((prev) => prev.map((s, i) => (i === index ? { ...s, [field]: value } : s)));
+  };
+
+  const saveSiteStats = async () => {
+    setSavingStats(true);
+    for (const stat of siteStats) {
+      await supabase.from("site_stats").update({
+        stat_value: stat.stat_value,
+        label: stat.label,
+        icon_name: stat.icon_name,
+        color: stat.color,
+        updated_at: new Date().toISOString(),
+      }).eq("id", stat.id);
+    }
+    setSavingStats(false);
+    toast.success("Statistiques mises à jour !");
+  };
+
   const createNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!nlForm.subject.trim() || !nlForm.content.trim()) { toast.error("Remplissez tous les champs"); return; }
