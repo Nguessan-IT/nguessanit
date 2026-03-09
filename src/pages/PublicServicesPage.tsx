@@ -121,6 +121,9 @@ function useAnimatedCounter(value: string, isInView: boolean) {
 
 function StatCard3D({ s }: { s: { value: string; label: string; icon: any; color: string } }) {
   const statRef = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(counterRef, { once: true, margin: "-50px" });
+  const animatedValue = useAnimatedCounter(s.value, isInView);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = statRef.current;
