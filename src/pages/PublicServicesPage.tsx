@@ -202,10 +202,11 @@ function StatCard3D({ s }: { s: { value: string; label: string; icon: any; color
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500" style={{ background: `linear-gradient(90deg, transparent, hsl(${s.color}), transparent)`, boxShadow: `0 0 15px hsl(${s.color} / 0.5)` }} />
 
         <motion.div
+          ref={counterRef}
           className="font-display text-4xl sm:text-5xl font-bold mb-1 relative z-10"
           style={{ color: `hsl(${s.color})`, textShadow: `0 0 20px hsl(${s.color} / 0.3)` }}
         >
-          {s.value}
+          {animatedValue}
         </motion.div>
         <div className="text-sm text-muted-foreground relative z-10 font-medium">{s.label}</div>
 
