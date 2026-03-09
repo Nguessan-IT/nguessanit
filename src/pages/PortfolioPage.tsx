@@ -7,11 +7,6 @@ import techBg from "@/assets/tech-background.jpg";
 
 const categories = [
   { key: "all", label: "Tous" },
-  { key: "web", label: "Web" },
-  { key: "erp", label: "ERP/CRM" },
-  { key: "mobile", label: "Mobile" },
-  { key: "cloud", label: "Cloud" },
-  { key: "branding", label: "Branding" },
 ];
 
 interface Project {
