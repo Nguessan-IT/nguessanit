@@ -79,10 +79,10 @@ const methodology = [
 ];
 
 const stats = [
-  { value: "40+", label: "Projets livrés" },
-  { value: "80%", label: "Satisfaction client" },
-  { value: "2", label: "Continents couverts" },
-  { value: "19/7", label: "Support disponible" },
+  { value: "40+", label: "Projets livrés", icon: Rocket, color: "210 100% 55%" },
+  { value: "80%", label: "Satisfaction client", icon: ThumbsUp, color: "160 80% 45%" },
+  { value: "2", label: "Continents couverts", icon: Globe, color: "270 80% 60%" },
+  { value: "19/7", label: "Support disponible", icon: Headphones, color: "35 95% 55%" },
 ];
 
 const fadeInUp = {
