@@ -5,6 +5,7 @@ import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import PublicServicesPage from "@/pages/PublicServicesPage";
 import ContactPage from "@/pages/ContactPage";
+import PortfolioPage from "@/pages/PortfolioPage";
 import TermsPage from "@/pages/TermsPage";
 import PrivacyPage from "@/pages/PrivacyPage";
 import AdminPage from "@/pages/AdminPage";
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<PublicServicesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/devis" element={<ContactPage />} />
           <Route path="/conditions" element={<TermsPage />} />
