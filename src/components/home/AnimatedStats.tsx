@@ -1,14 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, animate, useMotionValue, useTransform } from "framer-motion";
-import { TrendingUp, Star, Rocket, Zap } from "lucide-react";
+import { TrendingUp, Star, Rocket, Zap, ThumbsUp, Globe, Headphones, Code, Cloud, Target } from "lucide-react";
 import techBg from "@/assets/tech-background.jpg";
+import { supabase } from "@/integrations/supabase/client";
 
-const stats = [
+const iconMap: Record<string, any> = { TrendingUp, Star, Rocket, Zap, ThumbsUp, Globe, Headphones, Code, Cloud, Target };
+
+const defaultStats = [
   { value: 1, suffix: "+", label: "Années expérience", Icon: TrendingUp },
   { value: 10, suffix: "+", label: "Clients satisfaits", Icon: Star },
   { value: 20, suffix: "+", label: "Projets réalisés", Icon: Rocket },
   { value: 24, suffix: "/7", label: "Support technique", Icon: Zap },
 ];
+
+function parseStatValue(val: string): { value: number; suffix: string } {
+  const match = val.match(/^(\d+)(.*)/);
+  return match ? { value: parseInt(match[1], 10), suffix: match[2] } : { value: 0, suffix: val };
+}
 
 function AnimatedCounter({ value, suffix, delay }: { value: number; suffix: string; delay: number }) {
   const [display, setDisplay] = useState(0);
