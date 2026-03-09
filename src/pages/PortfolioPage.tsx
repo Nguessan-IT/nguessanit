@@ -152,6 +152,15 @@ export default function PortfolioPage() {
       });
   }, []);
 
+  // Build dynamic categories from project data
+  const dynamicCategories = [
+    { key: "all", label: "Tous" },
+    ...Array.from(new Set(projects.map((p) => p.category))).map((cat) => ({
+      key: cat,
+      label: cat,
+    })),
+  ];
+
   const filtered = filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
   return (
