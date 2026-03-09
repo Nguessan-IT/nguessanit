@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import logoImg from "@/assets/logo-nguessan-it.png";
 import FloatingOrbs from "@/components/shared/FloatingOrbs";
 import AnimatedStats from "@/components/home/AnimatedStats";
+import PartnersSection from "@/components/home/PartnersSection";
 
 const features = [
 "Solutions 100% sur mesure",
