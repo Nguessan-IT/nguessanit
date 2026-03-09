@@ -432,20 +432,49 @@ export default function HomePage() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <span className="text-sm text-primary font-medium">Prêt à décoller ?</span>
-          <h2 className="font-display text-3xl font-bold text-foreground mt-2 mb-4">
-            Besoin d'une solution<br />personnalisée ?
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Contactez-nous pour un devis gratuit et découvrez comment nous pouvons transformer votre infrastructure IT
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition"
-          >
-            Demander un devis <ArrowRight size={18} />
-          </Link>
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="relative rounded-3xl overflow-hidden bg-card border border-border/50 shadow-2xl p-10 sm:p-16 text-center">
+            {/* Background Glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[800px] pointer-events-none">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
+            </div>
+
+            <div className="relative z-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6"
+              >
+                <Rocket size={18} />
+                <span className="text-sm font-medium tracking-wide uppercase">Prêt à décoller ?</span>
+              </motion.div>
+
+              <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-6">
+                Prêt à propulser votre<br className="hidden sm:block" /> entreprise ?
+              </h2>
+              
+              <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Contactez-nous pour un devis gratuit et découvrez comment nos solutions technologiques sur mesure peuvent transformer votre infrastructure IT et accélérer votre croissance.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium text-lg hover:shadow-lg hover:shadow-primary/30 transition-all w-full sm:w-auto"
+                >
+                  Commencer maintenant <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary/50 text-foreground border border-border rounded-xl font-medium text-lg hover:bg-secondary transition-all w-full sm:w-auto"
+                >
+                  <Calendar size={20} />
+                  Prendre rendez-vous
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </motion.section>
 
