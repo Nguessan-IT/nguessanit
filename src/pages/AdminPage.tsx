@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { motion } from "framer-motion";
 import {
   Lock, Mail, Send, Users, FileText, Trash2, Plus, Download,
-  MessageCircle, Receipt, Phone, Calendar, Building2, DollarSign,
+  MessageCircle, Receipt, Phone, Calendar, Building2, DollarSign, BarChart3, Save,
 } from "lucide-react";
 import RichTextEditor from "@/components/shared/RichTextEditor";
 
