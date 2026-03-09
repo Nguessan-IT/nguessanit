@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Code, Cloud, Brain, Target, GraduationCap, Palette, FileText, Database, ArrowRight, Sparkles, MessageCircle, Wrench, Crosshair, Lightbulb, Zap } from "lucide-react";
 import techBg from "@/assets/tech-background.jpg";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const services = [
   {
@@ -71,10 +72,10 @@ const services = [
 ];
 
 const methodology = [
-  { step: "01", title: "Analyse du besoin", desc: "Compréhension approfondie de vos objectifs et contraintes", icon: Crosshair },
-  { step: "02", title: "Conception", desc: "Design et architecture technique de votre solution", icon: Lightbulb },
-  { step: "03", title: "Développement & tests", desc: "Développement agile avec tests continus", icon: Code },
-  { step: "04", title: "Mise en ligne & support", desc: "Déploiement sécurisé et accompagnement permanent", icon: Zap },
+  { step: "01", title: "Analyse du besoin", desc: "Compréhension approfondie de vos objectifs et contraintes", icon: Crosshair, color: "210 100% 55%", gradient: "from-blue-500 to-cyan-400" },
+  { step: "02", title: "Conception", desc: "Design et architecture technique de votre solution", icon: Lightbulb, color: "270 80% 60%", gradient: "from-purple-500 to-pink-400" },
+  { step: "03", title: "Développement & tests", desc: "Développement agile avec tests continus", icon: Code, color: "160 80% 45%", gradient: "from-emerald-500 to-teal-400" },
+  { step: "04", title: "Mise en ligne & support", desc: "Déploiement sécurisé et accompagnement permanent", icon: Zap, color: "35 95% 55%", gradient: "from-orange-500 to-amber-400" },
 ];
 
 const stats = [
@@ -227,34 +228,147 @@ export default function PublicServicesPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
+            style={{ perspective: 1200 }}
           >
-            {methodology.map((m) => (
-              <motion.div key={m.step} variants={fadeInUp} className="flex flex-col items-center">
-                {/* Floating icon circle */}
-                <motion.div
-                  className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-[-32px] z-10 shadow-lg"
-                  whileHover={{ scale: 1.1, rotate: 10 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                >
-                  <m.icon size={28} className="text-primary-foreground" />
-                </motion.div>
+            {methodology.map((m) => {
+              const cardRef = useRef<HTMLDivElement>(null);
 
-                {/* Card */}
-                <motion.div
-                  className="bg-card/90 backdrop-blur-sm rounded-xl pt-12 pb-8 px-6 text-center shadow-md border-t-[3px] w-full"
-                  style={{ borderImage: "linear-gradient(90deg, hsl(var(--primary)), hsl(270 70% 60%)) 1" }}
-                  whileHover={{ y: -6, boxShadow: "0 20px 40px -10px hsl(var(--primary) / 0.2)" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <div className="text-4xl font-bold text-muted-foreground/30 mb-2 font-display">{m.step}</div>
-                  <h3 className="font-display font-bold text-foreground text-lg mb-2">{m.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+              const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+                const card = cardRef.current;
+                if (!card) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -15;
+                const rotateY = ((x - centerX) / centerX) * 15;
+                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                // Move spotlight
+                const spotlight = card.querySelector('.methodology-spotlight') as HTMLElement;
+                if (spotlight) {
+                  spotlight.style.background = `radial-gradient(circle at ${x}px ${y}px, hsl(${m.color} / 0.25) 0%, transparent 60%)`;
+                  spotlight.style.opacity = '1';
+                }
+              };
+
+              const handleMouseLeave = () => {
+                const card = cardRef.current;
+                if (!card) return;
+                card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                const spotlight = card.querySelector('.methodology-spotlight') as HTMLElement;
+                if (spotlight) spotlight.style.opacity = '0';
+              };
+
+              return (
+                <motion.div key={m.step} variants={fadeInUp} className="flex flex-col items-center">
+                  {/* Floating icon circle with unique color */}
+                  <motion.div
+                    className="w-16 h-16 rounded-full flex items-center justify-center mb-[-32px] z-10 relative"
+                    style={{
+                      background: `linear-gradient(135deg, hsl(${m.color}), hsl(${m.color} / 0.7))`,
+                      boxShadow: `0 8px 25px -5px hsl(${m.color} / 0.5), 0 0 20px hsl(${m.color} / 0.2)`,
+                    }}
+                    whileHover={{ scale: 1.2, rotate: 15 }}
+                    animate={{
+                      boxShadow: [
+                        `0 8px 25px -5px hsl(${m.color} / 0.5), 0 0 20px hsl(${m.color} / 0.2)`,
+                        `0 8px 35px -5px hsl(${m.color} / 0.7), 0 0 35px hsl(${m.color} / 0.35)`,
+                        `0 8px 25px -5px hsl(${m.color} / 0.5), 0 0 20px hsl(${m.color} / 0.2)`,
+                      ],
+                    }}
+                    transition={{
+                      boxShadow: { duration: 2.5, repeat: Infinity, ease: "easeInOut" },
+                      scale: { type: "spring", stiffness: 400, damping: 15 },
+                    }}
+                  >
+                    {/* Orbit ring */}
+                    <motion.div
+                      className="absolute inset-[-6px] rounded-full border-2 border-dashed"
+                      style={{ borderColor: `hsl(${m.color} / 0.3)` }}
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                    />
+                    <m.icon size={28} className="text-white relative z-10" />
+                  </motion.div>
+
+                  {/* 3D Card */}
+                  <div
+                    ref={cardRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                    className="relative bg-card/90 backdrop-blur-sm rounded-xl pt-12 pb-8 px-6 text-center w-full overflow-hidden group cursor-pointer"
+                    style={{
+                      transformStyle: "preserve-3d",
+                      transition: "transform 0.15s ease-out, box-shadow 0.3s ease",
+                      borderTop: `3px solid hsl(${m.color})`,
+                      boxShadow: `0 10px 30px -10px hsl(${m.color} / 0.15)`,
+                    }}
+                  >
+                    {/* Mouse-following spotlight */}
+                    <div
+                      className="methodology-spotlight absolute inset-0 opacity-0 transition-opacity duration-300 pointer-events-none z-0 rounded-xl"
+                    />
+
+                    {/* Shimmer sweep */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none z-10" />
+
+                    {/* Corner accents */}
+                    <div
+                      className="absolute top-0 left-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{
+                        borderTop: `2px solid hsl(${m.color} / 0.6)`,
+                        borderLeft: `2px solid hsl(${m.color} / 0.6)`,
+                        borderTopLeftRadius: "12px",
+                      }}
+                    />
+                    <div
+                      className="absolute bottom-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{
+                        borderBottom: `2px solid hsl(${m.color} / 0.6)`,
+                        borderRight: `2px solid hsl(${m.color} / 0.6)`,
+                        borderBottomRightRadius: "12px",
+                      }}
+                    />
+
+                    {/* Colored bottom glow on hover */}
+                    <div
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:h-1.5"
+                      style={{
+                        background: `linear-gradient(90deg, transparent, hsl(${m.color}), transparent)`,
+                        boxShadow: `0 0 15px hsl(${m.color} / 0.5)`,
+                      }}
+                    />
+
+                    <div
+                      className="text-4xl font-bold mb-2 font-display relative z-10"
+                      style={{ color: `hsl(${m.color} / 0.25)` }}
+                    >
+                      {m.step}
+                    </div>
+                    <h3 className="font-display font-bold text-foreground text-lg mb-2 relative z-10">{m.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed relative z-10">{m.desc}</p>
+
+                    {/* Pulsing dots */}
+                    <div className="flex justify-center gap-1.5 mt-4 relative z-10">
+                      {[0, 1, 2].map((dot) => (
+                        <motion.div
+                          key={dot}
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ background: `hsl(${m.color})` }}
+                          animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
+                          transition={{ duration: 1.8, repeat: Infinity, delay: dot * 0.3 }}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </motion.div>
-              </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
         </div>
       </section>
+
 
       {/* Stats */}
       <section className="py-16">
