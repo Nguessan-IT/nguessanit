@@ -203,29 +203,53 @@ export default function PublicServicesPage() {
       </section>
 
       {/* Methodology */}
-      <section className="py-16 bg-primary/5 backdrop-blur-sm rounded-lg">
-        <div className="max-w-5xl mx-auto px-4">
+      <section className="relative py-20 overflow-hidden">
+        {/* Tech background */}
+        <div className="absolute inset-0 -z-10">
+          <img src={techBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-background/75 backdrop-blur-[1px]" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-3xl font-bold gradient-text mb-3">Notre Méthodologie</h2>
-            <p className="text-muted-foreground">Un processus éprouvé pour garantir le succès de vos projets digitaux</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold italic gradient-text mb-4">Notre Méthodologie</h2>
+            <p className="text-muted-foreground text-base">Un processus éprouvé pour garantir le succès de vos projets digitaux</p>
           </motion.div>
+
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
           >
             {methodology.map((m) => (
-              <motion.div key={m.step} variants={fadeInUp} className="text-center">
-                <div className="text-4xl font-bold text-primary/20 mb-2">{m.step}</div>
-                <h3 className="font-display font-semibold text-foreground mb-2">{m.title}</h3>
-                <p className="text-sm text-muted-foreground">{m.desc}</p>
+              <motion.div key={m.step} variants={fadeInUp} className="flex flex-col items-center">
+                {/* Floating icon circle */}
+                <motion.div
+                  className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-[-32px] z-10 shadow-lg"
+                  whileHover={{ scale: 1.1, rotate: 10 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                >
+                  <m.icon size={28} className="text-primary-foreground" />
+                </motion.div>
+
+                {/* Card */}
+                <motion.div
+                  className="bg-card/90 backdrop-blur-sm rounded-xl pt-12 pb-8 px-6 text-center shadow-md border-t-[3px] w-full"
+                  style={{ borderImage: "linear-gradient(90deg, hsl(var(--primary)), hsl(270 70% 60%)) 1" }}
+                  whileHover={{ y: -6, boxShadow: "0 20px 40px -10px hsl(var(--primary) / 0.2)" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <div className="text-4xl font-bold text-muted-foreground/30 mb-2 font-display">{m.step}</div>
+                  <h3 className="font-display font-bold text-foreground text-lg mb-2">{m.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>
