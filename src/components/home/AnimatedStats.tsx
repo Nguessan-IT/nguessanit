@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, animate, useMotionValue, useTransform } from "framer-motion";
 import { TrendingUp, Star, Rocket, Zap } from "lucide-react";
+import techBg from "@/assets/tech-background.jpg";
 
 const stats = [
   { value: 1, suffix: "+", label: "Années expérience", Icon: TrendingUp },
@@ -275,6 +276,12 @@ export default function AnimatedStats() {
 
   return (
     <section className="relative py-20 overflow-hidden" ref={containerRef}>
+      {/* Tech circuit board background */}
+      <div className="absolute inset-0 -z-10">
+        <img src={techBg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px]" />
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 relative">
         {/* Background grid effect */}
         <div className="absolute inset-0 -m-8 rounded-3xl overflow-hidden">
