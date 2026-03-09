@@ -8,6 +8,7 @@ import ContactPage from "@/pages/ContactPage";
 import PortfolioPage from "@/pages/PortfolioPage";
 import TermsPage from "@/pages/TermsPage";
 import PrivacyPage from "@/pages/PrivacyPage";
+import NotFoundPage from "@/pages/NotFoundPage";
 import AdminPage from "@/pages/AdminPage";
 
 const queryClient = new QueryClient();
